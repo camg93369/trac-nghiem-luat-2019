@@ -1,0 +1,906 @@
+[
+  {
+    "id": 1,
+    "title": "Chương I: Những quy định chung",
+    "description": "Quy định phạm vi điều chỉnh, đối tượng áp dụng, định nghĩa người lao động, người sử dụng lao động, các hành vi bị nghiêm cấm.",
+    "cards": [
+      {
+        "q": "Phạm vi điều chỉnh của Bộ luật Lao động 2019 là gì?",
+        "a": "Quy định tiêu chuẩn lao động; quyền, nghĩa vụ, trách nhiệm của người lao động, người sử dụng lao động, tổ chức đại diện các bên trong quan hệ lao động và các quan hệ khác liên quan trực tiếp; quản lý nhà nước về lao động (Điều 1)."
+      },
+      {
+        "q": "Độ tuổi lao động tối thiểu của người lao động là bao nhiêu?",
+        "a": "Độ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp người chưa đủ 15 tuổi làm công việc nhẹ theo quy định (Khoản 1 Điều 3)."
+      },
+      {
+        "q": "Người lao động là ai theo định nghĩa của Bộ luật Lao động 2019?",
+        "a": "Là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động (Khoản 1 Điều 3)."
+      },
+      {
+        "q": "Người sử dụng lao động là cá nhân cần đáp ứng điều kiện gì?",
+        "a": "Người sử dụng lao động là cá nhân thì phải có năng lực hành vi dân sự đầy đủ (Khoản 2 Điều 3)."
+      },
+      {
+        "q": "Cưỡng bức lao động được hiểu như thế nào?",
+        "a": "Là việc dùng vũ lực, đe dọa dùng vũ lực hoặc các thủ đoạn khác để ép buộc người lao động phải làm việc trái ý muốn của họ (Khoản 7 Điều 3)."
+      },
+      {
+        "q": "Hành vi nào bị coi là quấy rối tình dục tại nơi làm việc?",
+        "a": "Là hành vi có tính chất tình dục của bất kỳ người nào đối với người khác tại nơi làm việc mà không được người đó mong muốn hoặc chấp nhận (Khoản 9 Điều 3)."
+      },
+      {
+        "q": "Người lao động có quyền từ chối làm việc trong trường hợp nào?",
+        "a": "Người lao động có quyền từ chối làm việc nếu có nguy cơ rõ ràng đe dọa trực tiếp đến tính mạng, sức khỏe trong quá trình thực hiện công việc (Điểm d Khoản 1 Điều 5)."
+      },
+      {
+        "q": "Người sử dụng lao động có quyền đóng cửa tạm thời nơi làm việc không?",
+        "a": "Có, người sử dụng lao động có quyền đóng cửa tạm thời nơi làm việc theo quy định của pháp luật (Điểm d Khoản 1 Điều 6)."
+      },
+      {
+        "q": "Những hành vi nào bị nghiêm cấm trong lĩnh vực lao động?",
+        "a": "Phân biệt đối xử; ngược đãi, cưỡng bức lao động; quấy rối tình dục; bóc lột người học nghề/tập nghề; dùng LĐ chưa qua đào tạo cho việc đòi hỏi chứng chỉ; lừa gạt tuyển dụng; sử dụng LĐ chưa thành niên trái luật (Điều 8)."
+      },
+      {
+        "q": "Nguyên tắc xác lập quan hệ lao động gồm những gì?",
+        "a": "Được xác lập qua đối thoại, thương lượng, thỏa thuận theo nguyên tắc tự nguyện, thiện chí, bình đẳng, hợp tác, tôn trọng quyền và lợi ích hợp pháp của nhau (Điều 7)."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Theo Bộ luật Lao động 2019, độ tuổi lao động tối thiểu của người lao động là bao nhiêu?",
+        "options": [
+          "Đủ 14 tuổi",
+          "Đủ 15 tuổi",
+          "Đủ 16 tuổi",
+          "Đủ 18 tuổi"
+        ],
+        "correct": 1,
+        "explanation": "Theo Khoản 1 Điều 3: Độ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI."
+      },
+      {
+        "q": "Hành vi nào sau đây KHÔNG bị xem là phân biệt đối xử trong lao động?",
+        "options": [
+          "Loại trừ ứng viên vì lý do giới tính hoặc tình trạng hôn nhân",
+          "Phân biệt đối xử do yêu cầu đặc thù của công việc hoặc duy trì việc làm cho đối tượng dễ bị tổn thương",
+          "Từ chối tuyển dụng vì ứng viên tham gia công đoàn cơ sở",
+          "Ưu tiên nâng lương cho người cùng quê hương"
+        ],
+        "correct": 1,
+        "explanation": "Theo Khoản 8 Điều 3: Việc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương thì không bị xem là phân biệt đối xử."
+      },
+      {
+        "q": "Khái niệm 'Quấy rối tình dục tại nơi làm việc' theo Điều 3 Khoản 9 bao gồm địa điểm nào?",
+        "options": [
+          "Chỉ tại trụ sở chính của công ty trong giờ làm việc",
+          "Bất kỳ nơi nào mà người lao động thực tế làm việc theo thỏa thuận hoặc phân công của người sử dụng lao động",
+          "Chỉ trong phòng làm việc riêng hoặc phòng họp",
+          "Chỉ tại các sự kiện công ty tổ chức ngoài giờ"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 9 Điều 3 quy định nơi làm việc là bất kỳ nơi nào mà người lao động thực tế làm việc theo thỏa thuận hoặc phân công của người sử dụng lao động."
+      },
+      {
+        "q": "Quyền nào sau đây thuộc về người lao động theo Điều 5 Bộ luật Lao động 2019?",
+        "options": [
+          "Đơn phương chấm dứt hợp đồng lao động theo quy định",
+          "Đóng cửa tạm thời nơi làm việc",
+          "Tuyển dụng, bố trí và điều hành lao động",
+          "Ban hành thang lương, bảng lương đơn phương"
+        ],
+        "correct": 0,
+        "explanation": "Theo Khoản 1 Điều 5, người lao động có quyền làm việc, tự do chọn việc làm, hưởng lương, từ chối việc nguy hiểm, đơn phương chấm dứt hợp đồng lao động, đình công..."
+      },
+      {
+        "q": "Tổ chức đại diện người lao động tại cơ sở bao gồm những tổ chức nào?",
+        "options": [
+          "Chỉ có Công đoàn cơ sở",
+          "Công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp",
+          "Đoàn thanh niên và hội phụ nữ công ty",
+          "Hội đồng quản trị và Ban kiểm soát"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 3 Điều 3: Tổ chức đại diện người lao động tại cơ sở bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Chương II: Việc làm, tuyển dụng và quản lý lao động",
+    "description": "Quy định về giải quyết việc làm, quyền làm việc, chi phí tuyển dụng, trách nhiệm lập sổ quản lý và báo cáo sử dụng lao động.",
+    "cards": [
+      {
+        "q": "Người lao động có phải trả chi phí cho việc tuyển dụng lao động không?",
+        "a": "Không. Người lao động không phải trả chi phí cho việc tuyển dụng lao động (Khoản 2 Điều 11)."
+      },
+      {
+        "q": "Người sử dụng lao động có thể tuyển dụng lao động bằng những hình thức nào?",
+        "a": "Trực tiếp tuyển dụng hoặc thông qua tổ chức dịch vụ việc làm, doanh nghiệp hoạt động cho thuê lại lao động (Khoản 1 Điều 11)."
+      },
+      {
+        "q": "Người sử dụng lao động phải khai trình việc sử dụng lao động trong thời hạn bao lâu kể từ ngày bắt đầu hoạt động?",
+        "a": "Trong thời hạn 30 ngày kể từ ngày bắt đầu hoạt động (Khoản 2 Điều 12)."
+      },
+      {
+        "q": "Hình thức của sổ quản lý lao động là gì?",
+        "a": "Lập, cập nhật, quản lý, sử dụng sổ quản lý lao động bằng bản giấy hoặc bản điện tử (Khoản 1 Điều 12)."
+      },
+      {
+        "q": "Khái niệm việc làm theo Bộ luật Lao động 2019?",
+        "a": "Việc làm là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm (Khoản 1 Điều 9)."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Người lao động phải trả khoản chi phí nào sau đây khi tham gia tuyển dụng vào doanh nghiệp?",
+        "options": [
+          "Phí hồ sơ phỏng vấn 100.000 VNĐ",
+          "Phí đào tạo kiểm tra đầu vào bắt buộc",
+          "Người lao động không phải trả bất kỳ chi phí nào cho việc tuyển dụng lao động",
+          "Phí đặt cọc giữ chỗ làm việc"
+        ],
+        "correct": 2,
+        "explanation": "Theo Khoản 2 Điều 11: Người lao động không phải trả chi phí cho việc tuyển dụng lao động."
+      },
+      {
+        "q": "Thời hạn người sử dụng lao động phải khai trình việc sử dụng lao động kể từ ngày bắt đầu hoạt động là bao lâu?",
+        "options": [
+          "15 ngày",
+          "30 ngày",
+          "45 ngày",
+          "60 ngày"
+        ],
+        "correct": 1,
+        "explanation": "Theo Khoản 2 Điều 12: Khai trình việc sử dụng lao động trong thời hạn 30 ngày kể từ ngày bắt đầu hoạt động."
+      },
+      {
+        "q": "Định kỳ người sử dụng lao động phải báo cáo tình hình thay đổi về lao động cho cơ quan nào?",
+        "options": [
+          "Cơ quan Công an quận/huyện",
+          "Cơ quan chuyên môn về lao động thuộc UBND cấp tỉnh và thông báo cho cơ quan BHXH",
+          "Sở Kế hoạch và Đầu tư",
+          "Tổng cục Thuế"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 2 Điều 12 quy định: định kỳ báo cáo tình hình thay đổi về lao động với cơ quan chuyên môn về lao động thuộc UBND cấp tỉnh và thông báo cho cơ quan BHXH."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Chương III: Hợp đồng lao động",
+    "description": "Quy định toàn diện về hình thức, loại hợp đồng, thử việc, tạm hoãn, đơn phương chấm dứt, trợ cấp thôi việc và cho thuê lại lao động.",
+    "cards": [
+      {
+        "q": "Bộ luật Lao động 2019 quy định bao nhiêu loại hợp đồng lao động?",
+        "a": "Chỉ còn 02 loại: (1) Hợp đồng lao động không xác định thời hạn; (2) Hợp đồng lao động xác định thời hạn (không quá 36 tháng). Đã bãi bỏ hợp đồng mùa vụ (Điều 20)."
+      },
+      {
+        "q": "Hợp đồng lao động xác định thời hạn được ký thêm tối đa mấy lần trước khi chuyển thành không xác định thời hạn?",
+        "a": "Chỉ được ký thêm 01 lần hợp đồng xác định thời hạn; sau đó nếu người lao động tiếp tục làm việc thì phải ký hợp đồng không xác định thời hạn (Điểm c Khoản 2 Điều 20)."
+      },
+      {
+        "q": "Thời gian thử việc tối đa đối với vị trí người quản lý doanh nghiệp là bao lâu?",
+        "a": "Không quá 180 ngày đối với công việc của người quản lý doanh nghiệp theo Luật Doanh nghiệp (Khoản 1 Điều 25)."
+      },
+      {
+        "q": "Thời gian thử việc tối đa cho công việc có trình độ cao đẳng trở lên là bao lâu?",
+        "a": "Không quá 60 ngày đối với công việc có chức danh nghề nghiệp cần trình độ chuyên môn, kỹ thuật từ cao đẳng trở lên (Khoản 2 Điều 25)."
+      },
+      {
+        "q": "Tiền lương trong thời gian thử việc ít nhất phải bằng bao nhiêu % mức lương chính thức?",
+        "a": "Ít nhất phải bằng 85% mức lương của công việc đó (Điều 26)."
+      },
+      {
+        "q": "Có được áp dụng thử việc đối với hợp đồng lao động dưới 01 tháng không?",
+        "a": "Không áp dụng thử việc đối với người lao động giao kết hợp đồng lao động có thời hạn dưới 01 tháng (Khoản 3 Điều 24)."
+      },
+      {
+        "q": "Người sử dụng lao động có được giữ bản chính CMND/CCCD hoặc bằng cấp của người lao động không?",
+        "a": "Nghiêm cấm. Người sử dụng lao động không được giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ hoặc yêu cầu nộp tiền, tài sản để bảo đảm (Điều 17)."
+      },
+      {
+        "q": "Người lao động có quyền đơn phương chấm dứt hợp đồng không cần báo trước trong trường hợp nào?",
+        "a": "Khi không được bố trí đúng việc/nơi làm việc; không được trả đủ lương/đúng hạn; bị ngược đãi, quấy rối tình dục; lao động nữ mang thai phải nghỉ theo chỉ định y tế; đủ tuổi nghỉ hưu; NSDLĐ cung cấp thông tin sai lệch (Khoản 2 Điều 35)."
+      },
+      {
+        "q": "Thời hạn báo trước khi người lao động đơn phương chấm dứt hợp đồng không xác định thời hạn thông thường là bao lâu?",
+        "a": "Ít nhất 45 ngày làm việc đối với hợp đồng không xác định thời hạn (Điểm a Khoản 1 Điều 35)."
+      },
+      {
+        "q": "Điều kiện và mức hưởng trợ cấp thôi việc theo Điều 46 là gì?",
+        "a": "Người lao động làm việc thường xuyên từ đủ 12 tháng trở lên; mỗi năm làm việc được trợ cấp một nửa tháng tiền lương (tiền lương bình quân 6 tháng liền kề trừ thời gian đã đóng BHTN)."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Theo Bộ luật Lao động 2019, có bao nhiêu loại hợp đồng lao động?",
+        "options": [
+          "3 loại: Không xác định thời hạn, xác định thời hạn, và theo mùa vụ",
+          "2 loại: Hợp đồng không xác định thời hạn và hợp đồng xác định thời hạn (không quá 36 tháng)",
+          "1 loại duy nhất: Hợp đồng có thời hạn",
+          "4 loại tùy theo ngành nghề kinh doanh"
+        ],
+        "correct": 1,
+        "explanation": "Theo Điều 20 Bộ luật Lao động 2019, chỉ còn 2 loại hợp đồng lao động: Không xác định thời hạn và Xác định thời hạn (tối đa 36 tháng)."
+      },
+      {
+        "q": "Thời gian thử việc tối đa đối với công việc của người quản lý doanh nghiệp là bao nhiêu?",
+        "options": [
+          "30 ngày",
+          "60 ngày",
+          "90 ngày",
+          "180 ngày"
+        ],
+        "correct": 3,
+        "explanation": "Khoản 1 Điều 25: Không quá 180 ngày đối với công việc của người quản lý doanh nghiệp theo quy định của Luật Doanh nghiệp."
+      },
+      {
+        "q": "Tiền lương của người lao động trong thời gian thử việc ít nhất phải bằng bao nhiêu?",
+        "options": [
+          "70% mức lương công việc",
+          "80% mức lương công việc",
+          "85% mức lương công việc",
+          "100% mức lương công việc"
+        ],
+        "correct": 2,
+        "explanation": "Theo Điều 26: Tiền lương của người lao động trong thời gian thử việc do hai bên thỏa thuận nhưng ít nhất phải bằng 85% mức lương của công việc đó."
+      },
+      {
+        "q": "Trường hợp nào sau đây người sử dụng lao động KHÔNG ĐƯỢC phép thực hiện quyền đơn phương chấm dứt hợp đồng lao động?",
+        "options": [
+          "Người lao động tự ý bỏ việc từ 05 ngày liên tục trở lên không có lý do",
+          "Người lao động nữ mang thai, nghỉ thai sản hoặc đang nuôi con dưới 12 tháng tuổi",
+          "Người lao động thường xuyên không hoàn thành công việc theo quy chế",
+          "Doanh nghiệp bị thu hẹp sản xuất do thiên tai đã tìm mọi biện pháp"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 3 Điều 37: Người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng khi người lao động nữ mang thai; người lao động đang nghỉ thai sản hoặc nuôi con dưới 12 tháng tuổi."
+      },
+      {
+        "q": "Thời hạn tối đa cho thuê lại lao động đối với một người lao động là bao lâu?",
+        "options": [
+          "6 tháng",
+          "12 tháng",
+          "24 tháng",
+          "36 tháng"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 1 Điều 53: Thời hạn cho thuê lại lao động đối với người lao động tối đa là 12 tháng."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Chương IV: Giáo dục nghề nghiệp và phát triển kỹ năng nghề",
+    "description": "Đào tạo nghề tại nơi làm việc, học nghề, tập nghề, hợp đồng đào tạo và chi phí hoàn trả đào tạo.",
+    "cards": [
+      {
+        "q": "Thời hạn tập nghề tối đa tại nơi làm việc là bao lâu?",
+        "a": "Thời hạn tập nghề không quá 03 tháng (Khoản 2 Điều 61)."
+      },
+      {
+        "q": "Người sử dụng lao động có được thu học phí khi nhận người vào học nghề, tập nghề để làm việc cho mình không?",
+        "a": "Không được thu học phí và phải ký hợp đồng đào tạo theo quy định (Khoản 3 Điều 61)."
+      },
+      {
+        "q": "Độ tuổi tối thiểu của người học nghề, tập nghề là bao nhiêu?",
+        "a": "Phải đủ 14 tuổi trở lên và có đủ sức khỏe. Với nghề nặng nhọc, độc hại phải từ đủ 18 tuổi trở lên (Khoản 4 Điều 61)."
+      },
+      {
+        "q": "Trong thời gian học nghề, tập nghề nếu trực tiếp làm ra sản phẩm thì có được trả lương không?",
+        "a": "Có, nếu người học nghề, người tập nghề trực tiếp hoặc tham gia lao động thì được người sử dụng lao động trả lương theo mức hai bên thỏa thuận (Khoản 5 Điều 61)."
+      },
+      {
+        "q": "Chi phí đào tạo nghề gồm những khoản nào?",
+        "a": "Bao gồm chi phí trả cho người dạy, tài liệu, trường lớp, máy móc thực hành, chi phí hỗ trợ và tiền lương, tiền đóng BHXH, BHYT, BHTN trong thời gian đi học (Khoản 3 Điều 62)."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Thời hạn tập nghề để làm việc cho người sử dụng lao động không được quá bao lâu?",
+        "options": [
+          "01 tháng",
+          "02 tháng",
+          "03 tháng",
+          "06 tháng"
+        ],
+        "correct": 2,
+        "explanation": "Khoản 2 Điều 61: Thời hạn tập nghề không quá 03 tháng."
+      },
+      {
+        "q": "Doanh nghiệp tuyển người vào học nghề để làm việc cho mình có được phép thu học phí không?",
+        "options": [
+          "Được thu tối đa 50% chi phí",
+          "Được thu nếu có thỏa thuận trước",
+          "Không được thu học phí",
+          "Được thu và hoàn trả sau khi thử việc đạt"
+        ],
+        "correct": 2,
+        "explanation": "Khoản 3 Điều 61: Người sử dụng lao động tuyển người vào học nghề, tập nghề để làm việc cho mình thì không phải đăng ký hoạt động giáo dục nghề nghiệp; không được thu học phí."
+      },
+      {
+        "q": "Độ tuổi tối thiểu đối với người học nghề, người tập nghề là bao nhiêu?",
+        "options": [
+          "Đủ 13 tuổi",
+          "Đủ 14 tuổi",
+          "Đủ 15 tuổi",
+          "Đủ 18 tuổi"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 4 Điều 61: Người học nghề, người tập nghề phải đủ 14 tuổi trở lên và phải có đủ sức khỏe phù hợp với yêu cầu học nghề, tập nghề."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Chương V: Đối thoại tại nơi làm việc, thương lượng tập thể, thỏa ước LĐTT",
+    "description": "Cơ chế đối thoại định kỳ, quy trình thương lượng tập thể, ký kết và thời hạn của thỏa ước lao động tập thể.",
+    "cards": [
+      {
+        "q": "Người sử dụng lao động phải tổ chức đối thoại tại nơi làm việc định kỳ bao lâu một lần?",
+        "a": "Định kỳ ít nhất 01 năm một lần, hoặc khi có yêu cầu của một bên, hoặc khi có vụ việc theo quy định (Khoản 2 Điều 63)."
+      },
+      {
+        "q": "Thời hạn bắt đầu thương lượng tập thể kể từ khi nhận được yêu cầu là bao lâu?",
+        "a": "Không được quá 30 ngày kể từ ngày nhận được yêu cầu thương lượng tập thể (Khoản 1 Điều 70)."
+      },
+      {
+        "q": "Thời gian thương lượng tập thể tối đa là bao lâu?",
+        "a": "Không quá 90 ngày kể từ ngày bắt đầu thương lượng, trừ trường hợp các bên có thỏa thuận khác (Khoản 2 Điều 70)."
+      },
+      {
+        "q": "Tỷ lệ biểu quyết tán thành để ký kết thỏa ước lao động tập thể doanh nghiệp là bao nhiêu?",
+        "a": "Chỉ được ký kết khi có trên 50% người lao động của doanh nghiệp biểu quyết tán thành (Khoản 1 Điều 76)."
+      },
+      {
+        "q": "Thời hạn của thỏa ước lao động tập thể là bao lâu?",
+        "a": "Thỏa ước lao động tập thể có thời hạn từ 01 năm đến 03 năm theo thỏa thuận của các bên (Khoản 3 Điều 78)."
+      },
+      {
+        "q": "Chi phí thương lượng, ký kết thỏa ước lao động tập thể do ai chi trả?",
+        "a": "Mọi chi phí cho việc thương lượng, ký kết, sửa đổi, gửi và công bố thỏa ước do phía người sử dụng lao động chi trả (Điều 89)."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Người sử dụng lao động bắt buộc phải tổ chức đối thoại định kỳ tại nơi làm việc tối thiểu bao lâu một lần?",
+        "options": [
+          "03 tháng một lần",
+          "06 tháng một lần",
+          "Ít nhất 01 năm một lần",
+          "02 năm một lần"
+        ],
+        "correct": 2,
+        "explanation": "Khoản 2 Điều 63: Người sử dụng lao động phải tổ chức đối thoại tại nơi làm việc định kỳ ít nhất 01 năm một lần."
+      },
+      {
+        "q": "Thỏa ước lao động tập thể doanh nghiệp chỉ được ký kết khi có tỷ lệ người lao động biểu quyết tán thành là:",
+        "options": [
+          "Từ 30% trở lên",
+          "Từ 50% trở lên",
+          "Trên 50% người lao động của doanh nghiệp biểu quyết tán thành",
+          "100% người lao động tham gia biểu quyết"
+        ],
+        "correct": 2,
+        "explanation": "Khoản 1 Điều 76: Thỏa ước lao động tập thể doanh nghiệp chỉ được ký kết khi có trên 50% người lao động của doanh nghiệp biểu quyết tán thành."
+      },
+      {
+        "q": "Thỏa ước lao động tập thể có thời hạn theo luật định là:",
+        "options": [
+          "Từ 6 tháng đến 1 năm",
+          "Từ 01 năm đến 03 năm",
+          "Tối thiểu 5 năm",
+          "Không có thời hạn"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 3 Điều 78: Thỏa ước lao động tập thể có thời hạn từ 01 năm đến 03 năm."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Chương VI: Tiền lương",
+    "description": "Mức lương tối thiểu, nguyên tắc trả lương, tiền lương làm thêm giờ, làm việc ban đêm, lương ngừng việc và khấu trừ lương.",
+    "cards": [
+      {
+        "q": "Mức lương làm thêm giờ vào ngày thường được tính ít nhất bằng bao nhiêu %?",
+        "a": "Ít nhất bằng 150% tiền lương tính theo đơn giá tiền lương hoặc tiền lương thực trả (Điểm a Khoản 1 Điều 98)."
+      },
+      {
+        "q": "Mức lương làm thêm giờ vào ngày nghỉ hằng tuần được tính ít nhất bằng bao nhiêu %?",
+        "a": "Ít nhất bằng 200% (Điểm b Khoản 1 Điều 98)."
+      },
+      {
+        "q": "Mức lương làm thêm giờ vào ngày nghỉ lễ, tết, ngày nghỉ có hưởng lương ít nhất bằng bao nhiêu %?",
+        "a": "Ít nhất bằng 300% chưa kể tiền lương ngày lễ, tết đối với người hưởng lương ngày (Điểm c Khoản 1 Điều 98)."
+      },
+      {
+        "q": "Làm việc vào ban đêm được trả thêm ít nhất bao nhiêu % so với ngày làm việc bình thường?",
+        "a": "Được trả thêm ít nhất bằng 30% tiền lương của ngày làm việc bình thường (Khoản 2 Điều 98)."
+      },
+      {
+        "q": "Mức khấu trừ tiền lương hằng tháng tối đa của người lao động là bao nhiêu %?",
+        "a": "Mức khấu trừ tiền lương hằng tháng không được quá 30% tiền lương thực trả hằng tháng sau khi trích nộp các khoản BHXH, BHYT, BHTN, thuế TNCN (Khoản 3 Điều 102)."
+      },
+      {
+        "q": "Trường hợp trả lương chậm từ 15 ngày trở lên do lý do bất khả kháng, NSDLĐ phải làm gì?",
+        "a": "Phải đền bù cho người lao động một khoản tiền ít nhất bằng số tiền lãi của số tiền trả chậm theo lãi suất tiền gửi 1 tháng của ngân hàng mở tài khoản trả lương (Khoản 4 Điều 97)."
+      },
+      {
+        "q": "Tiền lương ngừng việc do lỗi của người sử dụng lao động được tính thế nào?",
+        "a": "Người lao động được trả đủ tiền lương theo hợp đồng lao động (Khoản 1 Điều 99)."
+      },
+      {
+        "q": "Thưởng có bắt buộc phải bằng tiền mặt không?",
+        "a": "Không bắt buộc. Thưởng là số tiền hoặc tài sản hoặc bằng các hình thức khác mà người sử dụng lao động thưởng căn cứ vào kết quả sản xuất kinh doanh (Khoản 1 Điều 104)."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Người lao động làm thêm giờ vào ngày nghỉ lễ, tết được hưởng mức lương ít nhất bằng bao nhiêu % so với đơn giá ngày thường?",
+        "options": [
+          "150%",
+          "200%",
+          "300% (chưa kể tiền lương ngày lễ, tết)",
+          "400%"
+        ],
+        "correct": 2,
+        "explanation": "Điểm c Khoản 1 Điều 98: Vào ngày nghỉ lễ, tết, ngày nghỉ có hưởng lương, ít nhất bằng 300% chưa kể tiền lương ngày lễ, tết đối với người lao động hưởng lương ngày."
+      },
+      {
+        "q": "Người lao động làm việc vào ban đêm được trả thêm ít nhất bao nhiêu phần trăm tiền lương?",
+        "options": [
+          "20%",
+          "25%",
+          "30%",
+          "50%"
+        ],
+        "correct": 2,
+        "explanation": "Khoản 2 Điều 98: Người lao động làm việc vào ban đêm thì được trả thêm ít nhất bằng 30% tiền lương tính theo đơn giá tiền lương hoặc tiền lương thực trả của ngày làm việc bình thường."
+      },
+      {
+        "q": "Mức khấu trừ tiền lương hằng tháng tối đa đối với người lao động là bao nhiêu?",
+        "options": [
+          "Không quá 20% tiền lương thực trả",
+          "Không quá 30% tiền lương thực trả sau khi trích nộp BHXH, BHYT, BHTN và thuế",
+          "Không quá 50% tiền lương thực trả",
+          "Tùy theo mức độ thiệt hại gây ra"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 3 Điều 102: Mức khấu trừ tiền lương hằng tháng không được quá 30% tiền lương thực trả hằng tháng của người lao động sau khi trích nộp các khoản BHXH bắt buộc, BHYT, BHTN, thuế TNCN."
+      },
+      {
+        "q": "Hình thức thưởng cho người lao động theo Điều 104 có thể là gì?",
+        "options": [
+          "Bắt buộc phải là tiền mặt Đồng Việt Nam",
+          "Chỉ được thưởng bằng cổ phiếu công ty",
+          "Bằng tiền hoặc tài sản hoặc bằng các hình thức khác do NSDLĐ quyết định",
+          "Chỉ được tặng hiện vật trong các dịp lễ tết"
+        ],
+        "correct": 2,
+        "explanation": "Khoản 1 Điều 104 quy định thưởng là số tiền hoặc tài sản hoặc bằng các hình thức khác căn cứ vào kết quả sản xuất kinh doanh."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Chương VII: Thời giờ làm việc, thời giờ nghỉ ngơi",
+    "description": "Thời giờ làm việc tiêu chuẩn, ca đêm, số giờ làm thêm tối đa, 11 ngày nghỉ lễ tết và chế độ nghỉ phép hằng năm.",
+    "cards": [
+      {
+        "q": "Thời giờ làm việc bình thường tối đa trong 1 ngày và 1 tuần là bao nhiêu?",
+        "a": "Không quá 08 giờ trong 01 ngày và không quá 48 giờ trong 01 tuần. Nhà nước khuyến khích tuần làm việc 40 giờ (Điều 105)."
+      },
+      {
+        "q": "Giờ làm việc ban đêm được tính trong khung giờ nào?",
+        "a": "Được tính từ 22 giờ đến 06 giờ sáng ngày hôm sau (Điều 106)."
+      },
+      {
+        "q": "Số giờ làm thêm tối đa của người lao động là bao nhiêu?",
+        "a": "Không quá 50% số giờ làm việc bình thường/ngày, không quá 40 giờ trong 01 tháng và không quá 200 giờ trong 01 năm (ngành nghề đặc biệt tối đa 300 giờ/năm) (Khoản 2 Điều 107)."
+      },
+      {
+        "q": "Người lao động được nghỉ bao nhiêu ngày lễ, tết hưởng nguyên lương trong năm?",
+        "a": "Tổng cộng 11 ngày: Tết Dương lịch 1 ngày, Tết Âm lịch 5 ngày, 30/4 (1 ngày), 1/5 (1 ngày), Quốc khánh 2/9 (2 ngày), Giỗ Tổ Hùng Vương 10/3 AL (1 ngày) (Điều 112)."
+      },
+      {
+        "q": "Số ngày nghỉ phép hằng năm đối với người làm việc trong điều kiện bình thường là bao nhiêu ngày?",
+        "a": "12 ngày làm việc khi làm việc đủ 12 tháng (Khoản 1 Điều 113)."
+      },
+      {
+        "q": "Cứ đủ bao nhiêu năm làm việc thì người lao động được tăng thêm 01 ngày phép năm?",
+        "a": "Cứ đủ 05 năm làm việc cho một người sử dụng lao động thì được tăng thêm 01 ngày nghỉ hằng năm theo thâm niên (Điều 114)."
+      },
+      {
+        "q": "Người lao động kết hôn thì được nghỉ việc riêng hưởng nguyên lương mấy ngày?",
+        "a": "Được nghỉ 03 ngày hưởng nguyên lương (Điểm a Khoản 1 Điều 115)."
+      },
+      {
+        "q": "Con đẻ hoặc con nuôi kết hôn thì người lao động được nghỉ mấy ngày hưởng nguyên lương?",
+        "a": "Được nghỉ 01 ngày hưởng nguyên lương (Điểm b Khoản 1 Điều 115)."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Theo Bộ luật Lao động 2019, một năm người lao động được nghỉ tổng cộng bao nhiêu ngày lễ, tết hưởng nguyên lương?",
+        "options": [
+          "10 ngày",
+          "11 ngày",
+          "12 ngày",
+          "14 ngày"
+        ],
+        "correct": 1,
+        "explanation": "Điều 112: Tổng số ngày nghỉ lễ, tết hưởng nguyên lương là 11 ngày (trong đó Quốc khánh được nghỉ 02 ngày)."
+      },
+      {
+        "q": "Giờ làm việc ban đêm theo luật định được tính từ khung giờ nào?",
+        "options": [
+          "Từ 21 giờ đến 05 giờ sáng hôm sau",
+          "Từ 22 giờ đến 06 giờ sáng hôm sau",
+          "Từ 23 giờ đến 07 giờ sáng hôm sau",
+          "Từ 20 giờ đến 06 giờ sáng hôm sau"
+        ],
+        "correct": 1,
+        "explanation": "Điều 106: Giờ làm việc ban đêm được tính từ 22 giờ đến 06 giờ sáng ngày hôm sau."
+      },
+      {
+        "q": "Số giờ làm thêm của người lao động không được vượt quá bao nhiêu giờ trong 01 tháng?",
+        "options": [
+          "30 giờ",
+          "40 giờ",
+          "50 giờ",
+          "60 giờ"
+        ],
+        "correct": 1,
+        "explanation": "Điểm b Khoản 2 Điều 107: Bảo đảm số giờ làm thêm không quá 40 giờ trong 01 tháng."
+      },
+      {
+        "q": "Cứ đủ bao nhiêu năm làm việc cho một người sử dụng lao động thì số ngày nghỉ phép hằng năm được tăng thêm 01 ngày?",
+        "options": [
+          "03 năm",
+          "05 năm",
+          "07 năm",
+          "10 năm"
+        ],
+        "correct": 1,
+        "explanation": "Điều 114: Cứ đủ 05 năm làm việc cho một người sử dụng lao động thì số ngày nghỉ hằng năm được tăng thêm tương ứng 01 ngày."
+      },
+      {
+        "q": "Trường hợp cha đẻ, mẹ đẻ hoặc con đẻ chết thì người lao động được nghỉ việc riêng hưởng nguyên lương bao nhiêu ngày?",
+        "options": [
+          "01 ngày",
+          "02 ngày",
+          "03 ngày",
+          "05 ngày"
+        ],
+        "correct": 2,
+        "explanation": "Điểm c Khoản 1 Điều 115: Cha đẻ, mẹ đẻ, con đẻ... chết: nghỉ 03 ngày hưởng nguyên lương."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Chương VIII: Kỷ luật lao động, trách nhiệm vật chất",
+    "description": "Các hình thức kỷ luật lao động, trường hợp áp dụng sa thải theo Điều 125, tạm đình chỉ công việc và bồi thường thiệt hại.",
+    "cards": [
+      {
+        "q": "Doanh nghiệp sử dụng bao nhiêu người lao động trở lên thì nội quy lao động phải bằng văn bản và đăng ký?",
+        "a": "Sử dụng từ 10 người lao động trở lên thì nội quy lao động phải bằng văn bản và phải đăng ký tại cơ quan chuyên môn về lao động (Khoản 1 Điều 118, Khoản 1 Điều 119)."
+      },
+      {
+        "q": "Có bao nhiêu hình thức xử lý kỷ luật lao động theo luật định?",
+        "a": "Có 04 hình thức: (1) Khiển trách; (2) Kéo dài thời hạn nâng lương không quá 06 tháng; (3) Cách chức; (4) Sa thải (Điều 124)."
+      },
+      {
+        "q": "Người sử dụng lao động có được dùng hình thức phạt tiền hoặc cắt lương thay xử lý kỷ luật không?",
+        "a": "Nghiêm cấm. Phạt tiền, cắt lương thay việc xử lý kỷ luật lao động là hành vi bị nghiêm cấm tuyệt đối (Khoản 2 Điều 127)."
+      },
+      {
+        "q": "Trường hợp nào được áp dụng hình thức kỷ luật sa thải theo Điều 125?",
+        "a": "Trộm cắp, tham ô, đánh bạc, dùng ma túy tại nơi làm việc; tiết lộ bí mật kinh doanh/công nghệ; quấy rối tình dục; tái phạm khi chưa xóa kỷ luật; tự ý bỏ việc 05 ngày cộng dồn trong 30 ngày hoặc 20 ngày trong 365 ngày không lý do chính đáng."
+      },
+      {
+        "q": "Thời hạn tạm đình chỉ công việc tối đa thông thường là bao lâu?",
+        "a": "Thời hạn tạm đình chỉ công việc không được quá 15 ngày, trường hợp đặc biệt không được quá 90 ngày; người lao động được tạm ứng 50% tiền lương (Khoản 2 Điều 128)."
+      },
+      {
+        "q": "Thời hiệu xử lý kỷ luật lao động thông thường là bao lâu?",
+        "a": "Là 06 tháng kể từ ngày xảy ra vi phạm; nếu vi phạm liên quan trực tiếp đến tài chính, tài sản, bí mật công nghệ thì thời hiệu là 12 tháng (Khoản 1 Điều 123)."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Bộ luật Lao động 2019 quy định bao nhiêu hình thức xử lý kỷ luật lao động?",
+        "options": [
+          "3 hình thức: Khiển trách, hạ bậc lương, sa thải",
+          "4 hình thức: Khiển trách, kéo dài thời hạn nâng lương không quá 6 tháng, cách chức, sa thải",
+          "5 hình thức bao gồm cả phạt tiền",
+          "2 hình thức: Cảnh cáo và sa thải"
+        ],
+        "correct": 1,
+        "explanation": "Điều 124 quy định 4 hình thức: 1. Khiển trách; 2. Kéo dài thời hạn nâng lương không quá 06 tháng; 3. Cách chức; 4. Sa thải."
+      },
+      {
+        "q": "Hành vi nào sau đây bị NGHIÊM CẤM khi xử lý kỷ luật lao động?",
+        "options": [
+          "Mời đại diện công đoàn tham gia phiên họp kỷ luật",
+          "Phạt tiền, cắt lương thay việc xử lý kỷ luật lao động",
+          "Yêu cầu người lao động có mặt tự bào chữa",
+          "Lập biên bản cuộc họp xử lý kỷ luật lao động"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 2 Điều 127: Nghiêm cấm phạt tiền, cắt lương thay việc xử lý kỷ luật lao động."
+      },
+      {
+        "q": "Người lao động tự ý bỏ việc bao nhiêu ngày mà không có lý do chính đáng thì có thể bị sa thải theo Điều 125?",
+        "options": [
+          "03 ngày cộng dồn trong 30 ngày",
+          "05 ngày cộng dồn trong thời hạn 30 ngày hoặc 20 ngày cộng dồn trong 365 ngày",
+          "07 ngày làm việc liên tục",
+          "10 ngày bất kỳ trong năm"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 4 Điều 125: Người lao động tự ý bỏ việc 05 ngày cộng dồn trong thời hạn 30 ngày hoặc 20 ngày cộng dồn trong thời hạn 365 ngày tính từ ngày đầu tiên tự ý bỏ việc mà không có lý do chính đáng."
+      },
+      {
+        "q": "Trong thời gian bị tạm đình chỉ công việc, người lao động được tạm ứng bao nhiêu phần trăm tiền lương?",
+        "options": [
+          "30%",
+          "50%",
+          "70%",
+          "85%"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 2 Điều 128: Trong thời gian bị tạm đình chỉ công việc, người lao động được tạm ứng 50% tiền lương trước khi bị đình chỉ công việc."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Chương IX: An toàn, vệ sinh lao động",
+    "description": "Tuân thủ pháp luật về an toàn, vệ sinh lao động, chương trình quốc gia và trách nhiệm tại nơi làm việc.",
+    "cards": [
+      {
+        "q": "Trách nhiệm của người sử dụng lao động về an toàn, vệ sinh lao động là gì?",
+        "a": "Thực hiện đầy đủ các giải pháp nhằm bảo đảm an toàn, vệ sinh lao động tại nơi làm việc; trang bị phương tiện bảo hộ; khám sức khỏe định kỳ (Điều 134)."
+      },
+      {
+        "q": "Người lao động có nghĩa vụ gì về an toàn, vệ sinh lao động?",
+        "a": "Chấp hành quy định, nội quy, quy trình, yêu cầu về ATVSLĐ; tuân thủ pháp luật và nắm vững kiến thức, kỹ năng về ATVSLĐ tại nơi làm việc (Khoản 2 Điều 134)."
+      },
+      {
+        "q": "Cơ quan nào quyết định Chương trình quốc gia về an toàn, vệ sinh lao động?",
+        "a": "Chính phủ quyết định Chương trình quốc gia về an toàn, vệ sinh lao động (Khoản 1 Điều 133)."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Cơ quan nào có thẩm quyền quyết định Chương trình quốc gia về an toàn, vệ sinh lao động?",
+        "options": [
+          "Quốc hội",
+          "Chính phủ",
+          "Bộ Y tế",
+          "Tổng Liên đoàn Lao động"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 1 Điều 133: Chính phủ quyết định Chương trình quốc gia về an toàn, vệ sinh lao động."
+      },
+      {
+        "q": "Khi phát hiện nguy cơ rõ ràng đe dọa trực tiếp đến tính mạng hoặc sức khỏe tại nơi làm việc, người lao động có quyền gì?",
+        "options": [
+          "Bắt buộc phải tiếp tục làm việc nếu chưa có lệnh của quản lý",
+          "Từ chối làm việc mà vẫn được đảm bảo quyền lợi theo luật định",
+          "Tự ý bỏ về và bị xử lý kỷ luật sa thải",
+          "Chỉ được nghỉ khi được công đoàn đồng ý"
+        ],
+        "correct": 1,
+        "explanation": "Điểm d Khoản 1 Điều 5 & Điều 132: Người lao động có quyền từ chối làm việc nếu có nguy cơ rõ ràng đe dọa trực tiếp đến tính mạng, sức khỏe trong quá trình làm việc."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Chương X: Quy định riêng đối với lao động nữ và bình đẳng giới",
+    "description": "Chế độ bảo vệ thai sản, thời gian nghỉ thai sản 6 tháng, nghỉ trong thời gian hành kinh và nuôi con dưới 12 tháng tuổi.",
+    "cards": [
+      {
+        "q": "Thời gian nghỉ thai sản trước và sau khi sinh con của lao động nữ là bao lâu?",
+        "a": "Lao động nữ được nghỉ thai sản trước và sau khi sinh con là 06 tháng; thời gian nghỉ trước khi sinh không quá 02 tháng (Khoản 1 Điều 139)."
+      },
+      {
+        "q": "Trường hợp lao động nữ sinh đôi trở lên thì thời gian nghỉ thai sản được tính thêm thế nào?",
+        "a": "Tính từ con thứ 02 trở đi, cứ mỗi con người mẹ được nghỉ thêm 01 tháng (Khoản 1 Điều 139)."
+      },
+      {
+        "q": "Lao động nữ nuôi con dưới 12 tháng tuổi được nghỉ bao nhiêu thời gian mỗi ngày hưởng nguyên lương?",
+        "a": "Được nghỉ mỗi ngày 60 phút trong thời gian làm việc mà vẫn được hưởng đủ tiền lương theo hợp đồng lao động (Khoản 4 Điều 137)."
+      },
+      {
+        "q": "Lao động nữ trong thời gian hành kinh được nghỉ bao nhiêu phút mỗi ngày?",
+        "a": "Được nghỉ mỗi ngày 30 phút trong thời gian làm việc và vẫn hưởng đủ tiền lương (Khoản 4 Điều 137)."
+      },
+      {
+        "q": "Người sử dụng lao động có được sa thải lao động nữ vì lý do mang thai hay nuôi con nhỏ không?",
+        "a": "Nghiêm cấm người sử dụng lao động sa thải hoặc đơn phương chấm dứt HĐLĐ vì lý do kết hôn, mang thai, nghỉ thai sản hoặc nuôi con dưới 12 tháng tuổi (Khoản 3 Điều 137)."
+      },
+      {
+        "q": "Lao động nữ mang thai từ tháng thứ mấy thì NSDLĐ không được bố trí làm đêm hoặc làm thêm giờ?",
+        "a": "Từ tháng thứ 07 (hoặc từ tháng thứ 06 nếu làm việc ở vùng sâu, vùng xa, biên giới, hải đảo) (Điểm a Khoản 1 Điều 137)."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Thời gian nghỉ thai sản trước và sau khi sinh của lao động nữ theo Điều 139 là bao nhiêu tháng?",
+        "options": [
+          "04 tháng",
+          "05 tháng",
+          "06 tháng (trước sinh không quá 02 tháng)",
+          "07 tháng"
+        ],
+        "correct": 2,
+        "explanation": "Khoản 1 Điều 139: Lao động nữ được nghỉ thai sản trước và sau khi sinh con là 06 tháng; thời gian nghỉ trước khi sinh không quá 02 tháng."
+      },
+      {
+        "q": "Lao động nữ trong thời gian nuôi con dưới 12 tháng tuổi được quyền nghỉ bao nhiêu phút mỗi ngày trong giờ làm việc hưởng nguyên lương?",
+        "options": [
+          "30 phút",
+          "45 phút",
+          "60 phút",
+          "90 phút"
+        ],
+        "correct": 2,
+        "explanation": "Khoản 4 Điều 137: Trong thời gian nuôi con dưới 12 tháng tuổi được nghỉ mỗi ngày 60 phút trong thời gian làm việc vẫn hưởng đủ tiền lương."
+      },
+      {
+        "q": "Lao động nữ trong thời gian hành kinh được nghỉ bao nhiêu thời gian mỗi ngày?",
+        "options": [
+          "15 phút",
+          "30 phút",
+          "45 phút",
+          "60 phút"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 4 Điều 137: Lao động nữ trong thời gian hành kinh được nghỉ mỗi ngày 30 phút trong thời gian làm việc vẫn hưởng đủ tiền lương."
+      },
+      {
+        "q": "Người sử dụng lao động có được sa thải lao động nữ vì lý do kết hôn hoặc mang thai không?",
+        "options": [
+          "Được sa thải nếu có bồi thường",
+          "Được sa thải nếu trong thời gian thử việc",
+          "Tuyệt đối không được sa thải hoặc đơn phương chấm dứt HĐLĐ vì lý do này",
+          "Được sa thải nếu được sự đồng ý của công đoàn"
+        ],
+        "correct": 2,
+        "explanation": "Khoản 3 Điều 137: Người sử dụng lao động không được sa thải hoặc đơn phương chấm dứt hợp đồng lao động đối với người lao động vì lý do kết hôn, mang thai, nghỉ thai sản, nuôi con dưới 12 tháng tuổi."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Chương XI: Lao động chưa thành niên, người cao tuổi, lao động nước ngoài",
+    "description": "Độ tuổi và thời giờ làm việc của lao động chưa thành niên, sử dụng người cao tuổi và điều kiện của lao động nước ngoài.",
+    "cards": [
+      {
+        "q": "Lao động chưa thành niên là người ở độ tuổi nào?",
+        "a": "Lao động chưa thành niên là người lao động chưa đủ 18 tuổi (Khoản 1 Điều 143)."
+      },
+      {
+        "q": "Thời giờ làm việc của người chưa đủ 15 tuổi không được quá bao nhiêu giờ?",
+        "a": "Không được quá 04 giờ trong 01 ngày và 20 giờ trong 01 tuần; không được làm thêm giờ, làm việc vào ban đêm (Khoản 1 Điều 146)."
+      },
+      {
+        "q": "Thời giờ làm việc của người từ đủ 15 tuổi đến chưa đủ 18 tuổi là bao nhiêu?",
+        "a": "Không được quá 08 giờ trong 01 ngày và 40 giờ trong 01 tuần (Khoản 2 Điều 146)."
+      },
+      {
+        "q": "Khi sử dụng người lao động cao tuổi, có được ký nhiều lần HĐLĐ xác định thời hạn không?",
+        "a": "Được. Khi sử dụng người lao động cao tuổi, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn (Khoản 1 Điều 149)."
+      },
+      {
+        "q": "Thời hạn tối đa của Giấy phép lao động cấp cho lao động nước ngoài là bao lâu?",
+        "a": "Thời hạn tối đa là 02 năm; trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm (Điều 155)."
+      },
+      {
+        "q": "Thời hạn báo trước khi đơn phương chấm dứt HĐLĐ đối với người giúp việc gia đình là bao lâu?",
+        "a": "Phải báo trước ít nhất 15 ngày (Khoản 2 Điều 162)."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Thời giờ làm việc của người lao động chưa đủ 15 tuổi được quy định như thế nào?",
+        "options": [
+          "Không quá 08 giờ/ngày và 40 giờ/tuần",
+          "Không quá 06 giờ/ngày và 30 giờ/tuần",
+          "Không quá 04 giờ trong 01 ngày và 20 giờ trong 01 tuần, không được làm thêm/ban đêm",
+          "Tùy theo thỏa thuận của cha mẹ"
+        ],
+        "correct": 2,
+        "explanation": "Khoản 1 Điều 146: Thời giờ làm việc của người chưa đủ 15 tuổi không được quá 04 giờ trong 01 ngày và 20 giờ trong 01 tuần; không được làm thêm giờ, làm việc vào ban đêm."
+      },
+      {
+        "q": "Thời hạn tối đa của Giấy phép lao động cấp cho lao động nước ngoài làm việc tại Việt Nam là bao lâu?",
+        "options": [
+          "01 năm",
+          "02 năm",
+          "03 năm",
+          "05 năm"
+        ],
+        "correct": 1,
+        "explanation": "Điều 155: Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm."
+      },
+      {
+        "q": "Đối với người lao động cao tuổi đang hưởng lương hưu, doanh nghiệp có quyền ký hợp đồng như thế nào?",
+        "options": [
+          "Chỉ được ký hợp đồng không xác định thời hạn",
+          "Có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn",
+          "Chỉ được ký hợp đồng khoán việc dưới 3 tháng",
+          "Không được phép ký hợp đồng lao động"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 1 Điều 149: Khi sử dụng người lao động cao tuổi, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Chương XII: Bảo hiểm xã hội, BHYT, BHTN & Tuổi nghỉ hưu",
+    "description": "Quy định tham gia bảo hiểm bắt buộc và lộ trình điều chỉnh tuổi nghỉ hưu lên 62 tuổi đối với nam và 60 tuổi đối với nữ.",
+    "cards": [
+      {
+        "q": "Lộ trình điều chỉnh tuổi nghỉ hưu trong điều kiện lao động bình thường theo Điều 169 là gì?",
+        "a": "Tăng dần cho đến khi đủ 62 tuổi đối với lao động nam vào năm 2028 và đủ 60 tuổi đối với lao động nữ vào năm 2035 (Khoản 2 Điều 169)."
+      },
+      {
+        "q": "Kể từ năm 2021, tuổi nghỉ hưu hàng năm tăng như thế nào?",
+        "a": "Năm 2021 là đủ 60 tuổi 03 tháng đối với nam và đủ 55 tuổi 04 tháng đối với nữ; sau đó cứ mỗi năm tăng thêm 03 tháng với nam và 04 tháng với nữ (Khoản 2 Điều 169)."
+      },
+      {
+        "q": "Người lao động làm công việc nặng nhọc, độc hại có thể nghỉ hưu sớm tối đa bao nhiêu tuổi?",
+        "a": "Có thể nghỉ hưu ở tuổi thấp hơn nhưng không quá 05 tuổi so với quy định tại thời điểm nghỉ hưu (Khoản 3 Điều 169)."
+      },
+      {
+        "q": "Đối với người lao động không thuộc đối tượng tham gia BHXH bắt buộc thì NSDLĐ phải làm gì?",
+        "a": "Phải chi trả thêm cùng lúc với kỳ trả lương một khoản tiền tương đương với mức người sử dụng lao động đóng BHXH, BHYT, BHTN theo quy định (Khoản 3 Điều 168)."
+      },
+      {
+        "q": "Trong thời gian người lao động nghỉ việc hưởng chế độ BHXH thì NSDLĐ có phải trả lương không?",
+        "a": "Người sử dụng lao động không phải trả lương cho người lao động, trừ trường hợp hai bên có thỏa thuận khác (Khoản 2 Điều 168)."
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Theo Điều 169 Bộ luật Lao động 2019, tuổi nghỉ hưu của người lao động trong điều kiện bình thường đạt mốc đích là bao nhiêu?",
+        "options": [
+          "Nam đủ 60 tuổi, Nữ đủ 55 tuổi",
+          "Nam đủ 62 tuổi (vào năm 2028) và Nữ đủ 60 tuổi (vào năm 2035)",
+          "Nam đủ 65 tuổi, Nữ đủ 60 tuổi",
+          "Nam và Nữ đều đủ 60 tuổi"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 2 Điều 169: Điều chỉnh theo lộ trình cho đến khi đủ 62 tuổi đối với lao động nam vào năm 2028 và đủ 60 tuổi đối với lao động nữ vào năm 2035."
+      },
+      {
+        "q": "Mỗi năm, tuổi nghỉ hưu của người lao động trong điều kiện bình thường tăng thêm bao nhiêu kể từ năm 2021?",
+        "options": [
+          "Nam tăng 06 tháng, Nữ tăng 06 tháng",
+          "Nam tăng 03 tháng, Nữ tăng 04 tháng",
+          "Nam tăng 04 tháng, Nữ tăng 03 tháng",
+          "Mỗi năm tăng đều 01 tuổi cho cả hai giới"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 2 Điều 169: Cứ mỗi năm tăng thêm 03 tháng đối với lao động nam và 04 tháng đối với lao động nữ."
+      },
+      {
+        "q": "Người lao động làm nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm có thể nghỉ hưu ở tuổi thấp hơn tối đa bao nhiêu tuổi so với quy định?",
+        "options": [
+          "03 tuổi",
+          "05 tuổi",
+          "07 tuổi",
+          "10 tuổi"
+        ],
+        "correct": 1,
+        "explanation": "Khoản 3 Điều 169: Có thể nghỉ hưu ở tuổi thấp hơn nhưng không quá 05 tuổi so với quy định tại khoản 2 Điều này tại thời điểm nghỉ hưu."
+      }
+    ]
+  }
+]
