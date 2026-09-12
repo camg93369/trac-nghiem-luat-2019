@@ -69,7 +69,7 @@
             <div class="flex flex-wrap items-center gap-2">
                 <span id="reset-timer-badge" class="text-[11px] bg-slate-900 text-slate-300 px-2.5 py-1.5 rounded-xl border border-slate-700 font-medium">⏳ Trừng Phạt: 7 ngày</span>
                 <button onclick="openShopModal()" class="px-3 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-store"></i> Tụ Bảo Các
+                    <i class="fa-solid fa-store"></i> Tụ Bảo Các (15 Món)
                 </button>
                 <button onclick="startMockExam()" class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
                     <i class="fa-solid fa-scroll"></i> Thiên Kiếp Bảng
@@ -93,7 +93,7 @@
                     <p class="text-xs sm:text-sm text-slate-300">Làm trắc nghiệm tích lũy XP & Linh Thạch mua đan dược. Lười tu luyện 3 ngày sẽ bị thiên lôi hạ cấp!</p>
                     
                     <button onclick="openRanksModal()" class="px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-amber-400 rounded-xl text-xs font-bold border border-slate-600 shadow transition flex items-center gap-2">
-                        <i class="fa-solid fa-mountain text-red-400"></i> 🏔️ Mở Xem Đủ 36 Tầng Tháp Cảnh Giới
+                        <i class="fa-solid fa-mountain text-red-400"></i> 🏔️ Mở Xem 35 Tiểu Cảnh Giới Tu Tiên
                     </button>
                 </div>
                 
@@ -165,52 +165,35 @@
         </div>
     </main>
 
-    <!-- Modal Tụ Bảo Các (Cửa Hàng Đan Dược & Pháp Bảo) -->
-    <div id="shop-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
-        <div class="bg-slate-800 p-6 rounded-2xl max-w-xl w-full space-y-4 shadow-2xl border border-slate-700 max-h-[85vh] flex flex-col">
-            <div class="flex justify-between items-center border-b border-slate-700 pb-3">
-                <h3 class="font-bold text-base sm:text-lg text-emerald-400"><i class="fa-solid fa-store text-emerald-500"></i> Tụ Bảo Các (Cửa Hàng Tu Tiên)</h3>
-                <button onclick="closeShopModal()" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-bold">Đóng</button>
+    <!-- HỆ THỐNG THÔNG BÁO TÙY CHỈNH: ĐẠO QUÁN TU TIÊN CHO BIẾT -->
+    <div id="custom-alert-modal" class="hidden fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-4">
+        <div class="bg-slate-800 p-6 rounded-2xl max-w-sm w-full space-y-4 shadow-2xl border border-red-900 text-center">
+            <div class="text-red-400 text-3xl"><i class="fa-solid fa-yin-yang animate-spin"></i></div>
+            <div>
+                <h3 class="font-bold text-base text-amber-400">Đạo Quán Tu Tiên cho biết</h3>
+                <p id="custom-alert-message" class="text-xs sm:text-sm text-slate-200 mt-2 leading-relaxed"></p>
             </div>
-            <p class="text-xs text-slate-300">Dùng Linh Thạch kiếm được từ việc làm trắc nghiệm để thỉnh Đan Dược tăng XP hoặc Pháp Bảo hỗ trợ.</p>
-            <div class="overflow-y-auto flex-grow pr-2 space-y-3">
-                
-                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700 flex items-center justify-between gap-3">
-                    <div>
-                        <h4 class="font-bold text-sm text-amber-300">💊 Tụ Linh Đan</h4>
-                        <p class="text-[11px] text-slate-400 mt-0.5">Trợ lực tu vi, lập tức cộng ngay +100 XP.</p>
-                        <span class="text-xs font-bold text-cyan-400 mt-1 block">Giá: 50 Linh Thạch</span>
-                    </div>
-                    <button onclick="buyItem('pill_100', 50, 100)" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow">Thỉnh Mua</button>
-                </div>
-
-                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700 flex items-center justify-between gap-3">
-                    <div>
-                        <h4 class="font-bold text-sm text-amber-300">🧪 Thăng Tiên Quả</h4>
-                        <p class="text-[11px] text-slate-400 mt-0.5">Đan dược thượng phẩm, lập tức cộng ngay +500 XP.</p>
-                        <span class="text-xs font-bold text-cyan-400 mt-1 block">Giá: 200 Linh Thạch</span>
-                    </div>
-                    <button onclick="buyItem('pill_500', 200, 500)" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow">Thỉnh Mua</button>
-                </div>
-
-                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700 flex items-center justify-between gap-3">
-                    <div>
-                        <h4 class="font-bold text-sm text-purple-300">📜 Chân Nguyên Đan Thượng Cổ</h4>
-                        <p class="text-[11px] text-slate-400 mt-0.5">Bí dược cường đại, lập tức bạo phát +2000 XP.</p>
-                        <span class="text-xs font-bold text-cyan-400 mt-1 block">Giá: 700 Linh Thạch</span>
-                    </div>
-                    <button onclick="buyItem('pill_2000', 700, 2000)" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow">Thỉnh Mua</button>
-                </div>
-
-            </div>
+            <button onclick="closeCustomAlert()" class="w-full py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold shadow transition">Đã Hiểu</button>
         </div>
     </div>
 
-    <!-- Modal Hiển Thị Đủ 36 Tầng Tháp -->
+    <!-- Modal Tụ Bảo Các -->
+    <div id="shop-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+        <div class="bg-slate-800 p-6 rounded-2xl max-w-2xl w-full space-y-4 shadow-2xl border border-slate-700 max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center border-b border-slate-700 pb-3">
+                <h3 class="font-bold text-base sm:text-lg text-emerald-400"><i class="fa-solid fa-store text-emerald-500"></i> Tụ Bảo Các (15 Món Bảo Vật & Đan Dược)</h3>
+                <button onclick="closeShopModal()" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-bold">Đóng</button>
+            </div>
+            <p class="text-xs text-slate-300">Dùng Linh Thạch để thỉnh đan dược tăng vù vù XP hoặc sở hữu bảo vật trấn phái!</p>
+            <div class="overflow-y-auto flex-grow pr-2 space-y-2.5" id="shop-items-container"></div>
+        </div>
+    </div>
+
+    <!-- Modal Hiển Thị 35 Tầng Tháp -->
     <div id="ranks-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
         <div class="bg-slate-800 p-6 rounded-2xl max-w-2xl w-full space-y-4 shadow-2xl border border-slate-700 max-h-[85vh] flex flex-col">
             <div class="flex justify-between items-center border-b border-slate-700 pb-3">
-                <h3 class="font-bold text-base sm:text-lg text-amber-400"><i class="fa-solid fa-mountain text-red-500"></i> Bản Đồ Đủ 36 Tiểu Cảnh Giới Tu Tiên</h3>
+                <h3 class="font-bold text-base sm:text-lg text-amber-400"><i class="fa-solid fa-mountain text-red-500"></i> Bản Đồ 35 Tiểu Cảnh Giới Tu Tiên</h3>
                 <button onclick="closeRanksModal()" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-bold">Đóng</button>
             </div>
             <div class="overflow-y-auto flex-grow pr-2">
@@ -233,6 +216,15 @@
     </div>
 
     <script>
+        // HÀM HIỂN THỊ THÔNG BÁO TÙY CHỈNH THAY CHO ALERT MẶC ĐỊNH
+        function showDaoQuanAlert(message) {
+            document.getElementById('custom-alert-message').innerText = message;
+            document.getElementById('custom-alert-modal').classList.remove('hidden');
+        }
+        function closeCustomAlert() {
+            document.getElementById('custom-alert-modal').classList.add('hidden');
+        }
+
         let laborLawData = [
             { id: 1, title: "Chương I: Những quy định chung", description: "Phạm vi điều chỉnh, đối tượng áp dụng.", cards: [{ q: "Bộ luật LĐ 2019 áp dụng cho ai?", a: "NLĐ, học nghề, tập nghề, NSDLĐ, LĐ nước ngoài." }], quiz: [{ q: "BLLĐ 2019 có hiệu lực từ?", options: ["01/01/2020", "01/01/2021"], correct: 1, explanation: "Căn cứ Điều 221." }] },
             { id: 2, title: "Chương II: Việc làm", description: "Thị trường lao động.", cards: [{ q: "Việc làm là gì?", a: "Hoạt động tạo thu nhập không bị cấm." }], quiz: [{ q: "Khai trình LĐ trong bao lâu?", options: ["15 ngày", "30 ngày"], correct: 1, explanation: "Khoản 2 Điều 12." }] },
@@ -256,7 +248,6 @@
         let isArcadeMode = false, isMockExam = false, isTribulationMode = false, arcadeTimer = null, timeLeft = 15;
         let streakCount = 0;
 
-        // ĐỦ TRÒN 36 TIỂU CẢNH GIỚI CHUẨN XÁC
         const ranks = [
             { name: "Phàm Nhân", min: 0 },
             { name: "Luyện Khí Sơ kỳ", min: 100 }, { name: "Luyện Khí Trung kỳ", min: 250 }, { name: "Luyện Khí Đại viên mãn", min: 450 },
@@ -269,7 +260,25 @@
             { name: "Đại Thừa Sơ kỳ", min: 23800 }, { name: "Đại Thừa Trung kỳ", min: 27000 }, { name: "Đại Thừa Đại viên mãn", min: 30600 },
             { name: "Độ Kiếp Sơ kỳ", min: 34600 }, { name: "Độ Kiếp Trung kỳ", min: 39000 }, { name: "Độ Kiếp Đại viên mãn", min: 44000 },
             { name: "Chân Tiên", min: 50000 }, { name: "Kim Tiên", min: 60000 }, { name: "Thái Ất Chân Tiên", min: 72000 },
-            { name: "Đại Lô Kim Tiên", min: 86000 }, { name: "Tiên Vương", min: 102000 }, { name: "Tiên Đế", min: 120000 }, { name: "Hỗn Nguyên Đạo Tôn", min: 150000 }
+            { name: "Đại Lô Kim Tiên", min: 86000 }, { name: "Tiên Vương", min: 102000 }, { name: "Tiên Đế", min: 120000 }
+        ];
+
+        const shopItems = [
+            { id: 1, name: "💊 Tụ Linh Đan", desc: "Đan dược sơ cấp, cộng ngay +80 XP.", cost: 40, reward: 80 },
+            { id: 2, name: "🧪 Hoàn Hồn Thảo", desc: "Thảo dược hồi phục, cộng ngay +180 XP.", cost: 90, reward: 180 },
+            { id: 3, name: "🧬 Trúc Cơ Đan", desc: "Đan dược phá cảnh, cộng ngay +350 XP.", cost: 160, reward: 350 },
+            { id: 4, name: "🔥 Liệt Diêm Quả", desc: "Hỏa hệ kỳ quả, cộng ngay +600 XP.", cost: 270, reward: 600 },
+            { id: 5, name: "📜 Chân Nguyên Đan", desc: "Bí dược thâm sâu, cộng ngay +1000 XP.", cost: 450, reward: 1000 },
+            { id: 6, name: "🍶 Tự Tại Linh Tử", desc: "Linh dịch ngàn năm, cộng ngay +1500 XP.", cost: 680, reward: 1500 },
+            { id: 7, name: "💎 Hỗn Nguyên Thạch", desc: "Đá thiên nhiên quý hiếm, cộng +2200 XP.", cost: 980, reward: 2200 },
+            { id: 8, name: "👑 Tử Phủ Thần Đan", desc: "Thượng phẩm thần đan, cộng +3200 XP.", cost: 1400, reward: 3200 },
+            { id: 9, name: "⚡ Thiên Lôi Bồ Tát", desc: "Bảo vật hấp thu lôi kiếp, cộng +4500 XP.", cost: 1900, reward: 4500 },
+            { id: 10, name: "🔮 Bát Trái Tiên Đào", desc: "Đào tiên vương giả, cộng ngay +6000 XP.", cost: 2500, reward: 6000 },
+            { id: 11, name: "🐉 Long Huyết Tinh", desc: "Tinh huyết Chân Long, cộng ngay +8000 XP.", cost: 3300, reward: 8000 },
+            { id: 12, name: "🛡️ Huyền Vũ Thuẫn", desc: "Pháp bảo hộ thể kiên cố, cộng +10000 XP.", cost: 4200, reward: 10000 },
+            { id: 13, name: "🗡️ Tru Tiên Kiếm", desc: "Thần kiếm sát phạt vô địch, cộng +13000 XP.", cost: 5400, reward: 13000 },
+            { id: 14, name: "🌟 Hạo Thiên Kính", desc: "Pháp bảo soi thấu vạn vật, cộng +17000 XP.", cost: 7000, reward: 17000 },
+            { id: 15, name: "🌌 Hồng Mông Đạo Quả", desc: "Quả tiên khai thiên lập địa, cộng +22000 XP.", cost: 9000, reward: 22000 }
         ];
 
         window.onload = function() {
@@ -279,6 +288,7 @@
             checkInactivityPenalty();
             checkWeeklyReset();
             updateXPDisplay();
+            renderShopItems();
             renderRanksModalList();
             renderDashboard(); 
         };
@@ -294,7 +304,7 @@
                     currentIdx -= Math.floor(diffDays / 3);
                     if (currentIdx < 0) currentIdx = 0;
                     userXP = ranks[currentIdx].min;
-                    alert("⚠️ Đạo tâm bất định! Do 3 ngày qua không ôn luyện luật lao động, bạn bị thiên lôi phạt giáng cấp tu vi!");
+                    showDaoQuanAlert("⚠️ Đạo tâm bất định! Do 3 ngày qua không ôn luyện luật lao động, bạn bị thiên lôi phạt giáng cấp tu vi!");
                 }
             }
             localStorage.setItem('labor_law_last_play', now);
@@ -312,7 +322,7 @@
                 userXP = 0;
                 userCoins = 0;
                 localStorage.setItem('labor_law_reset_epoch', now);
-                alert("🌩️ ĐẠI THANH TRỪNG TU TIÊN! Chu kỳ 7 ngày đã mãn, thiên địa đổi mới, toàn bộ tu vi quy về Phàm Nhân!");
+                showDaoQuanAlert("🌩️ ĐẠI THANH TRỪNG TU TIÊN! Chu kỳ 7 ngày đã mãn, toàn bộ tu vi quy về Phàm Nhân!");
             }
         }
 
@@ -322,6 +332,23 @@
                 if(xp >= ranks[i].min) idx = i;
             }
             return idx;
+        }
+
+        function renderShopItems() {
+            const container = document.getElementById('shop-items-container');
+            container.innerHTML = '';
+            shopItems.forEach(item => {
+                container.innerHTML += `
+                    <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700 flex items-center justify-between gap-3">
+                        <div>
+                            <h4 class="font-bold text-sm text-amber-300">${item.name}</h4>
+                            <p class="text-[11px] text-slate-400 mt-0.5">${item.desc}</p>
+                            <span class="text-xs font-bold text-cyan-400 mt-1 block">Giá: ${item.cost} Linh Thạch</span>
+                        </div>
+                        <button onclick="buyItem(${item.cost}, ${item.reward})" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow whitespace-nowrap">Thỉnh Mua</button>
+                    </div>
+                `;
+            });
         }
 
         function renderRanksModalList() {
@@ -349,15 +376,15 @@
         function openShopModal() { document.getElementById('shop-modal').classList.remove('hidden'); }
         function closeShopModal() { document.getElementById('shop-modal').classList.add('hidden'); }
 
-        function buyItem(itemKey, cost, rewardXP) {
+        function buyItem(cost, rewardXP) {
             if (userCoins < cost) {
-                alert("Linh Thạch không đủ! Hãy chăm chỉ làm trắc nghiệm hoặc qua Phá Trận để kiếm thêm.");
+                showDaoQuanAlert("Linh Thạch không đủ! Hãy chăm chỉ làm trắc nghiệm hoặc qua Phá Trận để kiếm thêm.");
                 return;
             }
             userCoins -= cost;
             userXP += rewardXP;
             updateXPDisplay();
-            alert(`🎉 Thỉnh mua thành công! Đan dược phát huy công hiệu, bạn nhận được +${rewardXP} XP.`);
+            showDaoQuanAlert(`🎉 Thỉnh mua thành công! Bảo vật phát huy công hiệu, nhận ngay +${rewardXP} XP.`);
             closeShopModal();
         }
 
@@ -454,7 +481,7 @@
         function triggerTribulation() {
             let allQuiz = [];
             laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
-            if(allQuiz.length < 5) { alert("Cần tích lũy thêm câu hỏi trắc nghiệm để mở lôi kiếp!"); return; }
+            if(allQuiz.length < 5) { showDaoQuanAlert("Cần tích lũy thêm câu hỏi trắc nghiệm để mở lôi kiếp!"); return; }
 
             isArcadeMode = false; isMockExam = false; isTribulationMode = true; currentChapterId = 'tribulation';
             activeQuizList = prepareShuffledQuiz(allQuiz).slice(0, 5);
@@ -468,7 +495,7 @@
         function startMockExam() {
             let allQuiz = [];
             laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
-            if(allQuiz.length === 0) { alert("Chưa có câu hỏi trắc nghiệm nào!"); return; }
+            if(allQuiz.length === 0) { showDaoQuanAlert("Chưa có câu hỏi trắc nghiệm nào!"); return; }
 
             isArcadeMode = false; isMockExam = true; isTribulationMode = false; currentChapterId = 'mock';
             activeQuizList = prepareShuffledQuiz(allQuiz).slice(0, 20);
@@ -481,7 +508,7 @@
         function startArcadeGame() {
             let allQuiz = [];
             laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
-            if(allQuiz.length === 0) { alert("Chưa có câu hỏi trắc nghiệm nào!"); return; }
+            if(allQuiz.length === 0) { showDaoQuanAlert("Chưa có câu hỏi trắc nghiệm nào!"); return; }
 
             isArcadeMode = true; isMockExam = false; isTribulationMode = false; currentChapterId = 'arcade';
             activeQuizList = prepareShuffledQuiz(allQuiz).slice(0, 15);
@@ -501,7 +528,7 @@
             document.getElementById('study-mode-buttons').classList.remove('hidden');
             
             if (mode === 'quiz') {
-                if(!chapter.quiz || chapter.quiz.length === 0) { alert("Chương này chưa có câu hỏi trắc nghiệm!"); return; }
+                if(!chapter.quiz || chapter.quiz.length === 0) { showDaoQuanAlert("Chương này chưa có câu hỏi trắc nghiệm!"); return; }
                 activeQuizList = prepareShuffledQuiz(chapter.quiz);
             }
             setStudyMode(mode);
@@ -610,7 +637,7 @@
                 streakCount++;
                 quizScore += isTribulationMode ? 20 : 10;
                 userXP += isTribulationMode ? (15 * streakCount) : (3 * streakCount);
-                userCoins += 5; // Thêm 5 Linh Thạch mỗi câu đúng
+                userCoins += 5;
                 updateXPDisplay();
                 updateStreakDisplay();
                 if(isTribulationMode) triggerLightning();
@@ -630,11 +657,11 @@
 
         function finishTribulation() {
             if (quizScore >= 60) {
-                userCoins += 30; // Thưởng thêm linh thạch khi qua lôi kiếp
-                alert(`🌟 ĐỘ KIẾP THÀNH CÔNG! Vượt qua thiên kiếp với ${quizScore} điểm, nhận thêm 30 Linh Thạch!`);
+                userCoins += 30;
+                showDaoQuanAlert(`🌟 ĐỘ KIẾP THÀNH CÔNG! Vượt qua thiên kiếp với ${quizScore} điểm, nhận thêm 30 Linh Thạch!`);
             } else {
                 triggerThunderFail();
-                alert(`💥 ĐỘ KIẾP THẤT BẠI! Thiên lôi giáng thế đánh tan tâm huyết, bạn bị thương nặng.`);
+                showDaoQuanAlert(`💥 ĐỘ KIẾP THẤT BẠI! Thiên lôi giáng thế đánh tan tâm huyết, bạn bị thương nặng.`);
             }
             switchTab('dashboard');
         }
@@ -669,9 +696,9 @@
 
         async function generateChapterByAI(chapterId) {
             const apiKey = localStorage.getItem('gemini_api_key');
-            if(!apiKey || !apiKey.startsWith('AQ.')) { alert("Vui lòng nhập khóa xác thực (AQ...) ở góc trên!"); openApiKeyModal(); return; }
+            if(!apiKey || !apiKey.startsWith('AQ.')) { showDaoQuanAlert("Vui lòng nhập khóa xác thực (AQ...) ở góc trên!"); openApiKeyModal(); return; }
 
-            alert(`AI đang đọc file 'chuong${chapterId}.txt' trên GitHub để khai nhãn câu hỏi...`);
+            showDaoQuanAlert(`AI đang đọc file 'chuong${chapterId}.txt' trên GitHub để khai nhãn câu hỏi...`);
 
             try {
                 const fileRes = await fetch(`chuong${chapterId}.txt`);
@@ -702,17 +729,17 @@
                     if(newContent.quiz) targetChapter.quiz.push(...newContent.quiz);
                     localStorage.setItem('labor_law_custom_data', JSON.stringify(laborLawData));
                     renderDashboard();
-                    alert(`Đã khai nhãn thành công bộ câu hỏi mới cho Chương ${chapterId}!`);
+                    showDaoQuanAlert(`Đã khai nhãn thành công bộ câu hỏi mới cho Chương ${chapterId}!`);
                 }
-            } catch(err) { alert("Lỗi: " + err.message); }
+            } catch(err) { showDaoQuanAlert("Lỗi: " + err.message); }
         }
 
         function openApiKeyModal() { document.getElementById('api-modal').classList.remove('hidden'); document.getElementById('api-key-input').value = localStorage.getItem('gemini_api_key') || ''; }
         function closeApiKeyModal() { document.getElementById('api-modal').classList.add('hidden'); }
         function saveApiKey() {
             const key = document.getElementById('api-key-input').value.trim();
-            if(!key || !key.startsWith('AQ.')) { alert("Vui lòng nhập chuẩn khóa xác thực (AQ...)!"); return; }
-            localStorage.setItem('gemini_api_key', key); alert("Đã lưu Key thành công!"); closeApiKeyModal();
+            if(!key || !key.startsWith('AQ.')) { showDaoQuanAlert("Vui lòng nhập chuẩn khóa xác thực (AQ...)!"); return; }
+            localStorage.setItem('gemini_api_key', key); showDaoQuanAlert("Đã lưu Key thành công!"); closeApiKeyModal();
         }
     </script>
 </body>
