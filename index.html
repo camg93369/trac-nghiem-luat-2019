@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luật Lao Động 2019 - Mobile Optimized</title>
+    <title>Luật Lao Động 2019 - Tu Tiên Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -34,22 +34,22 @@
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('dashboard')">
                 <div class="bg-red-900/40 p-2.5 rounded-xl text-red-500">
-                    <i class="fa-solid fa-scale-balanced text-xl"></i>
+                    <i class="fa-solid fa-yin-yang text-xl"></i>
                 </div>
                 <div>
                     <h1 class="font-bold text-base sm:text-lg leading-tight">Luật Lao Động 2019</h1>
-                    <span id="user-xp" class="text-xs text-amber-400 font-semibold">🔥 Cấp độ: Tập sự (0 XP)</span>
+                    <span id="user-xp" class="text-xs text-amber-400 font-semibold">🔥 Cảnh giới: Phàm Nhân (0 XP)</span>
                 </div>
             </div>
             <div class="flex flex-wrap items-center gap-2">
                 <button onclick="startMockExam()" class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-file-pen"></i> Thi Thử
+                    <i class="fa-solid fa-scroll"></i> Độ Kiếp (Thi Thử)
                 </button>
                 <button onclick="startArcadeGame()" class="px-3 py-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-bolt"></i> Vượt Ải
+                    <i class="fa-solid fa-bolt"></i> Phá Trận (15s)
                 </button>
                 <button onclick="openApiKeyModal()" class="px-3 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-key text-red-400"></i> API Key
+                    <i class="fa-solid fa-key text-red-400"></i> Pháp Bảo (Key)
                 </button>
             </div>
         </div>
@@ -58,19 +58,25 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
         <div id="tab-dashboard" class="space-y-6">
             <div class="bg-gradient-to-r from-slate-800 to-red-950/40 p-4 sm:p-6 rounded-2xl border border-red-900/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <h2 class="text-xl sm:text-2xl font-black text-red-400">Bản Đồ 12 Chương Luật</h2>
-                    <p class="text-xs sm:text-sm text-slate-300 mt-1">Ôn tập thẻ nhớ, làm trắc nghiệm hoặc dùng AI đọc file để tạo câu hỏi.</p>
-                    <div class="flex flex-wrap gap-2 mt-3 text-xs">
-                        <span class="px-2.5 py-1 bg-slate-700/80 rounded-lg text-slate-300">🌱 Tập sự (&lt;50 XP)</span>
-                        <span class="px-2.5 py-1 bg-slate-700/80 rounded-lg text-blue-300">📜 Cử nhân (50+)</span>
-                        <span class="px-2.5 py-1 bg-slate-700/80 rounded-lg text-purple-300">⚖️ Luật Sư (150+)</span>
-                        <span class="px-2.5 py-1 bg-slate-700/80 rounded-lg text-amber-300">👑 Thẩm Phán (300+)</span>
+                <div class="flex-1">
+                    <h2 class="text-xl sm:text-2xl font-black text-red-400">Bản Đồ 12 Tầng Tháp</h2>
+                    <p class="text-xs sm:text-sm text-slate-300 mt-1">Làm trắc nghiệm đúng mới được cộng điểm thăng cấp.</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-3 text-[10px] sm:text-xs">
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-slate-300">Phàm Nhân (0)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-green-300">Luyện Khí (50+)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-teal-300">Trúc Cơ (150+)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-yellow-300">Kim Đan (300+)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-orange-300">Nguyên Anh (500+)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-red-300">Hóa Thần (800+)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-pink-300">Luyện Hư (1200+)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-purple-300">Hợp Thể (1700+)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-indigo-300">Đại Thừa (2500+)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-sky-300 font-bold">Độ Kiếp (4000+)</span>
                     </div>
                 </div>
-                <div class="flex flex-wrap gap-2 w-full sm:w-auto">
-                    <button onclick="openSavedList()" class="flex-1 sm:flex-none px-3 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-semibold"><i class="fa-solid fa-star"></i> Đã Lưu (<span id="count-saved">0</span>)</button>
-                    <button onclick="openWrongList()" class="flex-1 sm:flex-none px-3 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-semibold"><i class="fa-solid fa-triangle-exclamation"></i> Hay Sai (<span id="count-wrong">0</span>)</button>
+                <div class="flex flex-col gap-2 w-full sm:w-auto">
+                    <button onclick="syncData()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fa-solid fa-cloud-arrow-up"></i> Đồng bộ dữ liệu</button>
+                    <button onclick="clearData()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-rose-400 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fa-solid fa-trash"></i> Xóa dữ liệu</button>
                 </div>
             </div>
 
@@ -83,7 +89,7 @@
                 <h3 id="study-title" class="font-bold text-base sm:text-lg text-red-400 text-center flex-1">Chương...</h3>
                 <div class="flex gap-2" id="study-mode-buttons">
                     <button onclick="setStudyMode('flashcard')" id="btn-mode-fc" class="px-3 py-1.5 rounded-xl text-sm font-semibold bg-red-600 text-white">Thẻ Nhớ</button>
-                    <button onclick="setStudyMode('quiz')" id="btn-mode-qz" class="px-3 py-1.5 rounded-xl text-sm font-semibold bg-slate-700">Quiz</button>
+                    <button onclick="setStudyMode('quiz')" id="btn-mode-qz" class="px-3 py-1.5 rounded-xl text-sm font-semibold bg-slate-700">Khảo Nghiệm</button>
                 </div>
             </div>
 
@@ -96,7 +102,7 @@
                             <div class="text-center text-xs text-slate-400">Chạm để lật thẻ</div>
                         </div>
                         <div class="absolute inset-0 w-full h-full bg-red-950/80 p-6 rounded-2xl border border-red-900 flex flex-col justify-between backface-hidden rotate-y-180">
-                            <div class="text-xs text-red-400">Đáp án / Giải thích điều luật</div>
+                            <div class="text-xs text-red-400">Đáp án / Giải thích</div>
                             <p id="fc-back" class="text-sm sm:text-base overflow-y-auto max-h-44 text-center my-auto"></p>
                             <div class="text-center text-xs text-slate-400">Chạm để lật lại</div>
                         </div>
@@ -104,7 +110,6 @@
                 </div>
                 <div class="flex justify-between gap-2">
                     <button onclick="prevCard()" class="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-xl font-medium text-sm"><i class="fa-solid fa-chevron-left"></i> Trước</button>
-                    <button onclick="toggleSaveCurrentCard()" id="btn-save-fc" class="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-xl font-medium text-sm flex justify-center items-center gap-2"><i class="fa-regular fa-star" id="star-icon-fc"></i> Lưu</button>
                     <button onclick="nextCard()" class="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-xl font-medium text-sm">Sau <i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
@@ -119,7 +124,7 @@
                     <h4 id="quiz-question" class="text-base sm:text-lg font-bold"></h4>
                     <div id="quiz-options" class="space-y-3"></div>
                     <div id="quiz-explanation" class="hidden mt-4 p-4 rounded-xl bg-slate-900 text-sm border border-slate-700">
-                        <p class="font-bold text-red-400">Giải thích chi tiết:</p>
+                        <p class="font-bold text-red-400">Ngộ đạo (Giải thích):</p>
                         <p id="quiz-explanation-text" class="mt-1 text-slate-300"></p>
                     </div>
                 </div>
@@ -129,18 +134,12 @@
                 </div>
             </div>
         </div>
-
-        <div id="tab-list-view" class="hidden space-y-4 max-w-2xl mx-auto">
-            <button onclick="switchTab('dashboard')" class="px-3 py-1.5 bg-slate-700 rounded-xl text-sm font-medium"><i class="fa-solid fa-arrow-left"></i> Quay lại</button>
-            <h3 id="list-view-title" class="font-bold text-lg">Danh sách</h3>
-            <div id="list-container" class="space-y-3"></div>
-        </div>
     </main>
 
     <div id="api-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
         <div class="bg-slate-800 p-6 rounded-2xl max-w-md w-full space-y-4 shadow-2xl border border-slate-700">
-            <h3 class="font-bold text-lg text-slate-100"><i class="fa-solid fa-key text-red-500"></i> Cấu hình Khóa Xác Thực (AQ.)</h3>
-            <p class="text-xs text-slate-400">Dán khóa Authentication Key mới của Google AI Studio (bắt đầu bằng AQ...) vào đây để AI đọc file txt.</p>
+            <h3 class="font-bold text-lg text-slate-100"><i class="fa-solid fa-key text-red-500"></i> Pháp Bảo Xác Thực (AQ.)</h3>
+            <p class="text-xs text-slate-400">Dán khóa Authentication Key (bắt đầu bằng AQ...) vào đây để AI đọc file txt.</p>
             <input type="password" id="api-key-input" placeholder="Dán khóa AQ... vào đây..." class="w-full p-3 rounded-xl border border-slate-600 bg-slate-900 text-sm focus:outline-none focus:border-red-500 text-white">
             <div class="flex justify-end gap-2 pt-2">
                 <button onclick="closeApiKeyModal()" class="px-4 py-2 bg-slate-700 rounded-xl text-sm font-medium">Hủy</button>
@@ -151,30 +150,20 @@
 
     <script>
         let laborLawData = [
-            {
-                id: 1, title: "Chương I: Những quy định chung", description: "Phạm vi điều chỉnh, đối tượng áp dụng.",
-                cards: [
-                    { q: "Bộ luật Lao động 2019 áp dụng cho đối tượng nào?", a: "Áp dụng cho NLĐ, người học nghề, tập nghề, NSDLĐ và NLĐ nước ngoài làm việc tại VN." }
-                ],
-                quiz: [
-                    { q: "Bộ luật Lao động 2019 chính thức có hiệu lực thi hành từ ngày nào?", options: ["01/01/2020", "01/01/2021", "20/11/2019", "01/07/2020"], correct: 1, explanation: "Căn cứ Điều 221." }
-                ]
-            },
-            { id: 2, title: "Chương II: Việc làm", description: "Thị trường lao động.", cards: [{ q: "Việc làm là gì?", a: "Hoạt động lao động tạo thu nhập không bị cấm." }], quiz: [{ q: "Khai trình sử dụng lao động trong bao lâu?", options: ["15 ngày", "30 ngày"], correct: 1, explanation: "Căn cứ Khoản 2 Điều 12." }] },
-            { id: 3, title: "Chương III: Hợp đồng lao động", description: "Giao kết hợp đồng.", cards: [{ q: "HĐ xác định thời hạn tối đa?", a: "36 tháng." }], quiz: [{ q: "Thử việc quản lý tối đa?", options: ["60 ngày", "180 ngày"], correct: 1, explanation: "Căn cứ Khoản 1 Điều 25." }] },
-            { id: 4, title: "Chương IV: Giáo dục nghề nghiệp", description: "Đào tạo nghề.", cards: [{ q: "Tập nghề tối đa?", a: "3 tháng." }], quiz: [{ q: "Có được thu học phí không?", options: ["Được", "Không"], correct: 1, explanation: "Căn cứ Khoản 3 Điều 61." }] },
-            { id: 5, title: "Chương V: Đối thoại, thương lượng", description: "Thỏa ước lao động tập thể.", cards: [{ q: "Đối thoại định kỳ?", a: "1 năm/lần." }], quiz: [{ q: "Tỷ lệ tán thành thỏa ước?", options: ["30%", "50%"], correct: 1, explanation: "Căn cứ Khoản 1 Điều 76." }] },
-            { id: 6, title: "Chương VI: Tiền lương", description: "Trả lương, khấu trừ lương.", cards: [{ q: "Làm ban đêm trả thêm?", a: "Ít nhất 30%." }], quiz: [{ q: "Làm thêm ngày nghỉ hằng tuần?", options: ["150%", "200%"], correct: 1, explanation: "Căn cứ Điểm b Khoản 1 Điều 98." }] },
-            { id: 7, title: "Chương VII: Thời giờ làm việc", description: "Nghỉ ngơi, lễ tết.", cards: [{ q: "Giờ ban đêm tính từ?", a: "22h đến 06h." }], quiz: [{ q: "Nghỉ lễ Quốc khánh mấy ngày?", options: ["1 ngày", "2 ngày"], correct: 1, explanation: "Căn cứ Điểm đ Khoản 1 Điều 112." }] },
-            { id: 8, title: "Chương VIII: Kỷ luật lao động", description: "Xử lý kỷ luật, sa thải.", cards: [{ q: "Thời hiệu xử lý kỷ luật?", a: "6 tháng." }], quiz: [{ q: "Hình thức nặng nhất?", options: ["Cách chức", "Sa thải"], correct: 1, explanation: "Căn cứ Điều 124." }] },
-            { id: 9, title: "Chương IX: An toàn, vệ sinh lao động", description: "Đảm bảo an toàn.", cards: [{ q: "Quyền từ chối làm việc?", a: "Khi đe dọa tính mạng." }], quiz: [{ q: "Trách nhiệm thuộc về ai?", options: ["NLĐ", "NSDLĐ"], correct: 1, explanation: "Căn cứ Điều 134." }] },
-            { id: 10, title: "Chương X: Lao động nữ", description: "Thai sản, bình đẳng giới.", cards: [{ q: "Nghỉ thai sản mấy tháng?", a: "6 tháng." }], quiz: [{ q: "Nghỉ nuôi con dưới 12 tháng?", options: ["30 phút", "60 phút"], correct: 1, explanation: "Căn cứ Khoản 4 Điều 137." }] },
-            { id: 11, title: "Chương XI: Lao động chưa thành niên", description: "Lao động cao tuổi.", cards: [{ q: "Giờ làm việc dưới 15 tuổi?", a: "Tối đa 4 giờ/ngày." }], quiz: [{ q: "Quyền lao động cao tuổi?", options: ["Làm đủ 8 tiếng", "Rút ngắn thời giờ"], correct: 1, explanation: "Căn cứ Khoản 2 Điều 148." }] },
-            { id: 12, title: "Chương XII: Giải quyết tranh chấp", description: "Tranh chấp, đình công.", cards: [{ q: "Đình công là gì?", a: "Ngừng việc tự nguyện."}], quiz: [{ q: "Tuổi nghỉ hưu nam 2028?", options: ["60 tuổi", "62 tuổi"], correct: 1, explanation: "Căn cứ Khoản 2 Điều 169." }] }
+            { id: 1, title: "Chương I: Những quy định chung", description: "Phạm vi điều chỉnh, đối tượng áp dụng.", cards: [{ q: "Bộ luật LĐ 2019 áp dụng cho ai?", a: "NLĐ, học nghề, tập nghề, NSDLĐ, LĐ nước ngoài." }], quiz: [{ q: "BLLĐ 2019 có hiệu lực từ?", options: ["01/01/2020", "01/01/2021"], correct: 1, explanation: "Căn cứ Điều 221." }] },
+            { id: 2, title: "Chương II: Việc làm", description: "Thị trường lao động.", cards: [{ q: "Việc làm là gì?", a: "Hoạt động tạo thu nhập không bị cấm." }], quiz: [{ q: "Khai trình LĐ trong bao lâu?", options: ["15 ngày", "30 ngày"], correct: 1, explanation: "Khoản 2 Điều 12." }] },
+            { id: 3, title: "Chương III: Hợp đồng lao động", description: "Giao kết hợp đồng.", cards: [{ q: "HĐ xác định thời hạn tối đa?", a: "36 tháng." }], quiz: [{ q: "Thử việc quản lý tối đa?", options: ["60 ngày", "180 ngày"], correct: 1, explanation: "Khoản 1 Điều 25." }] },
+            { id: 4, title: "Chương IV: Giáo dục nghề nghiệp", description: "Đào tạo nghề.", cards: [{ q: "Tập nghề tối đa?", a: "3 tháng." }], quiz: [{ q: "Có được thu học phí không?", options: ["Được", "Không"], correct: 1, explanation: "Khoản 3 Điều 61." }] },
+            { id: 5, title: "Chương V: Đối thoại, thương lượng", description: "Thỏa ước lao động.", cards: [{ q: "Đối thoại định kỳ?", a: "1 năm/lần." }], quiz: [{ q: "Tỷ lệ tán thành thỏa ước?", options: ["30%", "50%"], correct: 1, explanation: "Khoản 1 Điều 76." }] },
+            { id: 6, title: "Chương VI: Tiền lương", description: "Trả lương, khấu trừ lương.", cards: [{ q: "Làm ban đêm trả thêm?", a: "Ít nhất 30%." }], quiz: [{ q: "Làm thêm ngày nghỉ hằng tuần?", options: ["150%", "200%"], correct: 1, explanation: "Điểm b Khoản 1 Điều 98." }] },
+            { id: 7, title: "Chương VII: Thời giờ làm việc", description: "Nghỉ ngơi, lễ tết.", cards: [{ q: "Giờ ban đêm tính từ?", a: "22h đến 06h." }], quiz: [{ q: "Nghỉ lễ Quốc khánh mấy ngày?", options: ["1 ngày", "2 ngày"], correct: 1, explanation: "Điểm đ Khoản 1 Điều 112." }] },
+            { id: 8, title: "Chương VIII: Kỷ luật lao động", description: "Xử lý kỷ luật, sa thải.", cards: [{ q: "Thời hiệu xử lý kỷ luật?", a: "6 tháng." }], quiz: [{ q: "Hình thức nặng nhất?", options: ["Cách chức", "Sa thải"], correct: 1, explanation: "Điều 124." }] },
+            { id: 9, title: "Chương IX: An toàn, vệ sinh", description: "Đảm bảo an toàn.", cards: [{ q: "Quyền từ chối làm việc?", a: "Khi đe dọa tính mạng." }], quiz: [{ q: "Trách nhiệm thuộc về ai?", options: ["NLĐ", "NSDLĐ"], correct: 1, explanation: "Điều 134." }] },
+            { id: 10, title: "Chương X: Lao động nữ", description: "Thai sản, bình đẳng giới.", cards: [{ q: "Nghỉ thai sản mấy tháng?", a: "6 tháng." }], quiz: [{ q: "Nghỉ nuôi con dưới 12 tháng?", options: ["30 phút", "60 phút"], correct: 1, explanation: "Khoản 4 Điều 137." }] },
+            { id: 11, title: "Chương XI: Lao động chưa thành niên", description: "Lao động cao tuổi.", cards: [{ q: "Giờ làm việc dưới 15 tuổi?", a: "Tối đa 4 giờ/ngày." }], quiz: [{ q: "Quyền lao động cao tuổi?", options: ["Làm đủ 8 tiếng", "Rút ngắn thời giờ"], correct: 1, explanation: "Khoản 2 Điều 148." }] },
+            { id: 12, title: "Chương XII: Giải quyết tranh chấp", description: "Tranh chấp, đình công.", cards: [{ q: "Đình công là gì?", a: "Ngừng việc tự nguyện."}], quiz: [{ q: "Tuổi nghỉ hưu nam 2028?", options: ["60 tuổi", "62 tuổi"], correct: 1, explanation: "Khoản 2 Điều 169." }] }
         ];
 
-        let savedItems = JSON.parse(localStorage.getItem('labor_law_saved')) || [];
-        let wrongItems = JSON.parse(localStorage.getItem('labor_law_wrong')) || [];
         let userXP = parseInt(localStorage.getItem('labor_law_xp')) || 0;
         let currentChapterId = null, currentStudyMode = 'flashcard';
         let currentCardIndex = 0, currentQuizIndex = 0, quizScore = 0, selectedAnswersMap = {};
@@ -185,22 +174,27 @@
             if(customData) { try { laborLawData = JSON.parse(customData); } catch(e){} }
             updateXPDisplay();
             renderDashboard(); 
-            updateCounts();
         };
 
         function updateXPDisplay() {
-            let rank = "🌱 Tập sự";
-            if(userXP >= 50) rank = "📜 Cử nhân Luật";
-            if(userXP >= 150) rank = "⚖️ Luật Sư";
-            if(userXP >= 300) rank = "👑 Thẩm Phán";
-            document.getElementById('user-xp').innerText = `🔥 Cấp độ: ${rank} (${userXP} XP)`;
+            let rank = "Phàm Nhân";
+            if (userXP >= 50) rank = "Luyện Khí";
+            if (userXP >= 150) rank = "Trúc Cơ";
+            if (userXP >= 300) rank = "Kim Đan";
+            if (userXP >= 500) rank = "Nguyên Anh";
+            if (userXP >= 800) rank = "Hóa Thần";
+            if (userXP >= 1200) rank = "Luyện Hư";
+            if (userXP >= 1700) rank = "Hợp Thể";
+            if (userXP >= 2500) rank = "Đại Thừa";
+            if (userXP >= 4000) rank = "Độ Kiếp";
+            document.getElementById('user-xp').innerText = `🔥 Cảnh giới: ${rank} (${userXP} XP)`;
             localStorage.setItem('labor_law_xp', userXP);
         }
 
         function switchTab(tabName) {
             if(arcadeTimer) clearInterval(arcadeTimer);
-            ['tab-dashboard', 'tab-study', 'tab-list-view'].forEach(id => document.getElementById(id).classList.add('hidden'));
-            document.getElementById(`tab-${tabName === 'list' ? 'list-view' : tabName}`).classList.remove('hidden');
+            ['tab-dashboard', 'tab-study'].forEach(id => document.getElementById(id).classList.add('hidden'));
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
         }
 
         function renderDashboard() {
@@ -212,7 +206,7 @@
                 grid.innerHTML += `
                     <div class="bg-slate-800 p-4 sm:p-5 rounded-2xl shadow-md border border-slate-700 flex flex-col justify-between hover:border-red-500/50 transition">
                         <div>
-                            <span class="text-xs font-semibold px-2 py-1 bg-red-950 text-red-400 rounded-lg border border-red-900">Chương ${ch.id}</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-red-950 text-red-400 rounded-lg border border-red-900">Tầng ${ch.id}</span>
                             <h4 class="font-bold text-sm sm:text-base mt-2 text-slate-100">${ch.title}</h4>
                             <p class="text-[11px] sm:text-xs text-slate-400 mt-1 line-clamp-2">${ch.description || ''}</p>
                         </div>
@@ -222,7 +216,7 @@
                                 <button onclick="startChapter(${ch.id}, 'quiz')" class="flex-1 py-1.5 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Trắc Nghiệm (${quizCount})</button>
                             </div>
                             <button onclick="generateChapterByAI(${ch.id})" class="w-full py-1.5 bg-purple-950/40 text-purple-300 hover:bg-purple-900/60 border border-purple-800/50 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i> AI Tạo Câu Hỏi (chuong${ch.id}.txt)
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Khai nhãn AI (chuong${ch.id}.txt)
                             </button>
                         </div>
                     </div>
@@ -230,28 +224,43 @@
             });
         }
 
+        function syncData() {
+            const action = prompt("Nhập 'export' để copy dữ liệu hiện tại, hoặc dán mã dữ liệu từ máy tính vào đây để 'import':");
+            if (action === 'export') {
+                const data = localStorage.getItem('labor_law_custom_data') || JSON.stringify(laborLawData);
+                prompt("Hãy copy đoạn mã dưới đây và gửi qua điện thoại:", data);
+            } else if (action && action.length > 50) {
+                try {
+                    JSON.parse(action);
+                    localStorage.setItem('labor_law_custom_data', action);
+                    alert("Truyền công thành công! Hãy tải lại trang.");
+                    location.reload();
+                } catch(e) { alert("Mã không hợp lệ, tẩu hỏa nhập ma!"); }
+            }
+        }
+
+        function clearData() {
+            if (confirm("Xác nhận phế bỏ toàn bộ tu vi (xóa dữ liệu) để làm lại từ đầu?")) {
+                localStorage.removeItem('labor_law_custom_data');
+                localStorage.removeItem('labor_law_xp');
+                location.reload();
+            }
+        }
+
         async function generateChapterByAI(chapterId) {
             const apiKey = localStorage.getItem('gemini_api_key');
-            if(!apiKey || !apiKey.startsWith('AQ.')) {
-                alert("Vui lòng nhập khóa xác thực mới (bắt đầu bằng AQ...) từ Google AI Studio!");
-                openApiKeyModal();
-                return;
-            }
+            if(!apiKey || !apiKey.startsWith('AQ.')) { alert("Vui lòng nhập khóa xác thực (AQ...)!"); openApiKeyModal(); return; }
 
-            alert(`AI đang đọc file 'chuong${chapterId}.txt' trên GitHub và gọi mô hình 3.6 tạo câu hỏi...`);
+            alert(`AI đang đọc file 'chuong${chapterId}.txt' trên GitHub để tạo câu hỏi... (Không cộng XP)`);
 
             try {
                 const fileRes = await fetch(`chuong${chapterId}.txt`);
-                if(!fileRes.ok) throw new Error(`Không tìm thấy file chuong${chapterId}.txt trên kho GitHub của bạn.`);
+                if(!fileRes.ok) throw new Error(`Không tìm thấy file chuong${chapterId}.txt`);
                 const chapterText = await fileRes.text();
 
                 const promptText = `Dựa hoàn toàn vào nội dung văn bản sau đây của Chương ${chapterId}, hãy tạo ra 5 câu Flashcard và 5 câu Quiz trắc nghiệm bám sát điều luật:
                 ${chapterText}
-                Trả về kết quả bằng JSON thuần túy (không kèm markdown) theo cấu trúc:
-                {
-                  "cards": [{"q": "...", "a": "..."}],
-                  "quiz": [{"q": "...", "options": ["A", "B", "C", "D"], "correct": 0, "explanation": "..."}]
-                }`;
+                Trả về JSON thuần túy theo cấu trúc: {"cards": [{"q": "...", "a": "..."}], "quiz": [{"q": "...", "options": ["A", "B", "C", "D"], "correct": 0, "explanation": "..."}]}`;
 
                 const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`, {
                     method: 'POST',
@@ -273,38 +282,25 @@
                     if(newContent.quiz) targetChapter.quiz.push(...newContent.quiz);
                     localStorage.setItem('labor_law_custom_data', JSON.stringify(laborLawData));
                     renderDashboard();
-                    userXP += 30;
-                    updateXPDisplay();
-                    alert(`Đã tạo thành công bộ câu hỏi mới cho Chương ${chapterId} và thưởng +30 XP!`);
+                    alert(`Đã khai nhãn thành công bộ câu hỏi mới cho Chương ${chapterId}! (Chỉ học và thi đúng mới được XP)`);
                 }
-            } catch(err) {
-                alert("Lỗi: " + err.message);
-            }
+            } catch(err) { alert("Lỗi: " + err.message); }
         }
 
         function startMockExam() {
             let allQuiz = [];
             laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
             allQuiz.sort(() => Math.random() - 0.5);
-
-            isArcadeMode = false;
-            isMockExam = true;
-            currentChapterId = 'mock';
-            window.mockData = { title: "📝 Đề Thi Thử Tổng Hợp Toàn Bộ Luật", quiz: allQuiz.slice(0, 15) };
+            isArcadeMode = false; isMockExam = true; currentChapterId = 'mock';
+            window.mockData = { title: "🌩️ Thiên Kiếp Bảng (Đề Tổng Hợp)", quiz: allQuiz.slice(0, 20) };
             currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {};
-
-            document.getElementById('study-title').innerText = window.mockData.title;
-            document.getElementById('study-mode-buttons').classList.add('hidden');
-            document.getElementById('timer-box').classList.add('hidden');
-            switchTab('study');
-            document.getElementById('flashcard-container').classList.add('hidden');
-            document.getElementById('quiz-container').classList.remove('hidden');
+            setupStudyMode(window.mockData.title);
             renderMockQuiz();
         }
 
         function renderMockQuiz() {
             const q = window.mockData.quiz[currentQuizIndex];
-            document.getElementById('quiz-progress').innerText = `Câu ${currentQuizIndex + 1}/${window.mockData.quiz.length} (Thi Thử)`;
+            document.getElementById('quiz-progress').innerText = `Câu ${currentQuizIndex + 1}/${window.mockData.quiz.length}`;
             document.getElementById('quiz-score').innerText = `Điểm: ${quizScore}`;
             document.getElementById('quiz-question').innerText = q.q;
             
@@ -313,10 +309,10 @@
             const ans = selectedAnswersMap[currentQuizIndex];
 
             q.options.forEach((opt, idx) => {
-                let btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
+                let btnClass = "w-full text-left p-3 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
                 if (ans !== undefined) {
-                    if (idx === q.correct) btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
-                    else if (idx === ans) btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
+                    if (idx === q.correct) btnClass = "w-full text-left p-3 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
+                    else if (idx === ans) btnClass = "w-full text-left p-3 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
                 }
                 optionsEl.innerHTML += `<button onclick="selectMockAnswer(${idx})" ${ans !== undefined ? 'disabled' : ''} class="${btnClass}"><span>${String.fromCharCode(65 + idx)}. ${opt}</span></button>`;
             });
@@ -326,20 +322,13 @@
                 exp.classList.remove('hidden');
                 document.getElementById('quiz-explanation-text').innerText = q.explanation || "Không có giải thích chi tiết.";
                 document.getElementById('btn-next-quiz').classList.toggle('hidden', currentQuizIndex >= window.mockData.quiz.length - 1);
-            } else {
-                exp.classList.add('hidden');
-                document.getElementById('btn-next-quiz').classList.add('hidden');
-            }
+            } else { exp.classList.add('hidden'); document.getElementById('btn-next-quiz').classList.add('hidden'); }
         }
 
         function selectMockAnswer(idx) {
             const q = window.mockData.quiz[currentQuizIndex];
             selectedAnswersMap[currentQuizIndex] = idx;
-            if (idx === q.correct) {
-                quizScore += 10;
-                userXP += 5;
-                updateXPDisplay();
-            }
+            if (idx === q.correct) { quizScore += 10; userXP += 10; updateXPDisplay(); }
             renderMockQuiz();
         }
 
@@ -347,63 +336,22 @@
             let allQuiz = [];
             laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
             allQuiz.sort(() => Math.random() - 0.5);
-
-            isArcadeMode = true;
-            isMockExam = false;
-            currentChapterId = 'arcade';
-            window.arcadeData = { title: "🎮 Vượt Ải Pháp Lý (15s/câu)", quiz: allQuiz.slice(0, 15) };
+            isArcadeMode = true; isMockExam = false; currentChapterId = 'arcade';
+            window.arcadeData = { title: "⚡ Phá Trận Tháp (15s/câu)", quiz: allQuiz.slice(0, 15) };
             currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {};
-
-            document.getElementById('study-title').innerText = window.arcadeData.title;
-            document.getElementById('study-mode-buttons').classList.add('hidden');
+            setupStudyMode(window.arcadeData.title);
             document.getElementById('timer-box').classList.remove('hidden');
-            switchTab('study');
-            document.getElementById('flashcard-container').classList.add('hidden');
-            document.getElementById('quiz-container').classList.remove('hidden');
             renderArcadeQuiz();
         }
 
         function renderArcadeQuiz() {
             if(arcadeTimer) clearInterval(arcadeTimer);
-            timeLeft = 15;
-            document.getElementById('time-left').innerText = timeLeft;
-            
+            timeLeft = 15; document.getElementById('time-left').innerText = timeLeft;
             arcadeTimer = setInterval(() => {
-                timeLeft--;
-                document.getElementById('time-left').innerText = timeLeft;
-                if(timeLeft <= 0) {
-                    clearInterval(arcadeTimer);
-                    handleTimeOut();
-                }
+                timeLeft--; document.getElementById('time-left').innerText = timeLeft;
+                if(timeLeft <= 0) { clearInterval(arcadeTimer); handleTimeOut(); }
             }, 1000);
-
-            const q = window.arcadeData.quiz[currentQuizIndex];
-            document.getElementById('quiz-progress').innerText = `Ải ${currentQuizIndex + 1}/${window.arcadeData.quiz.length}`;
-            document.getElementById('quiz-score').innerText = `Điểm: ${quizScore}`;
-            document.getElementById('quiz-question').innerText = q.q;
-            
-            const optionsEl = document.getElementById('quiz-options');
-            optionsEl.innerHTML = '';
-            const ans = selectedAnswersMap[currentQuizIndex];
-
-            q.options.forEach((opt, idx) => {
-                let btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
-                if (ans !== undefined) {
-                    if (idx === q.correct) btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
-                    else if (idx === ans) btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
-                }
-                optionsEl.innerHTML += `<button onclick="selectArcadeAnswer(${idx})" ${ans !== undefined ? 'disabled' : ''} class="${btnClass}"><span>${String.fromCharCode(65 + idx)}. ${opt}</span></button>`;
-            });
-
-            const exp = document.getElementById('quiz-explanation');
-            if (ans !== undefined) {
-                exp.classList.remove('hidden');
-                document.getElementById('quiz-explanation-text').innerText = q.explanation || "Không có giải thích chi tiết.";
-                document.getElementById('btn-next-quiz').classList.toggle('hidden', currentQuizIndex >= window.arcadeData.quiz.length - 1);
-            } else {
-                exp.classList.add('hidden');
-                document.getElementById('btn-next-quiz').classList.add('hidden');
-            }
+            renderMockQuiz(); // Dùng chung giao diện render
         }
 
         function handleTimeOut() {
@@ -418,28 +366,26 @@
             clearInterval(arcadeTimer);
             const q = window.arcadeData.quiz[currentQuizIndex];
             selectedAnswersMap[currentQuizIndex] = idx;
-            if (idx === q.correct) {
-                quizScore += 10;
-                userXP += 10;
-                updateXPDisplay();
-            } else {
-                const wrapper = document.getElementById('game-card-wrapper');
-                wrapper.classList.add('animate-shake');
-                setTimeout(() => wrapper.classList.remove('animate-shake'), 300);
-            }
+            if (idx === q.correct) { quizScore += 10; userXP += 10; updateXPDisplay(); } 
+            else { document.getElementById('game-card-wrapper').classList.add('animate-shake'); setTimeout(() => document.getElementById('game-card-wrapper').classList.remove('animate-shake'), 300); }
             renderArcadeQuiz();
         }
 
         function startChapter(chapterId, mode) {
-            isArcadeMode = false;
-            isMockExam = false;
-            currentChapterId = chapterId;
+            isArcadeMode = false; isMockExam = false; currentChapterId = chapterId;
             currentCardIndex = 0; currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {};
-            document.getElementById('study-title').innerText = laborLawData.find(c => c.id === chapterId).title;
+            setupStudyMode(laborLawData.find(c => c.id === chapterId).title);
             document.getElementById('study-mode-buttons').classList.remove('hidden');
+            setStudyMode(mode);
+        }
+
+        function setupStudyMode(title) {
+            document.getElementById('study-title').innerText = title;
+            document.getElementById('study-mode-buttons').classList.add('hidden');
             document.getElementById('timer-box').classList.add('hidden');
             switchTab('study');
-            setStudyMode(mode);
+            document.getElementById('flashcard-container').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
         }
 
         function setStudyMode(mode) {
@@ -452,14 +398,13 @@
         }
 
         function renderFlashcard() {
-            const chapter = laborLawData.find(c => c.id === currentChapterId);
-            if(!chapter || !chapter.cards || !chapter.cards[currentCardIndex]) return;
-            const card = chapter.cards[currentCardIndex];
-            document.getElementById('fc-index').innerText = `Thẻ ${currentCardIndex + 1}/${chapter.cards.length}`;
+            const ch = laborLawData.find(c => c.id === currentChapterId);
+            if(!ch || !ch.cards || !ch.cards[currentCardIndex]) return;
+            const card = ch.cards[currentCardIndex];
+            document.getElementById('fc-index').innerText = `Thẻ ${currentCardIndex + 1}/${ch.cards.length}`;
             document.getElementById('fc-front').innerText = card.q;
             document.getElementById('fc-back').innerText = card.a;
             document.getElementById('card-inner').classList.remove('rotate-y-180');
-            updateSaveButton(card.q);
         }
 
         function flipCard() { document.getElementById('card-inner').classList.toggle('rotate-y-180'); }
@@ -481,10 +426,10 @@
             const ans = selectedAnswersMap[currentQuizIndex];
 
             q.options.forEach((opt, idx) => {
-                let btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
+                let btnClass = "w-full text-left p-3 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
                 if (ans !== undefined) {
-                    if (idx === q.correct) btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
-                    else if (idx === ans) btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
+                    if (idx === q.correct) btnClass = "w-full text-left p-3 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
+                    else if (idx === ans) btnClass = "w-full text-left p-3 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
                 }
                 optionsEl.innerHTML += `<button onclick="selectAnswer(${idx})" ${ans !== undefined ? 'disabled' : ''} class="${btnClass}"><span>${String.fromCharCode(65 + idx)}. ${opt}</span></button>`;
             });
@@ -494,27 +439,14 @@
                 exp.classList.remove('hidden');
                 document.getElementById('quiz-explanation-text').innerText = q.explanation || "Không có giải thích chi tiết.";
                 document.getElementById('btn-next-quiz').classList.toggle('hidden', currentQuizIndex >= chapter.quiz.length - 1);
-            } else {
-                exp.classList.add('hidden');
-                document.getElementById('btn-next-quiz').classList.add('hidden');
-            }
+            } else { exp.classList.add('hidden'); document.getElementById('btn-next-quiz').classList.add('hidden'); }
         }
 
         function selectAnswer(idx) {
-            const chapter = laborLawData.find(c => c.id === currentChapterId);
-            const q = chapter.quiz[currentQuizIndex];
+            const q = laborLawData.find(c => c.id === currentChapterId).quiz[currentQuizIndex];
             selectedAnswersMap[currentQuizIndex] = idx;
-            if (idx === q.correct) {
-                quizScore += 10;
-                userXP += 5;
-                updateXPDisplay();
-                setTimeout(nextQuiz, 1000);
-            } else {
-                addWrongItem({ chapter: chapter.title, q: q.q, explanation: q.explanation });
-                const wrapper = document.getElementById('game-card-wrapper');
-                wrapper.classList.add('animate-shake');
-                setTimeout(() => wrapper.classList.remove('animate-shake'), 300);
-            }
+            if (idx === q.correct) { quizScore += 10; userXP += 5; updateXPDisplay(); setTimeout(nextQuiz, 1000); } 
+            else { document.getElementById('game-card-wrapper').classList.add('animate-shake'); setTimeout(() => document.getElementById('game-card-wrapper').classList.remove('animate-shake'), 300); }
             renderQuiz();
         }
 
@@ -531,55 +463,12 @@
             if (currentQuizIndex > 0) { currentQuizIndex--; renderQuiz(); } 
         }
 
-        function toggleSaveCurrentCard() {
-            const chapter = laborLawData.find(c => c.id === currentChapterId);
-            const card = chapter.cards[currentCardIndex];
-            const index = savedItems.findIndex(i => i.q === card.q);
-            if (index > -1) savedItems.splice(index, 1);
-            else savedItems.push({ chapter: chapter.title, q: card.q, a: card.a });
-            localStorage.setItem('labor_law_saved', JSON.stringify(savedItems));
-            updateCounts(); updateSaveButton(card.q);
-        }
-
-        function updateSaveButton(qText) {
-            const isSaved = savedItems.some(i => i.q === qText);
-            document.getElementById('star-icon-fc').className = isSaved ? "fa-solid fa-star text-amber-400" : "fa-regular fa-star";
-        }
-
-        function addWrongItem(obj) {
-            if (!wrongItems.some(i => i.q === obj.q)) {
-                wrongItems.push(obj);
-                localStorage.setItem('labor_law_wrong', JSON.stringify(wrongItems));
-                updateCounts();
-            }
-        }
-
-        function updateCounts() {
-            document.getElementById('count-saved').innerText = savedItems.length;
-            document.getElementById('count-wrong').innerText = wrongItems.length;
-        }
-
-        function openSavedList() {
-            switchTab('list'); document.getElementById('list-view-title').innerText = "Thẻ Đã Lưu";
-            document.getElementById('list-container').innerHTML = savedItems.map(i => `<div class="bg-slate-800 p-4 rounded-xl border border-slate-700"><div class="text-xs text-amber-400">${i.chapter}</div><h5 class="font-bold">${i.q}</h5><p class="text-sm mt-2 text-slate-300">${i.a}</p></div>`).join('') || '<p class="text-slate-500">Chưa có thẻ nào được lưu</p>';
-        }
-
-        function openWrongList() {
-            switchTab('list'); document.getElementById('list-view-title').innerText = "Danh Sách Câu Hay Sai";
-            document.getElementById('list-container').innerHTML = wrongItems.map(i => `<div class="bg-slate-800 p-4 rounded-xl border border-slate-700"><div class="text-xs text-rose-400">${i.chapter}</div><h5 class="font-bold">${i.q}</h5><p class="text-sm mt-2 text-slate-300">Giải thích: ${i.explanation}</p></div>`).join('') || '<p class="text-slate-500">Chưa có câu sai nào</p>';
-        }
-
-        function openApiKeyModal() {
-            document.getElementById('api-modal').classList.remove('hidden');
-            document.getElementById('api-key-input').value = localStorage.getItem('gemini_api_key') || '';
-        }
+        function openApiKeyModal() { document.getElementById('api-modal').classList.remove('hidden'); document.getElementById('api-key-input').value = localStorage.getItem('gemini_api_key') || ''; }
         function closeApiKeyModal() { document.getElementById('api-modal').classList.add('hidden'); }
         function saveApiKey() {
             const key = document.getElementById('api-key-input').value.trim();
-            if(!key || !key.startsWith('AQ.')) { alert("Vui lòng nhập chuẩn khóa xác thực mới (bắt đầu bằng AQ...)!"); return; }
-            localStorage.setItem('gemini_api_key', key);
-            alert("Đã lưu Key thành công!");
-            closeApiKeyModal();
+            if(!key || !key.startsWith('AQ.')) { alert("Vui lòng nhập chuẩn khóa xác thực (AQ...)!"); return; }
+            localStorage.setItem('gemini_api_key', key); alert("Đã lưu Key thành công!"); closeApiKeyModal();
         }
     </script>
 </body>
