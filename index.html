@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luật Lao Động 2019 - Tu Tiên Edition</title>
+    <title>Luật Lao Động 2019 - Tu Tiên Phi Thăng Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -26,10 +26,13 @@
         .rotate-y-180 { transform: rotateY(180deg); }
         @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
         .animate-shake { animation: shake 0.3s ease-in-out; }
+        @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); } 50% { box-shadow: 0 0 30px rgba(239, 68, 68, 0.8); } }
+        .tribulation-glow { animation: pulseGlow 1.5s infinite; }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen transition-colors duration-300 flex flex-col">
 
+    <!-- Header -->
     <header class="bg-slate-800 shadow-sm sticky top-0 z-50 border-b border-slate-700">
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('dashboard')">
@@ -43,7 +46,7 @@
             </div>
             <div class="flex flex-wrap items-center gap-2">
                 <button onclick="startMockExam()" class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-scroll"></i> Độ Kiếp (Thi Thử)
+                    <i class="fa-solid fa-scroll"></i> Thiên Kiếp Bảng
                 </button>
                 <button onclick="startArcadeGame()" class="px-3 py-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
                     <i class="fa-solid fa-bolt"></i> Phá Trận (15s)
@@ -55,40 +58,43 @@
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
         <div id="tab-dashboard" class="space-y-6">
             <div class="bg-gradient-to-r from-slate-800 to-red-950/40 p-4 sm:p-6 rounded-2xl border border-red-900/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div class="flex-1">
                     <h2 class="text-xl sm:text-2xl font-black text-red-400">Bản Đồ 12 Tầng Tháp</h2>
-                    <p class="text-xs sm:text-sm text-slate-300 mt-1">Làm trắc nghiệm đúng mới được cộng điểm thăng cấp tu vi.</p>
+                    <p class="text-xs sm:text-sm text-slate-300 mt-1">Làm trắc nghiệm đúng tích lũy XP để phá vỡ bình cảnh, độ kiếp thăng thiên.</p>
                     <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-3 text-[10px] sm:text-xs">
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-slate-300">Phàm Nhân (0)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-green-300">Luyện Khí (50+)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-teal-300">Trúc Cơ (150+)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-yellow-300">Kim Đan (300+)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-orange-300">Nguyên Anh (500+)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-red-300">Hóa Thần (800+)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-pink-300">Luyện Hư (1200+)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-purple-300">Hợp Thể (1700+)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-indigo-300">Đại Thừa (2500+)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-sky-300 font-bold">Độ Kiếp (4000+)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-slate-300">1. Phàm Nhân (0)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-green-300">2. Luyện Khí (50)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-teal-300">3. Trúc Cơ (150)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-yellow-300">4. Kim Đan (300)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-orange-300">5. Nguyên Anh (500)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-red-300">6. Hóa Thần (800)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-pink-300">7. Luyện Hư (1200)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-purple-300">8. Hợp Thể (1700)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-indigo-300">9. Đại Thừa (2500)</span>
+                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-sky-300 font-bold">10. Độ Kiếp (4000)</span>
                     </div>
                 </div>
                 
-                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700 flex flex-col gap-2 w-full md:w-80">
-                    <span class="text-xs font-bold text-amber-400"><i class="fa-solid fa-sync"></i> Truyền Công (Đồng Bộ Dữ Liệu)</span>
-                    <textarea id="sync-data-box" rows="2" placeholder="Copy mã ở máy tính dán vào đây, rồi bấm Nhập..." class="w-full p-2 text-xs bg-slate-800 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:border-amber-500"></textarea>
-                    <div class="flex gap-2">
-                        <button onclick="exportData()" class="flex-1 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold">Xuất Mã</button>
-                        <button onclick="importData()" class="flex-1 py-1 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-semibold">Nhập Mã</button>
-                        <button onclick="clearData()" class="py-1 px-2.5 bg-rose-900/60 hover:bg-rose-900 text-rose-300 rounded-lg text-xs" title="Xóa dữ liệu"><i class="fa-solid fa-trash"></i></button>
+                <!-- Khu vực nút kích hoạt Độ Kiếp đột phá nhanh -->
+                <div class="bg-slate-900/80 p-4 rounded-xl border border-red-500/40 flex flex-col justify-center items-center gap-3 w-full md:w-72 tribulation-glow">
+                    <div class="text-center">
+                        <span class="text-xs font-bold text-amber-400 block"><i class="fa-solid fa-triangle-exclamation"></i> Trạng Thái Bình Cảnh</span>
+                        <span id="tribulation-status" class="text-sm font-black text-red-400">Đủ XP có thể Độ Kiếp!</span>
                     </div>
+                    <button onclick="triggerTribulation()" class="w-full py-2 bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-700 hover:to-amber-700 text-white rounded-xl text-xs font-bold shadow-lg transition">
+                        ⚡ Đột Phá Cảnh Giới Ngay
+                    </button>
                 </div>
             </div>
 
             <div id="chapters-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
         </div>
 
+        <!-- TAB STUDY / QUIZ / TRIBULATION -->
         <div id="tab-study" class="hidden space-y-6 max-w-2xl mx-auto">
             <div class="flex flex-wrap items-center justify-between gap-3">
                 <button onclick="switchTab('dashboard')" class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 rounded-xl text-sm font-medium"><i class="fa-solid fa-arrow-left"></i> Thoát</button>
@@ -142,6 +148,7 @@
         </div>
     </main>
 
+    <!-- Modal Nhập Key -->
     <div id="api-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
         <div class="bg-slate-800 p-6 rounded-2xl max-w-md w-full space-y-4 shadow-2xl border border-slate-700">
             <h3 class="font-bold text-lg text-slate-100"><i class="fa-solid fa-key text-red-500"></i> Pháp Bảo Xác Thực (AQ.)</h3>
@@ -173,7 +180,20 @@
         let userXP = parseInt(localStorage.getItem('labor_law_xp')) || 0;
         let currentChapterId = null, currentStudyMode = 'flashcard';
         let currentCardIndex = 0, currentQuizIndex = 0, quizScore = 0, selectedAnswersMap = {};
-        let isArcadeMode = false, isMockExam = false, arcadeTimer = null, timeLeft = 15;
+        let isArcadeMode = false, isMockExam = false, isTribulationMode = false, arcadeTimer = null, timeLeft = 15;
+
+        const ranks = [
+            { name: "Phàm Nhân", min: 0 },
+            { name: "Luyện Khí", min: 50 },
+            { name: "Trúc Cơ", min: 150 },
+            { name: "Kim Đan", min: 300 },
+            { name: "Nguyên Anh", min: 500 },
+            { name: "Hóa Thần", min: 800 },
+            { name: "Luyện Hư", min: 1200 },
+            { name: "Hợp Thể", min: 1700 },
+            { name: "Đại Thừa", min: 2500 },
+            { name: "Độ Kiếp", min: 4000 }
+        ];
 
         window.onload = function() {
             const customData = localStorage.getItem('labor_law_custom_data');
@@ -183,17 +203,30 @@
         };
 
         function updateXPDisplay() {
-            let rank = "Phàm Nhân";
-            if (userXP >= 50) rank = "Luyện Khí";
-            if (userXP >= 150) rank = "Trúc Cơ";
-            if (userXP >= 300) rank = "Kim Đan";
-            if (userXP >= 500) rank = "Nguyên Anh";
-            if (userXP >= 800) rank = "Hóa Thần";
-            if (userXP >= 1200) rank = "Luyện Hư";
-            if (userXP >= 1700) rank = "Hợp Thể";
-            if (userXP >= 2500) rank = "Đại Thừa";
-            if (userXP >= 4000) rank = "Độ Kiếp";
-            document.getElementById('user-xp').innerText = `🔥 Cảnh giới: ${rank} (${userXP} XP)`;
+            let currentRankObj = ranks[0];
+            let nextRankObj = null;
+            for(let i = 0; i < ranks.length; i++) {
+                if(userXP >= ranks[i].min) {
+                    currentRankObj = ranks[i];
+                    nextRankObj = ranks[i+1] || null;
+                }
+            }
+
+            let statusText = `Đang tu luyện...`;
+            let canTribulation = false;
+            if(nextRankObj) {
+                if(userXP >= nextRankObj.min - 20) {
+                    statusText = `⚡ Đã chạm bình cảnh lên ${nextRankObj.name}!`;
+                    canTribulation = true;
+                } else {
+                    statusText = `Cần ${nextRankObj.min - userXP} XP nữa để chạm bình cảnh`;
+                }
+            } else {
+                statusText = `👑 Đã đạt cảnh giới cao nhất!`;
+            }
+
+            document.getElementById('user-xp').innerText = `🔥 Cảnh giới: ${currentRankObj.name} (${userXP} XP)`;
+            document.getElementById('tribulation-status').innerText = statusText;
             localStorage.setItem('labor_law_xp', userXP);
         }
 
@@ -230,36 +263,84 @@
             });
         }
 
-        function exportData() {
-            const data = localStorage.getItem('labor_law_custom_data') || JSON.stringify(laborLawData);
-            document.getElementById('sync-data-box').value = data;
-            alert("Đã xuất mã dữ liệu ra ô bên trên! Bạn hãy copy đoạn mã đó.");
+        // TÍNH NĂNG MỚI: ĐỘ KỊP ĐỘT PHÁ CẢNH GIỚI
+        function triggerTribulation() {
+            let allQuiz = [];
+            laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
+            if(allQuiz.length < 5) { alert("Cần tích lũy thêm câu hỏi trắc nghiệm để mở lôi kiếp!"); return; }
+            allQuiz.sort(() => Math.random() - 0.5);
+
+            isArcadeMode = false; isMockExam = false; isTribulationMode = true; currentChapterId = 'tribulation';
+            window.tribulationData = { title: "⚡ Thiên Kiếp Lôi Phạt (Đột Phá Cảnh Giới)", quiz: allQuiz.slice(0, 5) };
+            currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {};
+            setupStudyMode(window.tribulationData.title);
+            document.getElementById('timer-box').classList.remove('hidden');
+            renderTribulationQuiz();
         }
 
-        function importData() {
-            const data = document.getElementById('sync-data-box').value.trim();
-            if (!data) { alert("Ô nhập đang trống!"); return; }
-            try {
-                JSON.parse(data);
-                localStorage.setItem('labor_law_custom_data', data);
-                alert("Truyền công thành công! Dữ liệu đã được đồng bộ.");
-                location.reload();
-            } catch(e) { alert("Mã dữ liệu không hợp lệ, tẩu hỏa nhập ma!"); }
+        function renderTribulationQuiz() {
+            if(arcadeTimer) clearInterval(arcadeTimer);
+            timeLeft = 10; // Thử thách khắc nghiệt 10 giây mỗi câu lôi kiếp
+            document.getElementById('time-left').innerText = timeLeft;
+            arcadeTimer = setInterval(() => {
+                timeLeft--; document.getElementById('time-left').innerText = timeLeft;
+                if(timeLeft <= 0) { clearInterval(arcadeTimer); handleTribulationTimeOut(); }
+            }, 1000);
+
+            const q = window.tribulationData.quiz[currentQuizIndex];
+            document.getElementById('quiz-progress').innerText = `Lôi Kiếp Trận ${currentQuizIndex + 1}/5`;
+            document.getElementById('quiz-score').innerText = `Điểm Kiếp: ${quizScore}`;
+            document.getElementById('quiz-question').innerText = q.q;
+            
+            const optionsEl = document.getElementById('quiz-options');
+            optionsEl.innerHTML = '';
+            const ans = selectedAnswersMap[currentQuizIndex];
+
+            q.options.forEach((opt, idx) => {
+                let btnClass = "w-full text-left p-3 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
+                if (ans !== undefined) {
+                    if (idx === q.correct) btnClass = "w-full text-left p-3 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
+                    else if (idx === ans) btnClass = "w-full text-left p-3 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
+                }
+                optionsEl.innerHTML += `<button onclick="selectTribulationAnswer(${idx})" ${ans !== undefined ? 'disabled' : ''} class="${btnClass}"><span>${String.fromCharCode(65 + idx)}. ${opt}</span></button>`;
+            });
+
+            const exp = document.getElementById('quiz-explanation');
+            if (ans !== undefined) {
+                exp.classList.remove('hidden');
+                document.getElementById('quiz-explanation-text').innerText = q.explanation || "Không có giải thích chi tiết.";
+                document.getElementById('btn-next-quiz').classList.toggle('hidden', currentQuizIndex >= window.tribulationData.quiz.length - 1);
+            } else { exp.classList.add('hidden'); document.getElementById('btn-next-quiz').classList.add('hidden'); }
         }
 
-        function clearData() {
-            if (confirm("Xác nhận phế bỏ toàn bộ dữ liệu tự tạo?")) {
-                localStorage.removeItem('labor_law_custom_data');
-                localStorage.removeItem('labor_law_xp');
-                location.reload();
+        function handleTribulationTimeOut() {
+            selectedAnswersMap[currentQuizIndex] = -1;
+            const wrapper = document.getElementById('game-card-wrapper');
+            wrapper.classList.add('animate-shake');
+            setTimeout(() => wrapper.classList.remove('animate-shake'), 300);
+            renderTribulationQuiz();
+        }
+
+        function selectTribulationAnswer(idx) {
+            clearInterval(arcadeTimer);
+            const q = window.tribulationData.quiz[currentQuizIndex];
+            selectedAnswersMap[currentQuizIndex] = idx;
+            if (idx === q.correct) {
+                quizScore += 20;
+                userXP += 30; // Thưởng cực lớn khi vượt lôi kiếp
+                updateXPDisplay();
+            } else {
+                document.getElementById('game-card-wrapper').classList.add('animate-shake');
+                setTimeout(() => document.getElementById('game-card-wrapper').classList.remove('animate-shake'), 300);
             }
+            renderTribulationQuiz();
         }
 
         async function generateChapterByAI(chapterId) {
             const apiKey = localStorage.getItem('gemini_api_key');
             if(!apiKey || !apiKey.startsWith('AQ.')) { alert("Vui lòng nhập khóa xác thực (AQ...) ở góc trên!"); openApiKeyModal(); return; }
 
-            alert(`AI đang đọc file 'chuong${chapterId}.txt' trên GitHub để tạo câu hỏi...`);
+            alert(`AI đang đọc file 'chuong${chapterId}.txt' trên GitHub để khai nhãn câu hỏi...`);
 
             try {
                 const fileRes = await fetch(`chuong${chapterId}.txt`);
@@ -290,7 +371,7 @@
                     if(newContent.quiz) targetChapter.quiz.push(...newContent.quiz);
                     localStorage.setItem('labor_law_custom_data', JSON.stringify(laborLawData));
                     renderDashboard();
-                    alert(`Đã khai nhãn thành công bộ câu hỏi mới cho Chương ${chapterId}! Hãy bấm 'Xuất Mã' nếu muốn đồng bộ.`);
+                    alert(`Đã khai nhãn thành công bộ câu hỏi mới cho Chương ${chapterId}!`);
                 }
             } catch(err) { alert("Lỗi: " + err.message); }
         }
@@ -299,7 +380,7 @@
             let allQuiz = [];
             laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
             allQuiz.sort(() => Math.random() - 0.5);
-            isArcadeMode = false; isMockExam = true; currentChapterId = 'mock';
+            isArcadeMode = false; isMockExam = true; isTribulationMode = false; currentChapterId = 'mock';
             window.mockData = { title: "🌩️ Thiên Kiếp Bảng (Đề Tổng Hợp)", quiz: allQuiz.slice(0, 20) };
             currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {};
             setupStudyMode(window.mockData.title);
@@ -344,7 +425,7 @@
             let allQuiz = [];
             laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
             allQuiz.sort(() => Math.random() - 0.5);
-            isArcadeMode = true; isMockExam = false; currentChapterId = 'arcade';
+            isArcadeMode = true; isMockExam = false; isTribulationMode = false; currentChapterId = 'arcade';
             window.arcadeData = { title: "⚡ Phá Trận Tháp (15s/câu)", quiz: allQuiz.slice(0, 15) };
             currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {};
             setupStudyMode(window.arcadeData.title);
@@ -380,7 +461,7 @@
         }
 
         function startChapter(chapterId, mode) {
-            isArcadeMode = false; isMockExam = false; currentChapterId = chapterId;
+            isArcadeMode = false; isMockExam = false; isTribulationMode = false; currentChapterId = chapterId;
             currentCardIndex = 0; currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {};
             setupStudyMode(laborLawData.find(c => c.id === chapterId).title);
             document.getElementById('study-mode-buttons').classList.remove('hidden');
@@ -422,6 +503,7 @@
         function renderQuiz() {
             if(isArcadeMode) { renderArcadeQuiz(); return; }
             if(isMockExam) { renderMockQuiz(); return; }
+            if(isTribulationMode) { renderTribulationQuiz(); return; }
             const chapter = laborLawData.find(c => c.id === currentChapterId);
             if(!chapter || !chapter.quiz || !chapter.quiz[currentQuizIndex]) return;
             const q = chapter.quiz[currentQuizIndex];
@@ -461,6 +543,7 @@
         function nextQuiz() { 
             if(isArcadeMode) { if (currentQuizIndex < window.arcadeData.quiz.length - 1) { currentQuizIndex++; renderArcadeQuiz(); } return; }
             if(isMockExam) { if (currentQuizIndex < window.mockData.quiz.length - 1) { currentQuizIndex++; renderMockQuiz(); } return; }
+            if(isTribulationMode) { if (currentQuizIndex < window.tribulationData.quiz.length - 1) { currentQuizIndex++; renderTribulationQuiz(); } return; }
             const ch = laborLawData.find(c => c.id === currentChapterId); 
             if (currentQuizIndex < ch.quiz.length - 1) { currentQuizIndex++; renderQuiz(); } 
         }
@@ -468,6 +551,7 @@
         function prevQuiz() { 
             if(isArcadeMode) { if (currentQuizIndex > 0) { currentQuizIndex--; renderArcadeQuiz(); } return; }
             if(isMockExam) { if (currentQuizIndex > 0) { currentQuizIndex--; renderMockQuiz(); } return; }
+            if(isTribulationMode) { if (currentQuizIndex > 0) { currentQuizIndex--; renderTribulationQuiz(); } return; }
             if (currentQuizIndex > 0) { currentQuizIndex--; renderQuiz(); } 
         }
 
