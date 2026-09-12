@@ -60,11 +60,17 @@
                 </div>
                 <div>
                     <h1 class="font-bold text-base sm:text-lg leading-tight">Luật Lao Động 2019</h1>
-                    <span id="user-xp" class="text-xs text-amber-400 font-semibold">🔥 Cảnh giới: Phàm Nhân (0 XP)</span>
+                    <div class="flex items-center gap-2 mt-0.5">
+                        <span id="user-xp" class="text-xs text-amber-400 font-semibold">🔥 Cảnh giới: Phàm Nhân (0 XP)</span>
+                        <span id="user-coins" class="text-xs text-cyan-400 font-bold bg-cyan-950/60 px-2 py-0.5 rounded-lg border border-cyan-800/50"><i class="fa-solid fa-coins"></i> 0 Linh Thạch</span>
+                    </div>
                 </div>
             </div>
             <div class="flex flex-wrap items-center gap-2">
-                <span id="reset-timer-badge" class="text-[11px] bg-slate-900 text-slate-300 px-2.5 py-1.5 rounded-xl border border-slate-700 font-medium">⏳ Đại Trừng Phạt: 7 ngày</span>
+                <span id="reset-timer-badge" class="text-[11px] bg-slate-900 text-slate-300 px-2.5 py-1.5 rounded-xl border border-slate-700 font-medium">⏳ Trừng Phạt: 7 ngày</span>
+                <button onclick="openShopModal()" class="px-3 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-store"></i> Tụ Bảo Các
+                </button>
                 <button onclick="startMockExam()" class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
                     <i class="fa-solid fa-scroll"></i> Thiên Kiếp Bảng
                 </button>
@@ -84,11 +90,10 @@
             <div class="bg-gradient-to-r from-slate-800 to-red-950/40 p-4 sm:p-6 rounded-2xl border border-red-900/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div class="flex-1 space-y-3">
                     <h2 class="text-xl sm:text-2xl font-black text-red-400">Đạo Quán Tu Tiên</h2>
-                    <p class="text-xs sm:text-sm text-slate-300">Làm trắc nghiệm đúng tích lũy XP thăng cấp. Lười tu luyện 3 ngày sẽ bị thiên lôi phạt hạ cấp!</p>
+                    <p class="text-xs sm:text-sm text-slate-300">Làm trắc nghiệm tích lũy XP & Linh Thạch mua đan dược. Lười tu luyện 3 ngày sẽ bị thiên lôi hạ cấp!</p>
                     
-                    <!-- Nút bấm thu gọn bản đồ tháp -->
                     <button onclick="openRanksModal()" class="px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-amber-400 rounded-xl text-xs font-bold border border-slate-600 shadow transition flex items-center gap-2">
-                        <i class="fa-solid fa-mountain text-red-400"></i> 🏔️ Mở Xem 36 Tầng Tháp Cảnh Giới
+                        <i class="fa-solid fa-mountain text-red-400"></i> 🏔️ Mở Xem Đủ 36 Tầng Tháp Cảnh Giới
                     </button>
                 </div>
                 
@@ -160,17 +165,56 @@
         </div>
     </main>
 
-    <!-- Modal Hiển Thị 36 Tầng Tháp -->
+    <!-- Modal Tụ Bảo Các (Cửa Hàng Đan Dược & Pháp Bảo) -->
+    <div id="shop-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+        <div class="bg-slate-800 p-6 rounded-2xl max-w-xl w-full space-y-4 shadow-2xl border border-slate-700 max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center border-b border-slate-700 pb-3">
+                <h3 class="font-bold text-base sm:text-lg text-emerald-400"><i class="fa-solid fa-store text-emerald-500"></i> Tụ Bảo Các (Cửa Hàng Tu Tiên)</h3>
+                <button onclick="closeShopModal()" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-bold">Đóng</button>
+            </div>
+            <p class="text-xs text-slate-300">Dùng Linh Thạch kiếm được từ việc làm trắc nghiệm để thỉnh Đan Dược tăng XP hoặc Pháp Bảo hỗ trợ.</p>
+            <div class="overflow-y-auto flex-grow pr-2 space-y-3">
+                
+                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700 flex items-center justify-between gap-3">
+                    <div>
+                        <h4 class="font-bold text-sm text-amber-300">💊 Tụ Linh Đan</h4>
+                        <p class="text-[11px] text-slate-400 mt-0.5">Trợ lực tu vi, lập tức cộng ngay +100 XP.</p>
+                        <span class="text-xs font-bold text-cyan-400 mt-1 block">Giá: 50 Linh Thạch</span>
+                    </div>
+                    <button onclick="buyItem('pill_100', 50, 100)" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow">Thỉnh Mua</button>
+                </div>
+
+                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700 flex items-center justify-between gap-3">
+                    <div>
+                        <h4 class="font-bold text-sm text-amber-300">🧪 Thăng Tiên Quả</h4>
+                        <p class="text-[11px] text-slate-400 mt-0.5">Đan dược thượng phẩm, lập tức cộng ngay +500 XP.</p>
+                        <span class="text-xs font-bold text-cyan-400 mt-1 block">Giá: 200 Linh Thạch</span>
+                    </div>
+                    <button onclick="buyItem('pill_500', 200, 500)" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow">Thỉnh Mua</button>
+                </div>
+
+                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700 flex items-center justify-between gap-3">
+                    <div>
+                        <h4 class="font-bold text-sm text-purple-300">📜 Chân Nguyên Đan Thượng Cổ</h4>
+                        <p class="text-[11px] text-slate-400 mt-0.5">Bí dược cường đại, lập tức bạo phát +2000 XP.</p>
+                        <span class="text-xs font-bold text-cyan-400 mt-1 block">Giá: 700 Linh Thạch</span>
+                    </div>
+                    <button onclick="buyItem('pill_2000', 700, 2000)" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow">Thỉnh Mua</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Hiển Thị Đủ 36 Tầng Tháp -->
     <div id="ranks-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
         <div class="bg-slate-800 p-6 rounded-2xl max-w-2xl w-full space-y-4 shadow-2xl border border-slate-700 max-h-[85vh] flex flex-col">
             <div class="flex justify-between items-center border-b border-slate-700 pb-3">
-                <h3 class="font-bold text-base sm:text-lg text-amber-400"><i class="fa-solid fa-mountain text-red-500"></i> Bản Đồ 36 Tiểu Cảnh Giới Tu Tiên</h3>
+                <h3 class="font-bold text-base sm:text-lg text-amber-400"><i class="fa-solid fa-mountain text-red-500"></i> Bản Đồ Đủ 36 Tiểu Cảnh Giới Tu Tiên</h3>
                 <button onclick="closeRanksModal()" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-bold">Đóng</button>
             </div>
             <div class="overflow-y-auto flex-grow pr-2">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 text-xs" id="ranks-list-container">
-                    <!-- Danh sách 36 tầng render tự động -->
-                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 text-xs" id="ranks-list-container"></div>
             </div>
         </div>
     </div>
@@ -205,12 +249,14 @@
         ];
 
         let userXP = parseInt(localStorage.getItem('labor_law_xp')) || 0;
+        let userCoins = parseInt(localStorage.getItem('labor_law_coins')) || 0;
         let currentChapterId = null, currentStudyMode = 'flashcard';
         let currentCardIndex = 0, currentQuizIndex = 0, quizScore = 0, selectedAnswersMap = {};
         let activeQuizList = [];
         let isArcadeMode = false, isMockExam = false, isTribulationMode = false, arcadeTimer = null, timeLeft = 15;
         let streakCount = 0;
 
+        // ĐỦ TRÒN 36 TIỂU CẢNH GIỚI CHUẨN XÁC
         const ranks = [
             { name: "Phàm Nhân", min: 0 },
             { name: "Luyện Khí Sơ kỳ", min: 100 }, { name: "Luyện Khí Trung kỳ", min: 250 }, { name: "Luyện Khí Đại viên mãn", min: 450 },
@@ -221,7 +267,9 @@
             { name: "Luyện Hư Sơ kỳ", min: 11000 }, { name: "Luyện Hư Trung kỳ", min: 12600 }, { name: "Luyện Hư Đại viên mãn", min: 14400 },
             { name: "Hợp Thể Sơ kỳ", min: 16400 }, { name: "Hợp Thể Trung kỳ", min: 18600 }, { name: "Hợp Thể Đại viên mãn", min: 21000 },
             { name: "Đại Thừa Sơ kỳ", min: 23800 }, { name: "Đại Thừa Trung kỳ", min: 27000 }, { name: "Đại Thừa Đại viên mãn", min: 30600 },
-            { name: "Độ Kiếp Sơ kỳ", min: 34600 }, { name: "Độ Kiếp Trung kỳ", min: 39000 }, { name: "Độ Kiếp Đại viên mãn", min: 44000 }
+            { name: "Độ Kiếp Sơ kỳ", min: 34600 }, { name: "Độ Kiếp Trung kỳ", min: 39000 }, { name: "Độ Kiếp Đại viên mãn", min: 44000 },
+            { name: "Chân Tiên", min: 50000 }, { name: "Kim Tiên", min: 60000 }, { name: "Thái Ất Chân Tiên", min: 72000 },
+            { name: "Đại Lô Kim Tiên", min: 86000 }, { name: "Tiên Vương", min: 102000 }, { name: "Tiên Đế", min: 120000 }, { name: "Hỗn Nguyên Đạo Tôn", min: 150000 }
         ];
 
         window.onload = function() {
@@ -258,12 +306,13 @@
             const diffDays = (now - resetEpoch) / (1000 * 60 * 60 * 24);
             const daysLeft = Math.max(0, Math.ceil(7 - diffDays));
 
-            document.getElementById('reset-timer-badge').innerText = `⏳ Đại Trừng Phạt: ${daysLeft} ngày`;
+            document.getElementById('reset-timer-badge').innerText = `⏳ Trừng Phạt: ${daysLeft} ngày`;
 
             if (diffDays >= 7) {
                 userXP = 0;
+                userCoins = 0;
                 localStorage.setItem('labor_law_reset_epoch', now);
-                alert("🌩️ ĐẠI THANH TRỪNG TU TIÊN! Chu kỳ 7 ngày đã mãn, thiên địa đổi mới, toàn bộ tu vi quy về Phàm Nhân để bắt đầu một vòng đua mới!");
+                alert("🌩️ ĐẠI THANH TRỪNG TU TIÊN! Chu kỳ 7 ngày đã mãn, thiên địa đổi mới, toàn bộ tu vi quy về Phàm Nhân!");
             }
         }
 
@@ -295,9 +344,21 @@
             renderRanksModalList();
             document.getElementById('ranks-modal').classList.remove('hidden');
         }
+        function closeRanksModal() { document.getElementById('ranks-modal').classList.add('hidden'); }
 
-        function closeRanksModal() {
-            document.getElementById('ranks-modal').classList.add('hidden');
+        function openShopModal() { document.getElementById('shop-modal').classList.remove('hidden'); }
+        function closeShopModal() { document.getElementById('shop-modal').classList.add('hidden'); }
+
+        function buyItem(itemKey, cost, rewardXP) {
+            if (userCoins < cost) {
+                alert("Linh Thạch không đủ! Hãy chăm chỉ làm trắc nghiệm hoặc qua Phá Trận để kiếm thêm.");
+                return;
+            }
+            userCoins -= cost;
+            userXP += rewardXP;
+            updateXPDisplay();
+            alert(`🎉 Thỉnh mua thành công! Đan dược phát huy công hiệu, bạn nhận được +${rewardXP} XP.`);
+            closeShopModal();
         }
 
         function triggerLightning() {
@@ -329,8 +390,10 @@
             }
 
             document.getElementById('user-xp').innerText = `🔥 Cảnh giới: ${currentRankObj.name} (${userXP} XP)`;
+            document.getElementById('user-coins').innerHTML = `<i class="fa-solid fa-coins"></i> ${userCoins} Linh Thạch`;
             document.getElementById('tribulation-status').innerText = statusText;
             localStorage.setItem('labor_law_xp', userXP);
+            localStorage.setItem('labor_law_coins', userCoins);
             localStorage.setItem('labor_law_last_play', Date.now());
         }
 
@@ -547,6 +610,7 @@
                 streakCount++;
                 quizScore += isTribulationMode ? 20 : 10;
                 userXP += isTribulationMode ? (15 * streakCount) : (3 * streakCount);
+                userCoins += 5; // Thêm 5 Linh Thạch mỗi câu đúng
                 updateXPDisplay();
                 updateStreakDisplay();
                 if(isTribulationMode) triggerLightning();
@@ -566,10 +630,11 @@
 
         function finishTribulation() {
             if (quizScore >= 60) {
-                alert(`🌟 ĐỘ KIẾP THÀNH CÔNG! Bạn đã vượt qua thiên kiếp với ${quizScore} điểm và nhận lượng lớn tu vi thăng hoa!`);
+                userCoins += 30; // Thưởng thêm linh thạch khi qua lôi kiếp
+                alert(`🌟 ĐỘ KIẾP THÀNH CÔNG! Vượt qua thiên kiếp với ${quizScore} điểm, nhận thêm 30 Linh Thạch!`);
             } else {
                 triggerThunderFail();
-                alert(`💥 ĐỘ KIẾP THẤT BẠI! Thiên lôi giáng thế đánh tan tâm huyết, bạn bị thương nặng. Hãy rèn luyện thêm rồi thử lại nhé!`);
+                alert(`💥 ĐỘ KIẾP THẤT BẠI! Thiên lôi giáng thế đánh tan tâm huyết, bạn bị thương nặng.`);
             }
             switchTab('dashboard');
         }
