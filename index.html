@@ -49,7 +49,7 @@
                     <i class="fa-solid fa-bolt"></i> Phá Trận (15s)
                 </button>
                 <button onclick="openApiKeyModal()" class="px-3 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-key text-red-400"></i> Pháp Bảo (Key)
+                    <i class="fa-solid fa-key text-red-400"></i> Pháp Bảo
                 </button>
             </div>
         </div>
@@ -60,7 +60,7 @@
             <div class="bg-gradient-to-r from-slate-800 to-red-950/40 p-4 sm:p-6 rounded-2xl border border-red-900/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div class="flex-1">
                     <h2 class="text-xl sm:text-2xl font-black text-red-400">Bản Đồ 12 Tầng Tháp</h2>
-                    <p class="text-xs sm:text-sm text-slate-300 mt-1">Làm trắc nghiệm đúng mới được cộng điểm thăng cấp.</p>
+                    <p class="text-xs sm:text-sm text-slate-300 mt-1">Làm trắc nghiệm đúng mới được cộng điểm thăng cấp tu vi.</p>
                     <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-3 text-[10px] sm:text-xs">
                         <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-slate-300">Phàm Nhân (0)</span>
                         <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-green-300">Luyện Khí (50+)</span>
@@ -74,9 +74,16 @@
                         <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-sky-300 font-bold">Độ Kiếp (4000+)</span>
                     </div>
                 </div>
-                <div class="flex flex-col gap-2 w-full sm:w-auto">
-                    <button onclick="syncData()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fa-solid fa-cloud-arrow-up"></i> Đồng bộ dữ liệu</button>
-                    <button onclick="clearData()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-rose-400 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5"><i class="fa-solid fa-trash"></i> Xóa dữ liệu</button>
+                
+                <!-- Bảng điều khiển đồng bộ trực quan -->
+                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700 flex flex-col gap-2 w-full md:w-80">
+                    <span class="text-xs font-bold text-amber-400"><i class="fa-solid fa-sync"></i> Truyền Công (Đồng Bộ Dữ Liệu)</span>
+                    <textarea id="sync-data-box" rows="2" placeholder="Copy mã ở máy tính dán vào đây, rồi bấm Nhập..." class="w-full p-2 text-xs bg-slate-800 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:border-amber-500"></textarea>
+                    <div class="flex gap-2">
+                        <button onclick="exportData()" class="flex-1 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold">Xuất Mã</button>
+                        <button onclick="importData()" class="flex-1 py-1 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-semibold">Nhập Mã</button>
+                        <button onclick="clearData()" class="py-1 px-2.5 bg-rose-900/60 hover:bg-rose-900 text-rose-300 rounded-lg text-xs" title="Xóa dữ liệu"><i class="fa-solid fa-trash"></i></button>
+                    </div>
                 </div>
             </div>
 
@@ -213,7 +220,7 @@
                         <div class="space-y-2 mt-4 pt-3 border-t border-slate-700/60">
                             <div class="flex gap-2">
                                 <button onclick="startChapter(${ch.id}, 'flashcard')" class="flex-1 py-1.5 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Thẻ Nhớ (${cardCount})</button>
-                                <button onclick="startChapter(${ch.id}, 'quiz')" class="flex-1 py-1.5 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Trắc Nghiệm (${quizCount})</button>
+                                <button onclick="startChapter(${ch.id}, 'quiz')" class="flex-1 py-1.5 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Khảo Nghiệm (${quizCount})</button>
                             </div>
                             <button onclick="generateChapterByAI(${ch.id})" class="w-full py-1.5 bg-purple-950/40 text-purple-300 hover:bg-purple-900/60 border border-purple-800/50 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5">
                                 <i class="fa-solid fa-wand-magic-sparkles"></i> Khai nhãn AI (chuong${ch.id}.txt)
@@ -224,23 +231,25 @@
             });
         }
 
-        function syncData() {
-            const action = prompt("Nhập 'export' để copy dữ liệu hiện tại, hoặc dán mã dữ liệu từ máy tính vào đây để 'import':");
-            if (action === 'export') {
-                const data = localStorage.getItem('labor_law_custom_data') || JSON.stringify(laborLawData);
-                prompt("Hãy copy đoạn mã dưới đây và gửi qua điện thoại:", data);
-            } else if (action && action.length > 50) {
-                try {
-                    JSON.parse(action);
-                    localStorage.setItem('labor_law_custom_data', action);
-                    alert("Truyền công thành công! Hãy tải lại trang.");
-                    location.reload();
-                } catch(e) { alert("Mã không hợp lệ, tẩu hỏa nhập ma!"); }
-            }
+        function exportData() {
+            const data = localStorage.getItem('labor_law_custom_data') || JSON.stringify(laborLawData);
+            document.getElementById('sync-data-box').value = data;
+            alert("Đã xuất mã dữ liệu ra ô bên trên! Bạn hãy copy đoạn mã đó.");
+        }
+
+        function importData() {
+            const data = document.getElementById('sync-data-box').value.trim();
+            if (!data) { alert("Ô nhập đang trống!"); return; }
+            try {
+                JSON.parse(data);
+                localStorage.setItem('labor_law_custom_data', data);
+                alert("Truyền công thành công! Dữ liệu đã được đồng bộ.");
+                location.reload();
+            } catch(e) { alert("Mã dữ liệu không hợp lệ, tẩu hỏa nhập ma!"); }
         }
 
         function clearData() {
-            if (confirm("Xác nhận phế bỏ toàn bộ tu vi (xóa dữ liệu) để làm lại từ đầu?")) {
+            if (confirm("Xác nhận phế bỏ toàn bộ dữ liệu tự tạo?")) {
                 localStorage.removeItem('labor_law_custom_data');
                 localStorage.removeItem('labor_law_xp');
                 location.reload();
@@ -249,9 +258,9 @@
 
         async function generateChapterByAI(chapterId) {
             const apiKey = localStorage.getItem('gemini_api_key');
-            if(!apiKey || !apiKey.startsWith('AQ.')) { alert("Vui lòng nhập khóa xác thực (AQ...)!"); openApiKeyModal(); return; }
+            if(!apiKey || !apiKey.startsWith('AQ.')) { alert("Vui lòng nhập khóa xác thực (AQ...) ở góc trên!"); openApiKeyModal(); return; }
 
-            alert(`AI đang đọc file 'chuong${chapterId}.txt' trên GitHub để tạo câu hỏi... (Không cộng XP)`);
+            alert(`AI đang đọc file 'chuong${chapterId}.txt' trên GitHub để tạo câu hỏi...`);
 
             try {
                 const fileRes = await fetch(`chuong${chapterId}.txt`);
@@ -282,7 +291,7 @@
                     if(newContent.quiz) targetChapter.quiz.push(...newContent.quiz);
                     localStorage.setItem('labor_law_custom_data', JSON.stringify(laborLawData));
                     renderDashboard();
-                    alert(`Đã khai nhãn thành công bộ câu hỏi mới cho Chương ${chapterId}! (Chỉ học và thi đúng mới được XP)`);
+                    alert(`Đã khai nhãn thành công bộ câu hỏi mới cho Chương ${chapterId}! Hãy bấm 'Xuất Mã' để đồng bộ sang điện thoại.`);
                 }
             } catch(err) { alert("Lỗi: " + err.message); }
         }
@@ -351,7 +360,7 @@
                 timeLeft--; document.getElementById('time-left').innerText = timeLeft;
                 if(timeLeft <= 0) { clearInterval(arcadeTimer); handleTimeOut(); }
             }, 1000);
-            renderMockQuiz(); // Dùng chung giao diện render
+            renderMockQuiz();
         }
 
         function handleTimeOut() {
@@ -463,7 +472,7 @@
             if (currentQuizIndex > 0) { currentQuizIndex--; renderQuiz(); } 
         }
 
-        function openApiKeyModal() { document.getElementById('api-modal').classList.remove('hidden'); document.getElementById('api-key-input').value = localStorage.getItem('gemini_api_key') || ''; }
+        function openApiKeyModal() { document.getElementById('api-modal').classList.remove('hidden'); document.getElementById('api-key-input').value = localStorage.getItem('gemini_api_key'] || ''; }
         function closeApiKeyModal() { document.getElementById('api-modal').classList.add('hidden'); }
         function saveApiKey() {
             const key = document.getElementById('api-key-input').value.trim();
