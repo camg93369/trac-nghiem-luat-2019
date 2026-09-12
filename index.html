@@ -29,7 +29,6 @@
         @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); } 50% { box-shadow: 0 0 30px rgba(239, 68, 68, 0.8); } }
         .tribulation-glow { animation: pulseGlow 1.5s infinite; }
         
-        /* Hiệu ứng sấm sét chớp lóe thành công (Màu xanh/trắng) */
         @keyframes lightningFlash {
             0% { background-color: #0f172a; }
             20% { background-color: #38bdf8; }
@@ -39,7 +38,6 @@
         }
         .lightning-effect { animation: lightningFlash 0.6s ease-in-out; }
 
-        /* Hiệu ứng Thiên Lôi Phạt thất bại (Rung lắc + chớp lóe đỏ rực tẩu hỏa nhập ma) */
         @keyframes thunderStrike {
             0% { background-color: #0f172a; transform: translate(0, 0); }
             15% { background-color: #7f1d1d; transform: translate(-10px, 5px); }
@@ -85,7 +83,7 @@
             <div class="bg-gradient-to-r from-slate-800 to-red-950/40 p-4 sm:p-6 rounded-2xl border border-red-900/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div class="flex-1">
                     <h2 class="text-xl sm:text-2xl font-black text-red-400">Bản Đồ 12 Tầng Tháp</h2>
-                    <p class="text-xs sm:text-sm text-slate-300 mt-1">Làm trắc nghiệm đúng tích lũy XP để phá vỡ bình cảnh, độ kiếp thăng thiên.</p>
+                    <p class="text-xs sm:text-sm text-slate-300 mt-1">Làm trắc nghiệm đúng tích lũy XP, đạt chuỗi Combo để gia tăng tốc độ tu vi.</p>
                     <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-3 text-[10px] sm:text-xs">
                         <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-slate-300">1. Phàm Nhân (0)</span>
                         <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-green-300">2. Luyện Khí (50)</span>
@@ -149,6 +147,7 @@
                 <div id="game-card-wrapper" class="bg-slate-800 p-4 sm:p-6 rounded-2xl shadow-lg space-y-4 border border-slate-700 transition-all">
                     <div class="flex justify-between items-center text-xs font-bold text-slate-400">
                         <span id="quiz-progress"></span>
+                        <span id="combo-badge" class="text-amber-400 bg-amber-950/60 px-2.5 py-0.5 rounded-full font-bold hidden">🔥 Combo x1</span>
                         <span id="timer-box" class="text-amber-400 bg-amber-950/50 px-2.5 py-1 rounded-lg hidden"><i class="fa-solid fa-clock"></i> <span id="time-left">15</span>s</span>
                         <span id="quiz-score" class="text-red-400">Điểm: 0</span>
                     </div>
@@ -200,6 +199,7 @@
         let currentChapterId = null, currentStudyMode = 'flashcard';
         let currentCardIndex = 0, currentQuizIndex = 0, quizScore = 0, selectedAnswersMap = {};
         let isArcadeMode = false, isMockExam = false, isTribulationMode = false, arcadeTimer = null, timeLeft = 15;
+        let streakCount = 0; // Đếm số câu đúng liên tiếp (Combo Streak)
 
         const ranks = [
             { name: "Phàm Nhân", min: 0 },
@@ -259,6 +259,16 @@
             localStorage.setItem('labor_law_xp', userXP);
         }
 
+        function updateStreakDisplay() {
+            const badge = document.getElementById('combo-badge');
+            if (streakCount > 1) {
+                badge.classList.remove('hidden');
+                badge.innerText = `🔥 Combo x${streakCount}`;
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
         function switchTab(tabName) {
             if(arcadeTimer) clearInterval(arcadeTimer);
             ['tab-dashboard', 'tab-study'].forEach(id => document.getElementById(id).classList.add('hidden'));
@@ -300,7 +310,7 @@
 
             isArcadeMode = false; isMockExam = false; isTribulationMode = true; currentChapterId = 'tribulation';
             window.tribulationData = { title: "⚡ Thiên Kiếp Lôi Phạt (Đột Phá Cảnh Giới)", quiz: allQuiz.slice(0, 5) };
-            currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {};
+            currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {}; streakCount = 0;
             setupStudyMode(window.tribulationData.title);
             document.getElementById('timer-box').classList.remove('hidden');
             renderTribulationQuiz();
@@ -314,6 +324,7 @@
                 timeLeft--; document.getElementById('time-left').innerText = timeLeft;
                 if(timeLeft <= 0) { 
                     clearInterval(arcadeTimer); 
+                    streakCount = 0; updateStreakDisplay();
                     triggerThunderFail();
                     handleTribulationTimeOut(); 
                 }
@@ -341,14 +352,12 @@
             if (ans !== undefined) {
                 exp.classList.remove('hidden');
                 document.getElementById('quiz-explanation-text').innerText = q.explanation || "Không có giải thích chi tiết.";
+                document.getElementById('btn-next-quiz').classList.remove('hidden');
                 
-                // Kiểm tra nếu đã đến câu cuối cùng của lôi kiếp
                 if (currentQuizIndex >= window.tribulationData.quiz.length - 1) {
-                    document.getElementById('btn-next-quiz').classList.remove('hidden');
                     document.getElementById('btn-next-quiz').innerText = "Xem Kết Quả Lôi Kiếp";
                     document.getElementById('btn-next-quiz').setAttribute('onclick', 'finishTribulation()');
                 } else {
-                    document.getElementById('btn-next-quiz').classList.remove('hidden');
                     document.getElementById('btn-next-quiz').innerText = "Câu tiếp";
                     document.getElementById('btn-next-quiz').setAttribute('onclick', 'nextQuiz()');
                 }
@@ -371,12 +380,16 @@
             const q = window.tribulationData.quiz[currentQuizIndex];
             selectedAnswersMap[currentQuizIndex] = idx;
             if (idx === q.correct) {
+                streakCount++;
                 quizScore += 20;
-                userXP += 30;
+                userXP += (30 * streakCount); // Combo tăng XP bạo phát
                 updateXPDisplay();
-                triggerLightning(); // Sấm sét chớp lóe chúc mừng trả lời đúng
+                updateStreakDisplay();
+                triggerLightning();
+                setTimeout(nextQuiz, 1000); // Tự động chuyển câu sau 1 giây khi đúng
             } else {
-                triggerThunderFail(); // Thiên lôi phạt vì trả lời sai!
+                streakCount = 0; updateStreakDisplay();
+                triggerThunderFail();
                 document.getElementById('game-card-wrapper').classList.add('animate-shake');
                 setTimeout(() => document.getElementById('game-card-wrapper').classList.remove('animate-shake'), 300);
             }
@@ -388,7 +401,7 @@
                 alert(`🌟 ĐỘ KIẾP THÀNH CÔNG! Bạn đã vượt qua thiên kiếp với ${quizScore} điểm và nhận lượng lớn tu vi thăng hoa!`);
             } else {
                 triggerThunderFail();
-                alert(`💥 ĐỘ KIẾP THẤT BẠI! Thiên lôi giáng thế đánh tan tâm huyết, bạn bị thương nặng và rớt đài. Hãy rèn luyện thêm rồi thử lại nhé!`);
+                alert(`💥 ĐỘ KIẾP THẤT BẠI! Thiên lôi giáng thế đánh tan tâm huyết, bạn bị thương nặng. Hãy rèn luyện thêm rồi thử lại nhé!`);
             }
             switchTab('dashboard');
         }
@@ -439,7 +452,7 @@
             allQuiz.sort(() => Math.random() - 0.5);
             isArcadeMode = false; isMockExam = true; isTribulationMode = false; currentChapterId = 'mock';
             window.mockData = { title: "🌩️ Thiên Kiếp Bảng (Đề Tổng Hợp)", quiz: allQuiz.slice(0, 20) };
-            currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {};
+            currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {}; streakCount = 0;
             setupStudyMode(window.mockData.title);
             renderMockQuiz();
         }
@@ -476,7 +489,18 @@
         function selectMockAnswer(idx) {
             const q = window.mockData.quiz[currentQuizIndex];
             selectedAnswersMap[currentQuizIndex] = idx;
-            if (idx === q.correct) { quizScore += 10; userXP += 10; updateXPDisplay(); }
+            if (idx === q.correct) {
+                streakCount++;
+                quizScore += 10;
+                userXP += (10 * streakCount);
+                updateXPDisplay();
+                updateStreakDisplay();
+                setTimeout(nextQuiz, 1000); // Tự động chuyển câu sau 1 giây khi đúng
+            } else {
+                streakCount = 0; updateStreakDisplay();
+                document.getElementById('game-card-wrapper').classList.add('animate-shake');
+                setTimeout(() => document.getElementById('game-card-wrapper').classList.remove('animate-shake'), 300);
+            }
             renderMockQuiz();
         }
 
@@ -486,7 +510,7 @@
             allQuiz.sort(() => Math.random() - 0.5);
             isArcadeMode = true; isMockExam = false; isTribulationMode = false; currentChapterId = 'arcade';
             window.arcadeData = { title: "⚡ Phá Trận Tháp (15s/câu)", quiz: allQuiz.slice(0, 15) };
-            currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {};
+            currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {}; streakCount = 0;
             setupStudyMode(window.arcadeData.title);
             document.getElementById('timer-box').classList.remove('hidden');
             renderArcadeQuiz();
@@ -497,7 +521,11 @@
             timeLeft = 15; document.getElementById('time-left').innerText = timeLeft;
             arcadeTimer = setInterval(() => {
                 timeLeft--; document.getElementById('time-left').innerText = timeLeft;
-                if(timeLeft <= 0) { clearInterval(arcadeTimer); handleTimeOut(); }
+                if(timeLeft <= 0) { 
+                    clearInterval(arcadeTimer); 
+                    streakCount = 0; updateStreakDisplay();
+                    handleTimeOut(); 
+                }
             }, 1000);
             renderMockQuiz();
         }
@@ -514,14 +542,25 @@
             clearInterval(arcadeTimer);
             const q = window.arcadeData.quiz[currentQuizIndex];
             selectedAnswersMap[currentQuizIndex] = idx;
-            if (idx === q.correct) { quizScore += 10; userXP += 10; updateXPDisplay(); } 
-            else { document.getElementById('game-card-wrapper').classList.add('animate-shake'); setTimeout(() => document.getElementById('game-card-wrapper').classList.remove('animate-shake'), 300); }
+            if (idx === q.correct) {
+                streakCount++;
+                quizScore += 10;
+                userXP += (10 * streakCount);
+                updateXPDisplay();
+                updateStreakDisplay();
+                setTimeout(nextQuiz, 1000); // Tự động chuyển câu sau 1 giây khi đúng
+            } 
+            else { 
+                streakCount = 0; updateStreakDisplay();
+                document.getElementById('game-card-wrapper').classList.add('animate-shake'); 
+                setTimeout(() => document.getElementById('game-card-wrapper').classList.remove('animate-shake'), 300); 
+            }
             renderArcadeQuiz();
         }
 
         function startChapter(chapterId, mode) {
             isArcadeMode = false; isMockExam = false; isTribulationMode = false; currentChapterId = chapterId;
-            currentCardIndex = 0; currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {};
+            currentCardIndex = 0; currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {}; streakCount = 0;
             setupStudyMode(laborLawData.find(c => c.id === chapterId).title);
             document.getElementById('study-mode-buttons').classList.remove('hidden');
             setStudyMode(mode);
@@ -588,14 +627,26 @@
                 exp.classList.remove('hidden');
                 document.getElementById('quiz-explanation-text').innerText = q.explanation || "Không có giải thích chi tiết.";
                 document.getElementById('btn-next-quiz').classList.toggle('hidden', currentQuizIndex >= chapter.quiz.length - 1);
+                document.getElementById('btn-next-quiz').innerText = "Câu tiếp";
+                document.getElementById('btn-next-quiz').setAttribute('onclick', 'nextQuiz()');
             } else { exp.classList.add('hidden'); document.getElementById('btn-next-quiz').classList.add('hidden'); }
         }
 
         function selectAnswer(idx) {
             const q = laborLawData.find(c => c.id === currentChapterId).quiz[currentQuizIndex];
             selectedAnswersMap[currentQuizIndex] = idx;
-            if (idx === q.correct) { quizScore += 10; userXP += 5; updateXPDisplay(); setTimeout(nextQuiz, 1000); } 
-            else { document.getElementById('game-card-wrapper').classList.add('animate-shake'); setTimeout(() => document.getElementById('game-card-wrapper').classList.remove('animate-shake'), 300); }
+            if (idx === q.correct) {
+                streakCount++;
+                quizScore += 10;
+                userXP += (5 * streakCount);
+                updateXPDisplay();
+                updateStreakDisplay();
+                setTimeout(nextQuiz, 1000); 
+            } else {
+                streakCount = 0; updateStreakDisplay();
+                document.getElementById('game-card-wrapper').classList.add('animate-shake');
+                setTimeout(() => document.getElementById('game-card-wrapper').classList.remove('animate-shake'), 300);
+            }
             renderQuiz();
         }
 
