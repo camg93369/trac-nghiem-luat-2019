@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luật Lao Động 2019 - Master Edition</title>
+    <title>Luật Lao Động 2019 - Mobile Optimized</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -30,112 +30,106 @@
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen transition-colors duration-300 flex flex-col">
 
-    <!-- Header -->
     <header class="bg-slate-800 shadow-sm sticky top-0 z-50 border-b border-slate-700">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('dashboard')">
                 <div class="bg-red-900/40 p-2.5 rounded-xl text-red-500">
                     <i class="fa-solid fa-scale-balanced text-xl"></i>
                 </div>
                 <div>
-                    <h1 class="font-bold text-lg leading-tight">Luật Lao Động 2019</h1>
+                    <h1 class="font-bold text-base sm:text-lg leading-tight">Luật Lao Động 2019</h1>
                     <span id="user-xp" class="text-xs text-amber-400 font-semibold">🔥 Cấp độ: Tập sự (0 XP)</span>
                 </div>
             </div>
-            <div class="flex items-center gap-2">
-                <button onclick="startMockExam()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
-                    <i class="fa-solid file-pen"></i> Thi Thử Tổng Hợp
+            <div class="flex flex-wrap items-center gap-2">
+                <button onclick="startMockExam()" class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-pen"></i> Thi Thử
                 </button>
-                <button onclick="startArcadeGame()" class="px-3 py-1.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-bolt"></i> Vượt Ải (15s)
+                <button onclick="startArcadeGame()" class="px-3 py-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-bolt"></i> Vượt Ải
+                </button>
+                <button onclick="openApiKeyModal()" class="px-3 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-key text-red-400"></i> API Key
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Container -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
-        <!-- TAB: DASHBOARD -->
         <div id="tab-dashboard" class="space-y-6">
-            <div class="bg-gradient-to-r from-slate-800 to-red-950/40 p-6 rounded-2xl border border-red-900/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div class="bg-gradient-to-r from-slate-800 to-red-950/40 p-4 sm:p-6 rounded-2xl border border-red-900/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h2 class="text-2xl font-black text-red-400">Bản Đồ 12 Chương Luật</h2>
-                    <p class="text-sm text-slate-300 mt-1">Ôn tập thẻ nhớ, làm trắc nghiệm từng chương hoặc bấm đọc file trực tiếp từ GitHub.</p>
-                    
-                    <!-- Bảng cấp bậc hiển thị ngay trên web để người dùng phấn đấu -->
+                    <h2 class="text-xl sm:text-2xl font-black text-red-400">Bản Đồ 12 Chương Luật</h2>
+                    <p class="text-xs sm:text-sm text-slate-300 mt-1">Ôn tập thẻ nhớ, làm trắc nghiệm hoặc dùng AI đọc file để tạo câu hỏi.</p>
                     <div class="flex flex-wrap gap-2 mt-3 text-xs">
                         <span class="px-2.5 py-1 bg-slate-700/80 rounded-lg text-slate-300">🌱 Tập sự (&lt;50 XP)</span>
-                        <span class="px-2.5 py-1 bg-slate-700/80 rounded-lg text-blue-300">📜 Cử nhân Luật (50+ XP)</span>
-                        <span class="px-2.5 py-1 bg-slate-700/80 rounded-lg text-purple-300">⚖️ Luật Sư (150+ XP)</span>
-                        <span class="px-2.5 py-1 bg-slate-700/80 rounded-lg text-amber-300">👑 Thẩm Phán (300+ XP)</span>
+                        <span class="px-2.5 py-1 bg-slate-700/80 rounded-lg text-blue-300">📜 Cử nhân (50+)</span>
+                        <span class="px-2.5 py-1 bg-slate-700/80 rounded-lg text-purple-300">⚖️ Luật Sư (150+)</span>
+                        <span class="px-2.5 py-1 bg-slate-700/80 rounded-lg text-amber-300">👑 Thẩm Phán (300+)</span>
                     </div>
                 </div>
-                <div class="flex gap-2">
-                    <button onclick="openSavedList()" class="px-3 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-semibold"><i class="fa-solid fa-star"></i> Đã Lưu (<span id="count-saved">0</span>)</button>
-                    <button onclick="openWrongList()" class="px-3 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-semibold"><i class="fa-solid fa-triangle-exclamation"></i> Hay Sai (<span id="count-wrong">0</span>)</button>
+                <div class="flex flex-wrap gap-2 w-full sm:w-auto">
+                    <button onclick="openSavedList()" class="flex-1 sm:flex-none px-3 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-semibold"><i class="fa-solid fa-star"></i> Đã Lưu (<span id="count-saved">0</span>)</button>
+                    <button onclick="openWrongList()" class="flex-1 sm:flex-none px-3 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-semibold"><i class="fa-solid fa-triangle-exclamation"></i> Hay Sai (<span id="count-wrong">0</span>)</button>
                 </div>
             </div>
 
             <div id="chapters-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
         </div>
 
-        <!-- TAB: STUDY -->
         <div id="tab-study" class="hidden space-y-6 max-w-2xl mx-auto">
-            <div class="flex items-center justify-between">
+            <div class="flex flex-wrap items-center justify-between gap-3">
                 <button onclick="switchTab('dashboard')" class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 rounded-xl text-sm font-medium"><i class="fa-solid fa-arrow-left"></i> Thoát</button>
-                <h3 id="study-title" class="font-bold text-lg text-red-400">Chương...</h3>
+                <h3 id="study-title" class="font-bold text-base sm:text-lg text-red-400 text-center flex-1">Chương...</h3>
                 <div class="flex gap-2" id="study-mode-buttons">
                     <button onclick="setStudyMode('flashcard')" id="btn-mode-fc" class="px-3 py-1.5 rounded-xl text-sm font-semibold bg-red-600 text-white">Thẻ Nhớ</button>
-                    <button onclick="setStudyMode('quiz')" id="btn-mode-qz" class="px-3 py-1.5 rounded-xl text-sm font-semibold bg-slate-700">Trắc Nghiệm</button>
+                    <button onclick="setStudyMode('quiz')" id="btn-mode-qz" class="px-3 py-1.5 rounded-xl text-sm font-semibold bg-slate-700">Quiz</button>
                 </div>
             </div>
 
-            <!-- Flashcard -->
             <div id="flashcard-container" class="space-y-4">
-                <div class="perspective-1000 w-full h-80 cursor-pointer" onclick="flipCard()">
+                <div class="perspective-1000 w-full h-72 sm:h-80 cursor-pointer" onclick="flipCard()">
                     <div id="card-inner" class="relative w-full h-full duration-500 transform-style-3d shadow-xl rounded-2xl">
                         <div class="absolute inset-0 w-full h-full bg-slate-800 p-6 rounded-2xl border border-slate-700 flex flex-col justify-between backface-hidden">
                             <div class="flex justify-between text-xs text-slate-400"><span id="fc-index"></span><i class="fa-solid fa-rotate"></i></div>
-                            <h4 id="fc-front" class="text-xl font-bold text-center my-auto"></h4>
+                            <h4 id="fc-front" class="text-lg sm:text-xl font-bold text-center my-auto"></h4>
                             <div class="text-center text-xs text-slate-400">Chạm để lật thẻ</div>
                         </div>
                         <div class="absolute inset-0 w-full h-full bg-red-950/80 p-6 rounded-2xl border border-red-900 flex flex-col justify-between backface-hidden rotate-y-180">
                             <div class="text-xs text-red-400">Đáp án / Giải thích điều luật</div>
-                            <p id="fc-back" class="text-base overflow-y-auto max-h-44 text-center my-auto"></p>
+                            <p id="fc-back" class="text-sm sm:text-base overflow-y-auto max-h-44 text-center my-auto"></p>
                             <div class="text-center text-xs text-slate-400">Chạm để lật lại</div>
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-between">
-                    <button onclick="prevCard()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-xl font-medium"><i class="fa-solid fa-chevron-left"></i> Trước</button>
-                    <button onclick="toggleSaveCurrentCard()" id="btn-save-fc" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-xl font-medium flex items-center gap-2"><i class="fa-regular fa-star" id="star-icon-fc"></i> Lưu thẻ</button>
-                    <button onclick="nextCard()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-xl font-medium">Sau <i class="fa-solid fa-chevron-right"></i></button>
+                <div class="flex justify-between gap-2">
+                    <button onclick="prevCard()" class="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-xl font-medium text-sm"><i class="fa-solid fa-chevron-left"></i> Trước</button>
+                    <button onclick="toggleSaveCurrentCard()" id="btn-save-fc" class="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-xl font-medium text-sm flex justify-center items-center gap-2"><i class="fa-regular fa-star" id="star-icon-fc"></i> Lưu</button>
+                    <button onclick="nextCard()" class="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-xl font-medium text-sm">Sau <i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
 
-            <!-- Quiz & Game Mode -->
             <div id="quiz-container" class="hidden space-y-4">
-                <div id="game-card-wrapper" class="bg-slate-800 p-6 rounded-2xl shadow-lg space-y-4 border border-slate-700 transition-all">
+                <div id="game-card-wrapper" class="bg-slate-800 p-4 sm:p-6 rounded-2xl shadow-lg space-y-4 border border-slate-700 transition-all">
                     <div class="flex justify-between items-center text-xs font-bold text-slate-400">
                         <span id="quiz-progress"></span>
                         <span id="timer-box" class="text-amber-400 bg-amber-950/50 px-2.5 py-1 rounded-lg hidden"><i class="fa-solid fa-clock"></i> <span id="time-left">15</span>s</span>
                         <span id="quiz-score" class="text-red-400">Điểm: 0</span>
                     </div>
-                    <h4 id="quiz-question" class="text-lg font-bold"></h4>
+                    <h4 id="quiz-question" class="text-base sm:text-lg font-bold"></h4>
                     <div id="quiz-options" class="space-y-3"></div>
                     <div id="quiz-explanation" class="hidden mt-4 p-4 rounded-xl bg-slate-900 text-sm border border-slate-700">
                         <p class="font-bold text-red-400">Giải thích chi tiết:</p>
                         <p id="quiz-explanation-text" class="mt-1 text-slate-300"></p>
                     </div>
                 </div>
-                <div class="flex justify-between">
-                    <button onclick="prevQuiz()" class="px-4 py-2 bg-slate-700 rounded-xl font-medium">Câu trước</button>
-                    <button onclick="nextQuiz()" id="btn-next-quiz" class="hidden px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl font-medium">Câu tiếp <i class="fa-solid fa-chevron-right"></i></button>
+                <div class="flex justify-between gap-2">
+                    <button onclick="prevQuiz()" class="flex-1 px-4 py-2 bg-slate-700 rounded-xl font-medium text-sm">Câu trước</button>
+                    <button onclick="nextQuiz()" id="btn-next-quiz" class="hidden flex-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl font-medium text-sm">Câu tiếp <i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
 
-        <!-- TAB: LIST -->
         <div id="tab-list-view" class="hidden space-y-4 max-w-2xl mx-auto">
             <button onclick="switchTab('dashboard')" class="px-3 py-1.5 bg-slate-700 rounded-xl text-sm font-medium"><i class="fa-solid fa-arrow-left"></i> Quay lại</button>
             <h3 id="list-view-title" class="font-bold text-lg">Danh sách</h3>
@@ -143,17 +137,27 @@
         </div>
     </main>
 
+    <div id="api-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+        <div class="bg-slate-800 p-6 rounded-2xl max-w-md w-full space-y-4 shadow-2xl border border-slate-700">
+            <h3 class="font-bold text-lg text-slate-100"><i class="fa-solid fa-key text-red-500"></i> Cấu hình Khóa Xác Thực (AQ.)</h3>
+            <p class="text-xs text-slate-400">Dán khóa Authentication Key mới của Google AI Studio (bắt đầu bằng AQ...) vào đây để AI đọc file txt.</p>
+            <input type="password" id="api-key-input" placeholder="Dán khóa AQ... vào đây..." class="w-full p-3 rounded-xl border border-slate-600 bg-slate-900 text-sm focus:outline-none focus:border-red-500 text-white">
+            <div class="flex justify-end gap-2 pt-2">
+                <button onclick="closeApiKeyModal()" class="px-4 py-2 bg-slate-700 rounded-xl text-sm font-medium">Hủy</button>
+                <button onclick="saveApiKey()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl font-semibold shadow text-sm">Lưu Key</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         let laborLawData = [
             {
                 id: 1, title: "Chương I: Những quy định chung", description: "Phạm vi điều chỉnh, đối tượng áp dụng.",
                 cards: [
-                    { q: "Bộ luật Lao động 2019 áp dụng cho đối tượng nào?", a: "Áp dụng cho người lao động, người học nghề, tập nghề, NSDLĐ và người LĐ nước ngoài làm việc tại VN." },
-                    { q: "Độ tuổi lao động tối thiểu của người lao động là bao nhiêu?", a: "Đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI." }
+                    { q: "Bộ luật Lao động 2019 áp dụng cho đối tượng nào?", a: "Áp dụng cho NLĐ, người học nghề, tập nghề, NSDLĐ và NLĐ nước ngoài làm việc tại VN." }
                 ],
                 quiz: [
-                    { q: "Bộ luật Lao động 2019 chính thức có hiệu lực thi hành từ ngày tháng năm nào?", options: ["01/01/2020", "01/01/2021", "20/11/2019", "01/07/2020"], correct: 1, explanation: "Căn cứ Điều 221 BLLĐ 2019, bộ luật có hiệu lực thi hành từ ngày 01/01/2021." },
-                    { q: "Theo BLLĐ 2019, người lao động là người từ đủ bao nhiêu tuổi trở lên?", options: ["Đủ 15 tuổi", "Đủ 16 tuổi", "Đủ 18 tuổi", "Từ đủ 13 tuổi"], correct: 0, explanation: "Căn cứ Khoản 1 Điều 3 BLLĐ 2019, NLĐ là người từ đủ 15 tuổi trở lên." }
+                    { q: "Bộ luật Lao động 2019 chính thức có hiệu lực thi hành từ ngày nào?", options: ["01/01/2020", "01/01/2021", "20/11/2019", "01/07/2020"], correct: 1, explanation: "Căn cứ Điều 221." }
                 ]
             },
             { id: 2, title: "Chương II: Việc làm", description: "Thị trường lao động.", cards: [{ q: "Việc làm là gì?", a: "Hoạt động lao động tạo thu nhập không bị cấm." }], quiz: [{ q: "Khai trình sử dụng lao động trong bao lâu?", options: ["15 ngày", "30 ngày"], correct: 1, explanation: "Căn cứ Khoản 2 Điều 12." }] },
@@ -177,6 +181,8 @@
         let isArcadeMode = false, isMockExam = false, arcadeTimer = null, timeLeft = 15;
 
         window.onload = function() {
+            const customData = localStorage.getItem('labor_law_custom_data');
+            if(customData) { try { laborLawData = JSON.parse(customData); } catch(e){} }
             updateXPDisplay();
             renderDashboard(); 
             updateCounts();
@@ -204,19 +210,19 @@
                 const cardCount = ch.cards ? ch.cards.length : 0;
                 const quizCount = ch.quiz ? ch.quiz.length : 0;
                 grid.innerHTML += `
-                    <div class="bg-slate-800 p-5 rounded-2xl shadow-md border border-slate-700 flex flex-col justify-between hover:border-red-500/50 transition">
+                    <div class="bg-slate-800 p-4 sm:p-5 rounded-2xl shadow-md border border-slate-700 flex flex-col justify-between hover:border-red-500/50 transition">
                         <div>
                             <span class="text-xs font-semibold px-2 py-1 bg-red-950 text-red-400 rounded-lg border border-red-900">Chương ${ch.id}</span>
-                            <h4 class="font-bold text-base mt-2 text-slate-100">${ch.title}</h4>
-                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">${ch.description || ''}</p>
+                            <h4 class="font-bold text-sm sm:text-base mt-2 text-slate-100">${ch.title}</h4>
+                            <p class="text-[11px] sm:text-xs text-slate-400 mt-1 line-clamp-2">${ch.description || ''}</p>
                         </div>
                         <div class="space-y-2 mt-4 pt-3 border-t border-slate-700/60">
                             <div class="flex gap-2">
                                 <button onclick="startChapter(${ch.id}, 'flashcard')" class="flex-1 py-1.5 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Thẻ Nhớ (${cardCount})</button>
                                 <button onclick="startChapter(${ch.id}, 'quiz')" class="flex-1 py-1.5 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Trắc Nghiệm (${quizCount})</button>
                             </div>
-                            <button onclick="loadChapterTxt(${ch.id})" class="w-full py-1.5 bg-blue-950/40 text-blue-300 hover:bg-blue-900/60 border border-blue-800/50 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-file-arrow-down"></i> Tải nội dung chuong${ch.id}.txt từ GitHub
+                            <button onclick="generateChapterByAI(${ch.id})" class="w-full py-1.5 bg-purple-950/40 text-purple-300 hover:bg-purple-900/60 border border-purple-800/50 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> AI Tạo Câu Hỏi (chuong${ch.id}.txt)
                             </button>
                         </div>
                     </div>
@@ -224,20 +230,58 @@
             });
         }
 
-        // TÍNH NĂNG TỰ ĐỘNG ĐỌC FILE CHƯƠNG .TXT TRÊN GITHUB
-        async function loadChapterTxt(chapterId) {
-            alert(`Hệ thống đang tải file 'chuong${chapterId}.txt' từ GitHub về...`);
+        async function generateChapterByAI(chapterId) {
+            const apiKey = localStorage.getItem('gemini_api_key');
+            if(!apiKey || !apiKey.startsWith('AQ.')) {
+                alert("Vui lòng nhập khóa xác thực mới (bắt đầu bằng AQ...) từ Google AI Studio!");
+                openApiKeyModal();
+                return;
+            }
+
+            alert(`AI đang đọc file 'chuong${chapterId}.txt' trên GitHub và gọi mô hình 3.6 tạo câu hỏi...`);
+
             try {
-                const res = await fetch(`chuong${chapterId}.txt`);
-                if(!res.ok) throw new Error(`Không tìm thấy file chuong${chapterId}.txt trên GitHub.`);
-                const text = await res.text();
-                alert(`Đã nạp thành công nội dung file chuong${chapterId}.txt (${text.length} ký tự)! Bạn có thể dùng nội dung này để ôn tập.`);
+                const fileRes = await fetch(`chuong${chapterId}.txt`);
+                if(!fileRes.ok) throw new Error(`Không tìm thấy file chuong${chapterId}.txt trên kho GitHub của bạn.`);
+                const chapterText = await fileRes.text();
+
+                const promptText = `Dựa hoàn toàn vào nội dung văn bản sau đây của Chương ${chapterId}, hãy tạo ra 5 câu Flashcard và 5 câu Quiz trắc nghiệm bám sát điều luật:
+                ${chapterText}
+                Trả về kết quả bằng JSON thuần túy (không kèm markdown) theo cấu trúc:
+                {
+                  "cards": [{"q": "...", "a": "..."}],
+                  "quiz": [{"q": "...", "options": ["A", "B", "C", "D"], "correct": 0, "explanation": "..."}]
+                }`;
+
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: promptText }] }] })
+                });
+
+                const data = await response.json();
+                if (data.error) throw new Error(data.error.message);
+                if (!data.candidates) throw new Error("API trả về dữ liệu rỗng.");
+
+                let textRes = data.candidates[0].content.parts[0].text;
+                textRes = textRes.replace(/```json/g, '').replace(/```/g, '').trim();
+                const newContent = JSON.parse(textRes);
+
+                const targetChapter = laborLawData.find(c => c.id == chapterId);
+                if(targetChapter) {
+                    if(newContent.cards) targetChapter.cards.push(...newContent.cards);
+                    if(newContent.quiz) targetChapter.quiz.push(...newContent.quiz);
+                    localStorage.setItem('labor_law_custom_data', JSON.stringify(laborLawData));
+                    renderDashboard();
+                    userXP += 30;
+                    updateXPDisplay();
+                    alert(`Đã tạo thành công bộ câu hỏi mới cho Chương ${chapterId} và thưởng +30 XP!`);
+                }
             } catch(err) {
-                alert("Lỗi: " + err.message + "\nHãy đảm bảo bạn đã tạo file chuong" + chapterId + ".txt trên GitHub!");
+                alert("Lỗi: " + err.message);
             }
         }
 
-        // THI THỬ TỔNG HỢP
         function startMockExam() {
             let allQuiz = [];
             laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
@@ -269,10 +313,10 @@
             const ans = selectedAnswersMap[currentQuizIndex];
 
             q.options.forEach((opt, idx) => {
-                let btnClass = "w-full text-left p-3.5 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
+                let btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
                 if (ans !== undefined) {
-                    if (idx === q.correct) btnClass = "w-full text-left p-3.5 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
-                    else if (idx === ans) btnClass = "w-full text-left p-3.5 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
+                    if (idx === q.correct) btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
+                    else if (idx === ans) btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
                 }
                 optionsEl.innerHTML += `<button onclick="selectMockAnswer(${idx})" ${ans !== undefined ? 'disabled' : ''} class="${btnClass}"><span>${String.fromCharCode(65 + idx)}. ${opt}</span></button>`;
             });
@@ -299,7 +343,6 @@
             renderMockQuiz();
         }
 
-        // CHẾ ĐỘ VƯỢT ẢI (ARCADE GAME)
         function startArcadeGame() {
             let allQuiz = [];
             laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
@@ -308,7 +351,7 @@
             isArcadeMode = true;
             isMockExam = false;
             currentChapterId = 'arcade';
-            window.arcadeData = { title: "🎮 Chế Độ Vượt Ải Pháp Lý (15s/câu)", quiz: allQuiz.slice(0, 15) };
+            window.arcadeData = { title: "🎮 Vượt Ải Pháp Lý (15s/câu)", quiz: allQuiz.slice(0, 15) };
             currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {};
 
             document.getElementById('study-title').innerText = window.arcadeData.title;
@@ -344,10 +387,10 @@
             const ans = selectedAnswersMap[currentQuizIndex];
 
             q.options.forEach((opt, idx) => {
-                let btnClass = "w-full text-left p-3.5 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
+                let btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
                 if (ans !== undefined) {
-                    if (idx === q.correct) btnClass = "w-full text-left p-3.5 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
-                    else if (idx === ans) btnClass = "w-full text-left p-3.5 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
+                    if (idx === q.correct) btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
+                    else if (idx === ans) btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
                 }
                 optionsEl.innerHTML += `<button onclick="selectArcadeAnswer(${idx})" ${ans !== undefined ? 'disabled' : ''} class="${btnClass}"><span>${String.fromCharCode(65 + idx)}. ${opt}</span></button>`;
             });
@@ -438,10 +481,10 @@
             const ans = selectedAnswersMap[currentQuizIndex];
 
             q.options.forEach((opt, idx) => {
-                let btnClass = "w-full text-left p-3.5 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
+                let btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
                 if (ans !== undefined) {
-                    if (idx === q.correct) btnClass = "w-full text-left p-3.5 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
-                    else if (idx === ans) btnClass = "w-full text-left p-3.5 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
+                    if (idx === q.correct) btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
+                    else if (idx === ans) btnClass = "w-full text-left p-3 sm:p-3.5 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
                 }
                 optionsEl.innerHTML += `<button onclick="selectAnswer(${idx})" ${ans !== undefined ? 'disabled' : ''} class="${btnClass}"><span>${String.fromCharCode(65 + idx)}. ${opt}</span></button>`;
             });
@@ -524,6 +567,19 @@
         function openWrongList() {
             switchTab('list'); document.getElementById('list-view-title').innerText = "Danh Sách Câu Hay Sai";
             document.getElementById('list-container').innerHTML = wrongItems.map(i => `<div class="bg-slate-800 p-4 rounded-xl border border-slate-700"><div class="text-xs text-rose-400">${i.chapter}</div><h5 class="font-bold">${i.q}</h5><p class="text-sm mt-2 text-slate-300">Giải thích: ${i.explanation}</p></div>`).join('') || '<p class="text-slate-500">Chưa có câu sai nào</p>';
+        }
+
+        function openApiKeyModal() {
+            document.getElementById('api-modal').classList.remove('hidden');
+            document.getElementById('api-key-input').value = localStorage.getItem('gemini_api_key') || '';
+        }
+        function closeApiKeyModal() { document.getElementById('api-modal').classList.add('hidden'); }
+        function saveApiKey() {
+            const key = document.getElementById('api-key-input').value.trim();
+            if(!key || !key.startsWith('AQ.')) { alert("Vui lòng nhập chuẩn khóa xác thực mới (bắt đầu bằng AQ...)!"); return; }
+            localStorage.setItem('gemini_api_key', key);
+            alert("Đã lưu Key thành công!");
+            closeApiKeyModal();
         }
     </script>
 </body>
