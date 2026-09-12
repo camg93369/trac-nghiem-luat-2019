@@ -37,7 +37,7 @@
                 </div>
                 <div>
                     <h1 class="font-bold text-lg leading-tight">Luật Lao Động 2019</h1>
-                    <span class="text-xs text-slate-500 dark:text-slate-400">Đồng bộ Cloud & data.json</span>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">Flashcard & Trắc nghiệm chuyên sâu</span>
                 </div>
             </div>
             <button onclick="toggleDarkMode()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-red-50 dark:hover:bg-slate-600 transition">
@@ -60,7 +60,6 @@
                     </div>
                 </div>
                 
-                <!-- Nút Xóa dữ liệu bên dưới nút Đồng bộ -->
                 <div class="flex flex-col gap-2 min-w-[150px] w-full md:w-auto">
                     <button onclick="syncData()" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-xl text-sm font-semibold shadow-sm transition"><i class="fa-solid fa-rotate"></i> Đồng bộ</button>
                     <button onclick="clearData()" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-xl text-sm font-semibold shadow-sm transition"><i class="fa-solid fa-trash"></i> Xóa dữ liệu</button>
@@ -68,7 +67,7 @@
             </div>
 
             <div id="chapters-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <p class="text-center w-full col-span-3 py-10 text-slate-500"><i class="fa-solid fa-spinner fa-spin"></i> Đang tải dữ liệu từ data.json...</p>
+                <p class="text-center w-full col-span-3 py-10 text-slate-500"><i class="fa-solid fa-spinner fa-spin"></i> Đang tải dữ liệu...</p>
             </div>
         </div>
 
@@ -148,7 +147,7 @@
                 laborLawData = await response.json();
                 renderDashboard();
             } catch (error) {
-                document.getElementById('chapters-grid').innerHTML = '<p class="text-red-500 w-full text-center py-10">Lỗi tải dữ liệu. Không tìm thấy file data.json hợp lệ.</p>';
+                document.getElementById('chapters-grid').innerHTML = '<p class="text-red-500 w-full text-center py-10 font-medium">Lỗi tải dữ liệu. Hãy chắc chắn file data.json nằm đúng thư mục.</p>';
             }
         }
 
@@ -167,15 +166,18 @@
             const grid = document.getElementById('chapters-grid');
             grid.innerHTML = '';
             laborLawData.forEach(ch => {
+                const cardCount = ch.cards ? ch.cards.length : 0;
+                const quizCount = ch.quiz ? ch.quiz.length : 0;
                 grid.innerHTML += `
-                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col justify-between cursor-pointer hover:shadow-md">
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col justify-between hover:shadow-md transition">
                         <div>
                             <span class="text-xs font-semibold px-2 py-1 bg-red-100 text-red-600 rounded-lg">Chương ${ch.id}</span>
                             <h4 class="font-bold text-base mt-2">${ch.title}</h4>
+                            <p class="text-xs text-slate-500 mt-1 line-clamp-2">${ch.description || ''}</p>
                         </div>
-                        <div class="flex gap-2 pt-4">
-                            <button onclick="startChapter(${ch.id}, 'flashcard')" class="flex-1 py-2 bg-slate-100 dark:bg-slate-700 rounded-xl text-xs font-semibold">Flashcard (${ch.cards.length})</button>
-                            <button onclick="startChapter(${ch.id}, 'quiz')" class="flex-1 py-2 bg-slate-100 dark:bg-slate-700 rounded-xl text-xs font-semibold">Quiz (${ch.quiz.length})</button>
+                        <div class="flex gap-2 pt-4 border-t border-slate-100 dark:border-slate-700 mt-3">
+                            <button onclick="startChapter(${ch.id}, 'flashcard')" class="flex-1 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-primary-light hover:text-white rounded-xl text-xs font-semibold transition">Flashcard (${cardCount})</button>
+                            <button onclick="startChapter(${ch.id}, 'quiz')" class="flex-1 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-primary-light hover:text-white rounded-xl text-xs font-semibold transition">Quiz (${quizCount})</button>
                         </div>
                     </div>
                 `;
@@ -201,7 +203,7 @@
 
         function renderFlashcard() {
             const chapter = laborLawData.find(c => c.id === currentChapterId);
-            if(!chapter || !chapter.cards[currentCardIndex]) return;
+            if(!chapter || !chapter.cards || !chapter.cards[currentCardIndex]) return;
             const card = chapter.cards[currentCardIndex];
             document.getElementById('fc-index').innerText = `Thẻ ${currentCardIndex + 1}/${chapter.cards.length}`;
             document.getElementById('fc-front').innerText = card.q;
@@ -211,11 +213,12 @@
         }
 
         function flipCard() { document.getElementById('card-inner').classList.toggle('rotate-y-180'); }
-        function nextCard() { currentCardIndex = (currentCardIndex + 1) % laborLawData.find(c => c.id === currentChapterId).cards.length; renderFlashcard(); }
-        function prevCard() { const len = laborLawData.find(c => c.id === currentChapterId).cards.length; currentCardIndex = (currentCardIndex - 1 + len) % len; renderFlashcard(); }
+        function nextCard() { const ch = laborLawData.find(c => c.id === currentChapterId); currentCardIndex = (currentCardIndex + 1) % ch.cards.length; renderFlashcard(); }
+        function prevCard() { const ch = laborLawData.find(c => c.id === currentChapterId); currentCardIndex = (currentCardIndex - 1 + ch.cards.length) % ch.cards.length; renderFlashcard(); }
 
         function renderQuiz() {
             const chapter = laborLawData.find(c => c.id === currentChapterId);
+            if(!chapter || !chapter.quiz || !chapter.quiz[currentQuizIndex]) return;
             const q = chapter.quiz[currentQuizIndex];
             document.getElementById('quiz-progress').innerText = `Câu ${currentQuizIndex + 1}/${chapter.quiz.length}`;
             document.getElementById('quiz-score').innerText = `Điểm: ${quizScore}`;
@@ -258,7 +261,7 @@
             renderQuiz();
         }
 
-        function nextQuiz() { if (currentQuizIndex < laborLawData.find(c => c.id === currentChapterId).quiz.length - 1) { currentQuizIndex++; renderQuiz(); } }
+        function nextQuiz() { const ch = laborLawData.find(c => c.id === currentChapterId); if (currentQuizIndex < ch.quiz.length - 1) { currentQuizIndex++; renderQuiz(); } }
         function prevQuiz() { if (currentQuizIndex > 0) { currentQuizIndex--; renderQuiz(); } }
 
         function toggleSaveCurrentCard() {
