@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="light">
+<html lang="vi" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +30,7 @@
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen transition-colors duration-300 flex flex-col">
 
+    <!-- Header -->
     <header class="bg-slate-800 shadow-sm sticky top-0 z-50 border-b border-slate-700">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('dashboard')">
@@ -37,27 +38,26 @@
                     <i class="fa-solid fa-gamepad text-xl"></i>
                 </div>
                 <div>
-                    <h1 class="font-bold text-lg leading-tight">Luật Lao Động 2019 - Game Mode</h1>
+                    <h1 class="font-bold text-lg leading-tight">Luật Lao Động 2019</h1>
                     <span id="user-xp" class="text-xs text-amber-400 font-semibold">🔥 Cấp độ: Tập sự (0 XP)</span>
                 </div>
             </div>
             <div class="flex items-center gap-2">
                 <button onclick="startArcadeGame()" class="px-3 py-1.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-bolt"></i> Chế Độ Vượt Ải
-                </button>
-                <button onclick="openApiKeyModal()" class="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-semibold shadow transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-key"></i> API Key
+                    <i class="fa-solid fa-bolt"></i> Vượt Ải Pháp Lý
                 </button>
             </div>
         </div>
     </header>
 
+    <!-- Main Container -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
+        <!-- TAB: DASHBOARD -->
         <div id="tab-dashboard" class="space-y-6">
             <div class="bg-gradient-to-r from-slate-800 to-red-950/40 p-6 rounded-2xl border border-red-900/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h2 class="text-2xl font-black text-red-400">Chọn Bản Đồ Ôn Tập (12 Chương)</h2>
-                    <p class="text-sm text-slate-300 mt-1">Vừa học Flashcard, trắc nghiệm vừa tích lũy điểm kinh nghiệm để qua ải.</p>
+                    <h2 class="text-2xl font-black text-red-400">Bản Đồ 12 Chương Luật</h2>
+                    <p class="text-sm text-slate-300 mt-1">Lựa chọn chương để học thẻ nhớ, luyện trắc nghiệm hoặc tích lũy điểm kinh nghiệm.</p>
                 </div>
                 <div class="flex gap-2">
                     <button onclick="openSavedList()" class="px-3 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-semibold"><i class="fa-solid fa-star"></i> Đã Lưu (<span id="count-saved">0</span>)</button>
@@ -68,6 +68,7 @@
             <div id="chapters-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
         </div>
 
+        <!-- TAB: STUDY -->
         <div id="tab-study" class="hidden space-y-6 max-w-2xl mx-auto">
             <div class="flex items-center justify-between">
                 <button onclick="switchTab('dashboard')" class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 rounded-xl text-sm font-medium"><i class="fa-solid fa-arrow-left"></i> Thoát</button>
@@ -78,6 +79,7 @@
                 </div>
             </div>
 
+            <!-- Flashcard -->
             <div id="flashcard-container" class="space-y-4">
                 <div class="perspective-1000 w-full h-80 cursor-pointer" onclick="flipCard()">
                     <div id="card-inner" class="relative w-full h-full duration-500 transform-style-3d shadow-xl rounded-2xl">
@@ -87,7 +89,7 @@
                             <div class="text-center text-xs text-slate-400">Chạm để lật thẻ</div>
                         </div>
                         <div class="absolute inset-0 w-full h-full bg-red-950/80 p-6 rounded-2xl border border-red-900 flex flex-col justify-between backface-hidden rotate-y-180">
-                            <div class="text-xs text-red-400">Đáp án / Giải thích</div>
+                            <div class="text-xs text-red-400">Đáp án / Giải thích điều luật</div>
                             <p id="fc-back" class="text-base overflow-y-auto max-h-44 text-center my-auto"></p>
                             <div class="text-center text-xs text-slate-400">Chạm để lật lại</div>
                         </div>
@@ -100,6 +102,7 @@
                 </div>
             </div>
 
+            <!-- Quiz & Game Mode -->
             <div id="quiz-container" class="hidden space-y-4">
                 <div id="game-card-wrapper" class="bg-slate-800 p-6 rounded-2xl shadow-lg space-y-4 border border-slate-700 transition-all">
                     <div class="flex justify-between items-center text-xs font-bold text-slate-400">
@@ -121,40 +124,100 @@
             </div>
         </div>
 
+        <!-- TAB: LIST (Saved & Wrong) -->
         <div id="tab-list-view" class="hidden space-y-4 max-w-2xl mx-auto">
-            <button onclick="switchTab('dashboard')" class="px-3 py-1.5 bg-slate-700 rounded-xl text-sm font-medium"><i class="fa-solid fa-arrow-left"></i> Quay lại</button>
+            <button onclick="switchTab('dashboard')" class="px-3 py-1.5 bg-slate-700 rounded-xl text-sm font-medium"><i class="fa-solid fa-arrow-left"></i> Quay lại</button> ngân hàng
             <h3 id="list-view-title" class="font-bold text-lg">Danh sách</h3>
             <div id="list-container" class="space-y-3"></div>
         </div>
     </main>
 
-    <!-- Modal API Key -->
-    <div id="api-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
-        <div class="bg-slate-800 p-6 rounded-2xl max-w-md w-full space-y-4 shadow-2xl border border-slate-700">
-            <h3 class="font-bold text-lg text-slate-100"><i class="fa-solid fa-key text-red-500"></i> Cấu hình Gemini API Key (3.6)</h3>
-            <p class="text-xs text-slate-400">Dán Token của bạn (dạng AQ.Ab...) để AI tự động trích xuất file `chuongX.txt`.</p>
-            <input type="password" id="api-key-input" placeholder="Dán Token vào đây..." class="w-full p-3 rounded-xl border border-slate-600 bg-slate-900 text-sm focus:outline-none focus:border-red-500 text-white">
-            <div class="flex justify-end gap-2 pt-2">
-                <button onclick="closeApiKeyModal()" class="px-4 py-2 bg-slate-700 rounded-xl text-sm font-medium">Hủy</button>
-                <button onclick="saveApiKey()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl font-semibold shadow">Lưu Token</button>
-            </div>
-        </div>
-    </div>
-
     <script>
+        // Ngân hàng câu hỏi chuẩn hóa toàn bộ 12 chương Bộ luật Lao động 2019
         let laborLawData = [
-            { id: 1, title: "Chương I: Những quy định chung", description: "Phạm vi điều chỉnh, đối tượng áp dụng.", cards: [{q: "Độ tuổi lao động tối thiểu?", a: "Đủ 15 tuổi."}], quiz: [{q: "Bộ luật có hiệu lực từ ngày?", options: ["01/01/2020", "01/01/2021"], correct: 1, explanation: "Căn cứ Điều 221."}] },
-            { id: 2, title: "Chương II: Việc làm", description: "Thị trường lao động.", cards: [{q: "Việc làm là gì?", a: "Hoạt động tạo thu nhập không bị cấm."}], quiz: [{q: "Khai trình sử dụng lao động trong bao lâu?", options: ["15 ngày", "30 ngày"], correct: 1, explanation: "Khoản 2 Điều 12." }] },
-            { id: 3, title: "Chương III: Hợp đồng lao động", description: "Giao kết hợp đồng.", cards: [{q: "HĐ xác định thời hạn tối đa?", a: "36 tháng."}], quiz: [{q: "Thử việc quản lý tối đa?", options: ["60 ngày", "180 ngày"], correct: 1, explanation: "Khoản 1 Điều 25." }] },
-            { id: 4, title: "Chương IV: Giáo dục nghề nghiệp", description: "Đào tạo nghề.", cards: [{q: "Tập nghề tối đa?", a: "3 tháng."}], quiz: [{q: "Có được thu học phí không?", options: ["Được", "Không"], correct: 1, explanation: "Khoản 3 Điều 61." }] },
-            { id: 5, title: "Chương V: Đối thoại, thương lượng", description: "Thỏa ước lao động tập thể.", cards: [{q: "Đối thoại định kỳ?", a: "1 năm/lần."}], quiz: [{q: "Tỷ lệ tán thành thỏa ước?", options: ["30%", "50%"], correct: 1, explanation: "Khoản 1 Điều 76." }] },
-            { id: 6, title: "Chương VI: Tiền lương", description: "Trả lương, khấu trừ lương.", cards: [{q: "Làm ban đêm trả thêm?", a: "Ít nhất 30%."}], quiz: [{q: "Làm thêm ngày nghỉ hằng tuần?", options: ["150%", "200%"], correct: 1, explanation: "Điểm b Khoản 1 Điều 98." }] },
-            { id: 7, title: "Chương VII: Thời giờ làm việc", description: "Nghỉ ngơi, lễ tết.", cards: [{q: "Giờ ban đêm tính từ?", a: "22h đến 06h."}], quiz: [{q: "Nghỉ lễ Quốc khánh mấy ngày?", options: ["1 ngày", "2 ngày"], correct: 1, explanation: "Điểm đ Khoản 1 Điều 112." }] },
-            { id: 8, title: "Chương VIII: Kỷ luật lao động", description: "Xử lý kỷ luật, sa thải.", cards: [{q: "Thời hiệu xử lý kỷ luật?", a: "6 tháng."}], quiz: [{q: "Hình thức nặng nhất?", options: ["Cách chức", "Sa thải"], correct: 1, explanation: "Điều 124." }] },
-            { id: 9, title: "Chương IX: An toàn, vệ sinh lao động", description: "Đảm bảo an toàn.", cards: [{q: "Quyền từ chối làm việc?", a: "Khi đe dọa tính mạng."}], quiz: [{q: "Trách nhiệm thuộc về ai?", options: ["NLĐ", "NSDLĐ"], correct: 1, explanation: "Điều 134." }] },
-            { id: 10, title: "Chương X: Lao động nữ", description: "Thai sản, bình đẳng giới.", cards: [{q: "Nghỉ thai sản mấy tháng?", a: "6 tháng."}], quiz: [{q: "Nghỉ nuôi con dưới 12 tháng?", options: ["30 phút", "60 phút"], correct: 1, explanation: "Khoản 4 Điều 137." }] },
-            { id: 11, title: "Chương XI: Lao động chưa thành niên", description: "Lao động cao tuổi.", cards: [{q: "Giờ làm việc dưới 15 tuổi?", a: "Tối đa 4 giờ/ngày."}], quiz: [{q: "Quyền lao động cao tuổi?", options: ["Làm đủ 8 tiếng", "Rút ngắn thời giờ"], correct: 1, explanation: "Khoản 2 Điều 148." }] },
-            { id: 12, title: "Chương XII: Giải quyết tranh chấp", description: "Tranh chấp, đình công.", cards: [{q: "Đình công là gì?", a: "Ngừng việc tự nguyện."}], quiz: [{q: "Tuổi nghỉ hưu nam 2028?", options: ["60 tuổi", "62 tuổi"], correct: 1, explanation: "Khoản 2 Điều 169." }] }
+            {
+                id: 1, title: "Chương I: Những quy định chung", description: "Phạm vi điều chỉnh, đối tượng áp dụng, quyền và nghĩa vụ.",
+                cards: [
+                    { q: "Bộ luật Lao động 2019 áp dụng cho đối tượng nào?", a: "Áp dụng cho người lao động, người học nghề, tập nghề, NSDLĐ và người LĐ nước ngoài làm việc tại VN." },
+                    { q: "Độ tuổi lao động tối thiểu của người lao động là bao nhiêu?", a: "Đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI." },
+                    { q: "Thế nào là hành vi cưỡng bức lao động?", a: "Là việc dùng vũ lực, đe dọa dùng vũ lực hoặc thủ đoạn khác để ép buộc NLĐ làm việc trái ý muốn." }
+                ],
+                quiz: [
+                    { q: "Bộ luật Lao động 2019 chính thức có hiệu lực thi hành từ ngày tháng năm nào?", options: ["01/01/2020", "01/01/2021", "20/11/2019", "01/07/2020"], correct: 1, explanation: "Căn cứ Điều 221 BLLĐ 2019, bộ luật có hiệu lực thi hành từ ngày 01/01/2021." },
+                    { q: "Theo BLLĐ 2019, người lao động là người từ đủ bao nhiêu tuổi trở lên?", options: ["Đủ 15 tuổi", "Đủ 16 tuổi", "Đủ 18 tuổi", "Từ đủ 13 tuổi"], correct: 0, explanation: "Căn cứ Khoản 1 Điều 3 BLLĐ 2019, NLĐ là người từ đủ 15 tuổi trở lên, có năng lực hành vi dân sự." }
+                ]
+            },
+            {
+                id: 2, title: "Chương II: Việc làm, thị trường lao động", description: "Chính sách việc làm, dịch vụ việc làm.",
+                cards: [
+                    { q: "Việc làm được định nghĩa thế nào?", a: "Là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm." },
+                    { q: "Người lao động khi tham gia tuyển dụng có phải trả chi phí không?", a: "Người lao động tuyệt đối không phải trả chi phí cho việc tuyển dụng lao động." }
+                ],
+                quiz: [
+                    { q: "Người sử dụng lao động phải khai trình việc sử dụng lao động trong thời hạn bao lâu?", options: ["15 ngày", "30 ngày", "45 ngày", "60 ngày"], correct: 1, explanation: "Căn cứ Khoản 2 Điều 12, NSDLĐ phải khai trình sử dụng lao động trong thời hạn 30 ngày kể từ ngày hoạt động." }
+                ]
+            },
+            {
+                id: 3, title: "Chương III: Hợp đồng lao động", description: "Giao kết, thực hiện, chấm dứt hợp đồng lao động.",
+                cards: [
+                    { q: "Hợp đồng xác định thời hạn có thời hạn tối đa bao nhiêu tháng?", a: "Không quá 36 tháng." },
+                    { q: "Thời gian thử việc tối đa đối với công việc quản lý doanh nghiệp là bao lâu?", a: "Không quá 180 ngày." }
+                ],
+                quiz: [
+                    { q: "Hợp đồng xác định thời hạn hết hạn mà tiếp tục làm việc thì sau bao lâu thành hợp đồng không xác định thời hạn?", options: ["10 ngày", "30 ngày", "45 ngày", "60 ngày"], correct: 1, explanation: "Căn cứ Điểm b Khoản 2 Điều 20, thời hạn là 30 ngày." },
+                    { q: "Tiền lương trong thời gian thử việc ít nhất phải bằng bao nhiêu phần trăm lương chính?", options: ["70%", "80%", "85%", "100%"], correct: 2, explanation: "Căn cứ Điều 26, tiền lương thử việc ít nhất bằng 85% mức lương của công việc đó." }
+                ]
+            },
+            {
+                id: 4, title: "Chương IV: Giáo dục nghề nghiệp", description: "Đào tạo, nâng cao trình độ kỹ năng nghề.",
+                cards: [ { q: "Thời hạn tập nghề tối đa để làm việc cho NSDLĐ là bao lâu?", a: "Không quá 03 tháng." } ],
+                quiz: [ { q: "Khi tuyển người vào học nghề để làm việc cho mình, NSDLĐ có được thu học phí không?", options: ["Được thu theo thỏa thuận", "Không được thu học phí", "Thu một nửa", "Tùy công ty quyết định"], correct: 1, explanation: "Căn cứ Khoản 3 Điều 61, NSDLĐ không được thu học phí." } ]
+            },
+            {
+                id: 5, title: "Chương V: Đối thoại, thương lượng tập thể", description: "Quy chế dân chủ, thỏa ước lao động tập thể.",
+                cards: [ { q: "Đối thoại định kỳ tại nơi làm việc diễn ra ít nhất mấy lần trong năm?", a: "Ít nhất 01 năm một lần." } ],
+                quiz: [ { q: "Thỏa ước lao động tập thể doanh nghiệp được ký kết khi có trên bao nhiêu phần trăm NLĐ tán thành?", options: ["30%", "50%", "70%", "100%"], correct: 1, explanation: "Căn cứ Khoản 1 Điều 76, phải có trên 50% người lao động biểu quyết tán thành." } ]
+            },
+            {
+                id: 6, title: "Chương VI: Tiền lương", description: "Mức lương tối thiểu, trả lương, khấu trừ tiền lương.",
+                cards: [
+                    { q: "Làm việc vào ban đêm được trả thêm ít nhất bao nhiêu phần trăm?", a: "Ít nhất bằng 30% tiền lương của ngày làm việc bình thường." },
+                    { q: "Mức khấu trừ tiền lương hằng tháng để bồi thường thiệt hại tối đa là bao nhiêu?", a: "Không quá 30% tiền lương thực trả hằng tháng." }
+                ],
+                quiz: [
+                    { q: "Làm thêm giờ vào ngày nghỉ hằng tuần (Chủ nhật) được trả lương ít nhất bằng bao nhiêu phần trăm?", options: ["150%", "200%", "300%", "100%"], correct: 1, explanation: "Căn cứ Điểm b Khoản 1 Điều 98, làm thêm ngày nghỉ hằng tuần được trả ít nhất bằng 200%." }
+                ]
+            },
+            {
+                id: 7, title: "Chương VII: Thời giờ làm việc, nghỉ ngơi", description: "Làm thêm giờ, nghỉ hằng năm, nghỉ lễ tết.",
+                cards: [ { q: "Giờ làm việc ban đêm được tính từ mấy giờ đến mấy giờ?", a: "Từ 22 giờ đến 06 giờ sáng hôm sau." } ],
+                quiz: [ { q: "Số ngày nghỉ lễ Quốc khánh (2/9 dương lịch) hằng năm được nghỉ hưởng nguyên lương là bao nhiêu ngày?", options: ["01 ngày", "02 ngày", "03 ngày", "04 ngày"], correct: 1, explanation: "Căn cứ Điểm đ Khoản 1 Điều 112, nghỉ lễ Quốc khánh được nghỉ 02 ngày." } ]
+            },
+            {
+                id: 8, title: "Chương VIII: Kỷ luật lao động", description: "Nội quy lao động, hình thức xử lý kỷ luật.",
+                cards: [ { q: "Thời hiệu xử lý kỷ luật lao động thông thường là bao lâu?", a: "Là 06 tháng kể từ ngày xảy ra hành vi vi phạm." } ],
+                quiz: [ { q: "Hình thức xử lý kỷ luật lao động nặng nhất được quy định tại Điều 124 là gì?", options: ["Khiển trách", "Kéo dài nâng lương", "Cách chức", "Sa thải"], correct: 3, explanation: "Căn cứ Điều 124, sa thải là hình thức kỷ luật cao nhất." } ]
+            },
+            {
+                id: 9, title: "Chương IX: An toàn, vệ sinh lao động", description: "Đảm bảo an toàn tại nơi làm việc.",
+                cards: [ { q: "Người lao động có quyền từ chối làm việc khi nào?", a: "Khi có nguy cơ rõ ràng đe dọa trực tiếp đến tính mạng, sức khỏe." } ],
+                quiz: [ { q: "Trách nhiệm đảm bảo an toàn, vệ sinh lao động tại nơi làm việc thuộc về ai?", options: ["Chỉ người lao động", "Người sử dụng lao động", "Công an", "Công đoàn"], correct: 1, explanation: "Căn cứ Điều 134, NSDLĐ chịu trách nhiệm thực hiện đầy đủ các giải pháp." } ]
+            },
+            {
+                id: 10, title: "Chương X: Lao động nữ", description: "Thai sản, bình đẳng giới.",
+                cards: [ { q: "Thời gian nghỉ thai sản của lao động nữ sinh con bình thường là bao lâu?", a: "Là 06 tháng." } ],
+                quiz: [ { q: "Lao động nữ nuôi con dưới 12 tháng tuổi được nghỉ mỗi ngày ít nhất bao nhiêu phút?", options: ["30 phút", "45 phút", "60 phút", "120 phút"], correct: 2, explanation: "Căn cứ Khoản 4 Điều 137, lao động nữ được nghỉ mỗi ngày 60 phút." } ]
+            },
+            {
+                id: 11, title: "Chương XI: Lao động chưa thành niên", description: "Quy định riêng cho lao động chưa thành niên, cao tuổi.",
+                cards: [ { q: "Thời giờ làm việc của người chưa đủ 15 tuổi tối đa là mấy giờ trong một ngày?", a: "Không quá 04 giờ trong 01 ngày." } ],
+                quiz: [ { q: "Người lao động cao tuổi có quyền gì về thời giờ làm việc?", options: ["Phải làm đủ 8 tiếng", "Được thỏa thuận rút ngắn thời giờ làm việc", "Không được làm ban ngày", "Phải nghỉ hưu"], correct: 1, explanation: "Căn cứ Khoản 2 Điều 148, NLĐ cao tuổi được thỏa thuận rút ngắn thời giờ làm việc." } ]
+            },
+            {
+                id: 12, title: "Chương XII: Giải quyết tranh chấp", description: "Tranh chấp lao động, đình công.",
+                cards: [ { q: "Đình công là gì theo BLLĐ 2019?", a: "Là sự ngừng việc tạm thời, tự nguyện và có tổ chức của người lao động." } ],
+                quiz: [ { q: "Theo lộ trình Khoản 2 Điều 169, tuổi nghỉ hưu của nam đạt 62 tuổi vào năm nào?", options: ["2026", "2028", "2030", "2035"], correct: 1, explanation: "Căn cứ Khoản 2 Điều 169, tuổi nghỉ hưu của nam đạt 62 tuổi vào năm 2028." } ]
+            }
         ];
 
         let savedItems = JSON.parse(localStorage.getItem('labor_law_saved')) || [];
@@ -165,17 +228,16 @@
         let isArcadeMode = false, arcadeTimer = null, timeLeft = 15;
 
         window.onload = function() {
-            const customData = localStorage.getItem('labor_law_custom_data');
-            if(customData) { try { laborLawData = JSON.parse(customData); } catch(e){} }
             updateXPDisplay();
-            renderDashboard(); updateCounts();
+            renderDashboard(); 
+            updateCounts();
         };
 
         function updateXPDisplay() {
             let rank = "Tập sự";
-            if(userXP >= 100) rank = "Cử nhân Luật";
-            if(userXP >= 300) rank = "Luật Sư Tập Sự";
-            if(userXP >= 600) rank = "Thẩm Phán Tối Cao";
+            if(userXP >= 50) rank = "Cử nhân Luật";
+            if(userXP >= 150) rank = "Luật Sư Tập Sự";
+            if(userXP >= 300) rank = "Thẩm Phán Tối Cao";
             document.getElementById('user-xp').innerText = `🔥 Cấp độ: ${rank} (${userXP} XP)`;
             localStorage.setItem('labor_law_xp', userXP);
         }
@@ -199,14 +261,9 @@
                             <h4 class="font-bold text-base mt-2 text-slate-100">${ch.title}</h4>
                             <p class="text-xs text-slate-400 mt-1 line-clamp-2">${ch.description || ''}</p>
                         </div>
-                        <div class="space-y-2 mt-4 pt-3 border-t border-slate-700/60">
-                            <div class="flex gap-2">
-                                <button onclick="startChapter(${ch.id}, 'flashcard')" class="flex-1 py-1.5 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Thẻ Nhớ (${cardCount})</button>
-                                <button onclick="startChapter(${ch.id}, 'quiz')" class="flex-1 py-1.5 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Trắc Nghiệm (${quizCount})</button>
-                            </div>
-                            <button onclick="generateChapterByAI(${ch.id})" class="w-full py-1.5 bg-purple-950/40 text-purple-300 hover:bg-purple-900/60 border border-purple-800/50 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i> AI Đọc file chuong${ch.id}.txt tạo câu hỏi
-                            </button>
+                        <div class="flex gap-2 pt-4 border-t border-slate-700/60 mt-4">
+                            <button onclick="startChapter(${ch.id}, 'flashcard')" class="flex-1 py-2 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Thẻ Nhớ (${cardCount})</button>
+                            <button onclick="startChapter(${ch.id}, 'quiz')" class="flex-1 py-2 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Trắc Nghiệm (${quizCount})</button>
                         </div>
                     </div>
                 `;
@@ -217,7 +274,6 @@
         function startArcadeGame() {
             let allQuiz = [];
             laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
-            if(allQuiz.length === 0) { alert("Chưa có dữ liệu trắc nghiệm!"); return; }
             allQuiz.sort(() => Math.random() - 0.5);
 
             isArcadeMode = true;
@@ -278,7 +334,7 @@
         }
 
         function handleTimeOut() {
-            selectedAnswersMap[currentQuizIndex] = -1; // Sai do hết giờ
+            selectedAnswersMap[currentQuizIndex] = -1;
             const wrapper = document.getElementById('game-card-wrapper');
             wrapper.classList.add('animate-shake');
             setTimeout(() => wrapper.classList.remove('animate-shake'), 300);
@@ -291,7 +347,7 @@
             selectedAnswersMap[currentQuizIndex] = idx;
             if (idx === q.correct) {
                 quizScore += 10;
-                userXP += 15;
+                userXP += 10;
                 updateXPDisplay();
             } else {
                 const wrapper = document.getElementById('game-card-wrapper');
@@ -299,58 +355,6 @@
                 setTimeout(() => wrapper.classList.remove('animate-shake'), 300);
             }
             renderArcadeQuiz();
-        }
-
-        async function generateChapterByAI(chapterId) {
-            const apiKey = localStorage.getItem('gemini_api_key');
-            if(!apiKey) { alert("Vui lòng bấm nút 'API Key' ở góc trên để nhập Token!"); openApiKeyModal(); return; }
-
-            alert(`AI đang đọc file 'chuong${chapterId}.txt' trên GitHub và thiết lập câu hỏi trắc nghiệm 3.6...`);
-
-            try {
-                const fileRes = await fetch(`chuong${chapterId}.txt`);
-                if(!fileRes.ok) throw new Error(`Không tìm thấy file chuong${chapterId}.txt trong kho lưu trữ GitHub.`);
-                const chapterText = await fileRes.text();
-
-                const promptText = `Dựa hoàn toàn vào nội dung văn bản sau đây của Chương ${chapterId}, hãy tạo ra 15 câu Flashcard và 15 câu Quiz trắc nghiệm cực kỳ lôi cuốn bám sát điều luật:
-                ${chapterText}
-                Trả về kết quả hoàn toàn bằng định dạng JSON thuần túy (không kèm markdown) theo cấu trúc:
-                {
-                  "cards": [{"q": "...", "a": "..."}],
-                  "quiz": [{"q": "...", "options": ["A", "B", "C", "D"], "correct": 0, "explanation": "..."}]
-                }`;
-
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent`, {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey}`
-                    },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: promptText }] }] })
-                });
-
-                const data = await response.json();
-                if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
-                    throw new Error("Token không hợp lệ hoặc bị từ chối.");
-                }
-
-                let textRes = data.candidates[0].content.parts[0].text;
-                textRes = textRes.replace(/```json/g, '').replace(/```/g, '').trim();
-                const newContent = JSON.parse(textRes);
-
-                const targetChapter = laborLawData.find(c => c.id == chapterId);
-                if(targetChapter) {
-                    targetChapter.cards = newContent.cards || [];
-                    targetChapter.quiz = newContent.quiz || [];
-                    localStorage.setItem('labor_law_custom_data', JSON.stringify(laborLawData));
-                    renderDashboard();
-                    userXP += 30;
-                    updateXPDisplay();
-                    alert(`Đã tạo thành công bộ câu hỏi mới cho Chương ${chapterId} và thưởng +30 XP!`);
-                }
-            } catch(err) {
-                alert("Lỗi: " + err.message);
-            }
         }
 
         function startChapter(chapterId, mode) {
@@ -490,21 +494,8 @@
         }
 
         function openWrongList() {
-            switchTab('list'); document.getElementById('list-view-title').innerText = "Danh Sách Câu Hay Sai";
+            switchTab('list'); document.getElementById('list-view-title': "Danh Sách Câu Hay Sai";
             document.getElementById('list-container').innerHTML = wrongItems.map(i => `<div class="bg-slate-800 p-4 rounded-xl border border-slate-700"><div class="text-xs text-rose-400">${i.chapter}</div><h5 class="font-bold">${i.q}</h5><p class="text-sm mt-2 text-slate-300">Giải thích: ${i.explanation}</p></div>`).join('') || '<p class="text-slate-500">Chưa có câu sai nào</p>';
-        }
-
-        function openApiKeyModal() {
-            document.getElementById('api-modal').classList.remove('hidden');
-            document.getElementById('api-key-input').value = localStorage.getItem('gemini_api_key') || '';
-        }
-        function closeApiKeyModal() { document.getElementById('api-modal').classList.add('hidden'); }
-        function saveApiKey() {
-            const key = document.getElementById('api-key-input').value.trim();
-            if(!key) { alert("Vui lòng nhập Token hợp lệ!"); return; }
-            localStorage.setItem('gemini_api_key', key);
-            alert("Đã lưu Token thành công!");
-            closeApiKeyModal();
         }
     </script>
 </body>
