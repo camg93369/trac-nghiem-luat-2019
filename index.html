@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luật Lao Động 2019 - Tu Tiên Phi Thăng Edition</title>
+    <title>Luật Lao Động 2019 - Tu Chân Giới Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -89,11 +89,11 @@
         <div id="tab-dashboard" class="space-y-6">
             <div class="bg-gradient-to-r from-slate-800 to-red-950/40 p-4 sm:p-6 rounded-2xl border border-red-900/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div class="flex-1 space-y-3">
-                    <h2 class="text-xl sm:text-2xl font-black text-red-400">Đạo Quán Tu Tiên</h2>
+                    <h2 class="text-xl sm:text-2xl font-black text-red-400">Tu Chân Giới</h2>
                     <p class="text-xs sm:text-sm text-slate-300">Làm trắc nghiệm tích lũy XP & Linh Thạch mua đan dược. Lười tu luyện 3 ngày sẽ bị thiên lôi hạ cấp!</p>
                     
                     <button onclick="openRanksModal()" class="px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-amber-400 rounded-xl text-xs font-bold border border-slate-600 shadow transition flex items-center gap-2">
-                        <i class="fa-solid fa-mountain text-red-400"></i> 🏔️ Mở Xem 35 Tiểu Cảnh Giới Tu Tiên
+                        <i class="fa-solid fa-mountain text-red-400"></i> 🏔️ Mở Xem 35 Tiểu Cảnh Giới Tu Chân
                     </button>
                 </div>
                 
@@ -165,12 +165,12 @@
         </div>
     </main>
 
-    <!-- HỆ THỐNG THÔNG BÁO TÙY CHỈNH: ĐẠO QUÁN TU TIÊN CHO BIẾT -->
+    <!-- HỆ THỐNG THÔNG BÁO TÙY CHỈNH: TU CHÂN GIỚI CHO BIẾT -->
     <div id="custom-alert-modal" class="hidden fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-4">
         <div class="bg-slate-800 p-6 rounded-2xl max-w-sm w-full space-y-4 shadow-2xl border border-red-900 text-center">
             <div class="text-red-400 text-3xl"><i class="fa-solid fa-yin-yang animate-spin"></i></div>
             <div>
-                <h3 class="font-bold text-base text-amber-400">Đạo Quán Tu Tiên cho biết</h3>
+                <h3 class="font-bold text-base text-amber-400">Tu Chân Giới cho biết</h3>
                 <p id="custom-alert-message" class="text-xs sm:text-sm text-slate-200 mt-2 leading-relaxed"></p>
             </div>
             <button onclick="closeCustomAlert()" class="w-full py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold shadow transition">Đã Hiểu</button>
@@ -193,7 +193,7 @@
     <div id="ranks-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
         <div class="bg-slate-800 p-6 rounded-2xl max-w-2xl w-full space-y-4 shadow-2xl border border-slate-700 max-h-[85vh] flex flex-col">
             <div class="flex justify-between items-center border-b border-slate-700 pb-3">
-                <h3 class="font-bold text-base sm:text-lg text-amber-400"><i class="fa-solid fa-mountain text-red-500"></i> Bản Đồ 35 Tiểu Cảnh Giới Tu Tiên</h3>
+                <h3 class="font-bold text-base sm:text-lg text-amber-400"><i class="fa-solid fa-mountain text-red-500"></i> Bản Đồ 35 Tiểu Cảnh Giới Tu Chân</h3>
                 <button onclick="closeRanksModal()" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-bold">Đóng</button>
             </div>
             <div class="overflow-y-auto flex-grow pr-2">
@@ -216,7 +216,6 @@
     </div>
 
     <script>
-        // HÀM HIỂN THỊ THÔNG BÁO TÙY CHỈNH THAY CHO ALERT MẶC ĐỊNH
         function showDaoQuanAlert(message) {
             document.getElementById('custom-alert-message').innerText = message;
             document.getElementById('custom-alert-modal').classList.remove('hidden');
@@ -248,6 +247,7 @@
         let isArcadeMode = false, isMockExam = false, isTribulationMode = false, arcadeTimer = null, timeLeft = 15;
         let streakCount = 0;
 
+        // ĐỦ CHUẨN 35 TIỂU CẢNH GIỚI (Kết thúc bằng Hỗn Nguyên Đạo Tôn)
         const ranks = [
             { name: "Phàm Nhân", min: 0 },
             { name: "Luyện Khí Sơ kỳ", min: 100 }, { name: "Luyện Khí Trung kỳ", min: 250 }, { name: "Luyện Khí Đại viên mãn", min: 450 },
@@ -260,7 +260,7 @@
             { name: "Đại Thừa Sơ kỳ", min: 23800 }, { name: "Đại Thừa Trung kỳ", min: 27000 }, { name: "Đại Thừa Đại viên mãn", min: 30600 },
             { name: "Độ Kiếp Sơ kỳ", min: 34600 }, { name: "Độ Kiếp Trung kỳ", min: 39000 }, { name: "Độ Kiếp Đại viên mãn", min: 44000 },
             { name: "Chân Tiên", min: 50000 }, { name: "Kim Tiên", min: 60000 }, { name: "Thái Ất Chân Tiên", min: 72000 },
-            { name: "Đại Lô Kim Tiên", min: 86000 }, { name: "Tiên Vương", min: 102000 }, { name: "Tiên Đế", min: 120000 }
+            { name: "Đại Lô Kim Tiên", min: 86000 }, { name: "Tiên Vương", min: 102000 }, { name: "Hỗn Nguyên Đạo Tôn", min: 120000 }
         ];
 
         const shopItems = [
