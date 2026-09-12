@@ -64,6 +64,7 @@
                 </div>
             </div>
             <div class="flex flex-wrap items-center gap-2">
+                <span id="reset-timer-badge" class="text-[11px] bg-slate-900 text-slate-300 px-2.5 py-1.5 rounded-xl border border-slate-700 font-medium">⏳ Đại Trừng Phạt: 7 ngày</span>
                 <button onclick="startMockExam()" class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
                     <i class="fa-solid fa-scroll"></i> Thiên Kiếp Bảng
                 </button>
@@ -81,21 +82,14 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
         <div id="tab-dashboard" class="space-y-6">
             <div class="bg-gradient-to-r from-slate-800 to-red-950/40 p-4 sm:p-6 rounded-2xl border border-red-900/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div class="flex-1">
-                    <h2 class="text-xl sm:text-2xl font-black text-red-400">Bản Đồ 12 Tầng Tháp</h2>
-                    <p class="text-xs sm:text-sm text-slate-300 mt-1">Làm trắc nghiệm đúng tích lũy XP, đạt chuỗi Combo để gia tăng tốc độ tu vi.</p>
-                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-3 text-[10px] sm:text-xs">
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-slate-300">1. Phàm Nhân (0)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-green-300">2. Luyện Khí (50)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-teal-300">3. Trúc Cơ (150)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-yellow-300">4. Kim Đan (300)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-orange-300">5. Nguyên Anh (500)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-red-300">6. Hóa Thần (800)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-pink-300">7. Luyện Hư (1200)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-purple-300">8. Hợp Thể (1700)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-indigo-300">9. Đại Thừa (2500)</span>
-                        <span class="px-2 py-1 bg-slate-700/80 rounded-lg text-sky-300 font-bold">10. Độ Kiếp (4000)</span>
-                    </div>
+                <div class="flex-1 space-y-3">
+                    <h2 class="text-xl sm:text-2xl font-black text-red-400">Đạo Quán Tu Tiên</h2>
+                    <p class="text-xs sm:text-sm text-slate-300">Làm trắc nghiệm đúng tích lũy XP thăng cấp. Lười tu luyện 3 ngày sẽ bị thiên lôi phạt hạ cấp!</p>
+                    
+                    <!-- Nút bấm thu gọn bản đồ tháp -->
+                    <button onclick="openRanksModal()" class="px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-amber-400 rounded-xl text-xs font-bold border border-slate-600 shadow transition flex items-center gap-2">
+                        <i class="fa-solid fa-mountain text-red-400"></i> 🏔️ Mở Xem 36 Tầng Tháp Cảnh Giới
+                    </button>
                 </div>
                 
                 <div class="bg-slate-900/80 p-4 rounded-xl border border-red-500/40 flex flex-col justify-center items-center gap-3 w-full md:w-72 tribulation-glow">
@@ -166,6 +160,21 @@
         </div>
     </main>
 
+    <!-- Modal Hiển Thị 36 Tầng Tháp -->
+    <div id="ranks-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+        <div class="bg-slate-800 p-6 rounded-2xl max-w-2xl w-full space-y-4 shadow-2xl border border-slate-700 max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center border-b border-slate-700 pb-3">
+                <h3 class="font-bold text-base sm:text-lg text-amber-400"><i class="fa-solid fa-mountain text-red-500"></i> Bản Đồ 36 Tiểu Cảnh Giới Tu Tiên</h3>
+                <button onclick="closeRanksModal()" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-bold">Đóng</button>
+            </div>
+            <div class="overflow-y-auto flex-grow pr-2">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 text-xs" id="ranks-list-container">
+                    <!-- Danh sách 36 tầng render tự động -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal Nhập Key -->
     <div id="api-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
         <div class="bg-slate-800 p-6 rounded-2xl max-w-md w-full space-y-4 shadow-2xl border border-slate-700">
@@ -198,29 +207,98 @@
         let userXP = parseInt(localStorage.getItem('labor_law_xp')) || 0;
         let currentChapterId = null, currentStudyMode = 'flashcard';
         let currentCardIndex = 0, currentQuizIndex = 0, quizScore = 0, selectedAnswersMap = {};
-        let activeQuizList = []; // Danh sách câu hỏi hiện tại đã được xáo trộn ngẫu nhiên
+        let activeQuizList = [];
         let isArcadeMode = false, isMockExam = false, isTribulationMode = false, arcadeTimer = null, timeLeft = 15;
         let streakCount = 0;
 
         const ranks = [
             { name: "Phàm Nhân", min: 0 },
-            { name: "Luyện Khí", min: 50 },
-            { name: "Trúc Cơ", min: 150 },
-            { name: "Kim Đan", min: 300 },
-            { name: "Nguyên Anh", min: 500 },
-            { name: "Hóa Thần", min: 800 },
-            { name: "Luyện Hư", min: 1200 },
-            { name: "Hợp Thể", min: 1700 },
-            { name: "Đại Thừa", min: 2500 },
-            { name: "Độ Kiếp", min: 4000 }
+            { name: "Luyện Khí Sơ kỳ", min: 100 }, { name: "Luyện Khí Trung kỳ", min: 250 }, { name: "Luyện Khí Đại viên mãn", min: 450 },
+            { name: "Trúc Cơ Sơ kỳ", min: 700 }, { name: "Trúc Cơ Trung kỳ", min: 1000 }, { name: "Trúc Cơ Đại viên mãn", min: 1400 },
+            { name: "Kim Đan Sơ kỳ", min: 1900 }, { name: "Kim Đan Trung kỳ", min: 2500 }, { name: "Kim Đan Đại viên mãn", min: 3200 },
+            { name: "Nguyên Anh Sơ kỳ", min: 4000 }, { name: "Nguyên Anh Trung kỳ", min: 4900 }, { name: "Nguyên Anh Đại viên mãn", min: 5900 },
+            { name: "Hóa Thần Sơ kỳ", min: 7000 }, { name: "Hóa Thần Trung kỳ", min: 8200 }, { name: "Hóa Thần Đại viên mãn", min: 9500 },
+            { name: "Luyện Hư Sơ kỳ", min: 11000 }, { name: "Luyện Hư Trung kỳ", min: 12600 }, { name: "Luyện Hư Đại viên mãn", min: 14400 },
+            { name: "Hợp Thể Sơ kỳ", min: 16400 }, { name: "Hợp Thể Trung kỳ", min: 18600 }, { name: "Hợp Thể Đại viên mãn", min: 21000 },
+            { name: "Đại Thừa Sơ kỳ", min: 23800 }, { name: "Đại Thừa Trung kỳ", min: 27000 }, { name: "Đại Thừa Đại viên mãn", min: 30600 },
+            { name: "Độ Kiếp Sơ kỳ", min: 34600 }, { name: "Độ Kiếp Trung kỳ", min: 39000 }, { name: "Độ Kiếp Đại viên mãn", min: 44000 }
         ];
 
         window.onload = function() {
             const customData = localStorage.getItem('labor_law_custom_data');
             if(customData) { try { laborLawData = JSON.parse(customData); } catch(e){} }
+            
+            checkInactivityPenalty();
+            checkWeeklyReset();
             updateXPDisplay();
+            renderRanksModalList();
             renderDashboard(); 
         };
+
+        function checkInactivityPenalty() {
+            const lastPlayTime = parseInt(localStorage.getItem('labor_law_last_play')) || Date.now();
+            const now = Date.now();
+            const diffDays = (now - lastPlayTime) / (1000 * 60 * 60 * 24);
+            
+            if (diffDays >= 3) {
+                let currentIdx = getRankIndex(userXP);
+                if (currentIdx > 0) {
+                    currentIdx -= Math.floor(diffDays / 3);
+                    if (currentIdx < 0) currentIdx = 0;
+                    userXP = ranks[currentIdx].min;
+                    alert("⚠️ Đạo tâm bất định! Do 3 ngày qua không ôn luyện luật lao động, bạn bị thiên lôi phạt giáng cấp tu vi!");
+                }
+            }
+            localStorage.setItem('labor_law_last_play', now);
+        }
+
+        function checkWeeklyReset() {
+            const resetEpoch = parseInt(localStorage.getItem('labor_law_reset_epoch')) || Date.now();
+            const now = Date.now();
+            const diffDays = (now - resetEpoch) / (1000 * 60 * 60 * 24);
+            const daysLeft = Math.max(0, Math.ceil(7 - diffDays));
+
+            document.getElementById('reset-timer-badge').innerText = `⏳ Đại Trừng Phạt: ${daysLeft} ngày`;
+
+            if (diffDays >= 7) {
+                userXP = 0;
+                localStorage.setItem('labor_law_reset_epoch', now);
+                alert("🌩️ ĐẠI THANH TRỪNG TU TIÊN! Chu kỳ 7 ngày đã mãn, thiên địa đổi mới, toàn bộ tu vi quy về Phàm Nhân để bắt đầu một vòng đua mới!");
+            }
+        }
+
+        function getRankIndex(xp) {
+            let idx = 0;
+            for(let i = 0; i < ranks.length; i++) {
+                if(xp >= ranks[i].min) idx = i;
+            }
+            return idx;
+        }
+
+        function renderRanksModalList() {
+            const container = document.getElementById('ranks-list-container');
+            container.innerHTML = '';
+            let currentIdx = getRankIndex(userXP);
+            ranks.forEach((r, idx) => {
+                let isCurrent = idx === currentIdx;
+                let bgClass = isCurrent ? "bg-red-950/80 border-red-500 text-red-300 font-bold" : "bg-slate-700/50 border-slate-700 text-slate-300";
+                container.innerHTML += `
+                    <div class="p-2.5 rounded-xl border ${bgClass} flex justify-between items-center">
+                        <span>${idx + 1}. ${r.name}</span>
+                        <span class="text-[10px] text-amber-400 font-mono">${r.min} XP</span>
+                    </div>
+                `;
+            });
+        }
+
+        function openRanksModal() {
+            renderRanksModalList();
+            document.getElementById('ranks-modal').classList.remove('hidden');
+        }
+
+        function closeRanksModal() {
+            document.getElementById('ranks-modal').classList.add('hidden');
+        }
 
         function triggerLightning() {
             const body = document.getElementById('main-body');
@@ -235,29 +313,25 @@
         }
 
         function updateXPDisplay() {
-            let currentRankObj = ranks[0];
-            let nextRankObj = null;
-            for(let i = 0; i < ranks.length; i++) {
-                if(userXP >= ranks[i].min) {
-                    currentRankObj = ranks[i];
-                    nextRankObj = ranks[i+1] || null;
-                }
-            }
+            let currentIdx = getRankIndex(userXP);
+            let currentRankObj = ranks[currentIdx];
+            let nextRankObj = ranks[currentIdx + 1] || null;
 
             let statusText = `Đang tu luyện...`;
             if(nextRankObj) {
-                if(userXP >= nextRankObj.min - 20) {
+                if(userXP >= nextRankObj.min - 30) {
                     statusText = `⚡ Đã chạm bình cảnh lên ${nextRankObj.name}!`;
                 } else {
                     statusText = `Cần ${nextRankObj.min - userXP} XP nữa để chạm bình cảnh`;
                 }
             } else {
-                statusText = `👑 Đã đạt cảnh giới cao nhất!`;
+                statusText = `👑 Đã đạt cảnh giới cao nhất thế gian!`;
             }
 
             document.getElementById('user-xp').innerText = `🔥 Cảnh giới: ${currentRankObj.name} (${userXP} XP)`;
             document.getElementById('tribulation-status').innerText = statusText;
             localStorage.setItem('labor_law_xp', userXP);
+            localStorage.setItem('labor_law_last_play', Date.now());
         }
 
         function updateStreakDisplay() {
@@ -303,14 +377,11 @@
             });
         }
 
-        // HÀM XÁO TRỘN NGẪU NHÂN CÂU HỎI VÀ ĐÁP ÁN ĐỂ MỖI LẦN VÀO THI LÀ MỘT ĐỀ KHÁC NHAU
         function prepareShuffledQuiz(rawQuizArray) {
             return rawQuizArray.map(item => {
                 let cloned = JSON.parse(JSON.stringify(item));
                 let optionsWithIndex = cloned.options.map((opt, idx) => ({ opt, originalIdx: idx }));
-                // Xáo trộn vị trí các đáp án A, B, C, D
                 optionsWithIndex.sort(() => Math.random() - 0.5);
-                
                 cloned.options = optionsWithIndex.map(o => o.opt);
                 cloned.correct = optionsWithIndex.findIndex(o => o.originalIdx === item.correct);
                 return cloned;
@@ -400,7 +471,6 @@
             }
         }
 
-        // HÀM RENDER TRẮC NGHIỆM CHUNG CHO TẤT CẢ CÁC CHẾ ĐỘ
         function renderActiveQuiz() {
             if(arcadeTimer) clearInterval(arcadeTimer);
             if(isArcadeMode || isTribulationMode) {
@@ -476,12 +546,11 @@
             if (idx === q.correct) {
                 streakCount++;
                 quizScore += isTribulationMode ? 20 : 10;
-                userXP += isTribulationMode ? (30 * streakCount) : (5 * streakCount);
+                userXP += isTribulationMode ? (15 * streakCount) : (3 * streakCount);
                 updateXPDisplay();
                 updateStreakDisplay();
                 if(isTribulationMode) triggerLightning();
                 
-                // Tự động chuyển câu sau 1 giây nếu chưa phải câu cuối
                 if (currentQuizIndex < activeQuizList.length - 1) {
                     setTimeout(nextQuiz, 1000);
                 }
