@@ -4,22 +4,23 @@
     "title": "Chương I: Những quy định chung",
     "description": "Phạm vi điều chỉnh, đối tượng áp dụng, quyền và nghĩa vụ của NLĐ và NSDLĐ.",
     "cards": [
-      { "q": "Bộ luật Lao động 2019 áp dụng cho đối tượng nào?", "a": "Áp dụng cho người lao động, người học nghề, người tập nghề, người làm việc không có quan hệ lao động, NSDLĐ và người LĐ nước ngoài làm việc tại VN." },
+      { "q": "Phạm vi điều chỉnh của Bộ luật Lao động 2019 là gì?", "a": "Quy định tiêu chuẩn lao động; quyền, nghĩa vụ, trách nhiệm của NLĐ, NSDLĐ, tổ chức đại diện các bên trong quan hệ lao động và quan hệ liên quan." },
       { "q": "Độ tuổi lao động tối thiểu của người lao động là bao nhiêu?", "a": "Đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI." },
-      { "q": "Thế nào là hành vi cưỡng bức lao động?", "a": "Là việc dùng vũ lực, đe dọa dùng vũ lực hoặc thủ đoạn khác để ép buộc NLĐ làm việc trái ý muốn." }
+      { "q": "Thế nào là hành vi cưỡng bức lao động?", "a": "Là việc dùng vũ lực, đe dọa dùng vũ lực hoặc thủ đoạn khác để ép buộc NLĐ làm việc trái ý muốn." },
+      { "q": "Quấy rối tình dục tại nơi làm việc được định nghĩa thế nào?", "a": "Là hành vi có tính chất tình dục của bất kỳ người nào đối với người khác tại nơi làm việc mà không được người đó mong muốn hoặc chấp nhận." }
     ],
     "quiz": [
       {
-        "q": "Bộ luật Lao động 2019 chính thức có hiệu lực thi hành từ ngày tháng năm nào?",
-        "options": ["01/01/2020", "01/01/2021", "20/11/2019", "01/07/2020"],
+        "q": "Bộ luật Lao động 2019 áp dụng cho đối tượng nào sau đây?",
+        "options": ["Chỉ người lao động Việt Nam", "Người lao động, người học nghề, tập nghề, NSDLĐ và người LĐ nước ngoài làm việc tại VN", "Chỉ các doanh nghiệp nhà nước", "Chỉ các tổ chức kinh tế có vốn đầu tư nước ngoài"],
         "correct": 1,
-        "explanation": "Căn cứ Điều 221 BLLĐ 2019, bộ luật có hiệu lực thi hành từ ngày 01/01/2021."
+        "explanation": "Căn cứ Điều 2 Bộ luật Lao động 2019, đối tượng áp dụng bao cả người lao động, học nghề, tập nghề, NSDLĐ và người lao động nước ngoài[cite: 2]."
       },
       {
-        "q": "Theo BLLĐ 2019, người lao động là người từ đủ bao nhiêu tuổi trở lên?",
-        "options": ["Đủ 15 tuổi", "Đủ 16 tuổi", "Đủ 18 tuổi", "Từ đủ 13 tuổi"],
-        "correct": 0,
-        "explanation": "Căn cứ Khoản 1 Điều 3 BLLĐ 2019, NLĐ là người từ đủ 15 tuổi trở lên, có năng lực hành vi dân sự đầy đủ."
+        "q": "Hành vi phân biệt đối xử trong lao động dựa trên yếu tố nào thì không bị xem là phân biệt đối xử?",
+        "options": ["Dựa trên giới tính hoặc độ tuổi thông thường", "Xuất phát từ yêu cầu đặc thù của công việc và duy trì, bảo vệ việc làm cho NLĐ dễ bị tổn thương", "Dựa trên tôn giáo và tín ngưỡng cá nhân", "Dựa trên chính kiến riêng của người lao động"],
+        "correct": 1,
+        "explanation": "Căn cứ Khoản 8 Điều 3, các hành vi phân, loại trừ xuất phát từ yêu cầu đặc thù công việc và bảo vệ NLĐ dễ bị tổn thương không bị coi là phân biệt đối xử[cite: 2]."
       }
     ]
   },
@@ -28,15 +29,15 @@
     "title": "Chương II: Việc làm, thị trường lao động",
     "description": "Chính sách việc làm, dịch vụ việc làm, tổ chức dịch vụ việc làm.",
     "cards": [
-      { "q": "Việc làm là gì theo BLLĐ 2019?", "a": "Là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm." },
-      { "q": "Người lao động khi tuyển dụng có phải trả chi phí không?", "a": "Người lao động không phải trả chi phí cho việc tuyển dụng lao động." }
+      { "q": "Việc làm được định nghĩa như thế nào trong BLLĐ 2019?", "a": "Là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm." },
+      { "q": "Người lao động khi tham gia tuyển dụng có phải trả chi phí không?", "a": "Người lao động không phải trả chi phí cho việc tuyển dụng lao động." }
     ],
     "quiz": [
       {
-        "q": "Người sử dụng lao động có trách nhiệm khai trình việc sử dụng lao động trong thời hạn bao lâu kể từ ngày bắt đầu hoạt động?",
+        "q": "Người sử dụng lao động phải khai trình việc sử dụng lao động trong thời hạn bao lâu kể từ ngày bắt đầu hoạt động?",
         "options": ["15 ngày", "30 ngày", "45 ngày", "60 ngày"],
         "correct": 1,
-        "explanation": "Căn cứ Khoản 2 Điều 12, NSDLĐ phải khai trình sử dụng lao động trong thời hạn 30 ngày kể từ ngày hoạt động."
+        "explanation": "Căn cứ Khoản 2 Điều 12, NSDLĐ phải khai trình việc sử dụng lao động trong thời hạn 30 ngày kể từ ngày bắt đầu hoạt động[cite: 2]."
       }
     ]
   },
@@ -46,30 +47,37 @@
     "description": "Giao kết, thực hiện, sửa đổi, chấm dứt hợp đồng lao động.",
     "cards": [
       { "q": "Hợp đồng lao động xác định thời hạn có thời hạn tối đa là bao nhiêu tháng?", "a": "Không quá 36 tháng." },
-      { "q": "NSDLĐ có được giữ bản chính giấy tờ tùy thân của NLĐ không?", "a": "Tuyệt đối không được giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của NLĐ." }
+      { "q": "NSDLĐ có được giữ bản chính giấy tờ tùy thân, văn bằng của NLĐ không?", "a": "Tuyệt đối không được giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động." },
+      { "q": "Thời gian thử việc tối đa đối với công việc quản lý doanh nghiệp là bao lâu?", "a": "Không quá 180 ngày." }
     ],
     "quiz": [
       {
-        "q": "Theo Điều 20 BLLĐ 2019, hợp đồng lao động xác định thời hạn có thời hạn tối đa bao nhiêu tháng?",
-        "options": ["12 tháng", "24 tháng", "36 tháng", "60 tháng"],
-        "correct": 2,
-        "explanation": "Căn cứ Điểm b Khoản 1 Điều 20, hợp đồng xác định thời hạn có thời hạn không quá 36 tháng."
+        "q": "Theo Điều 20 BLLĐ 2019, hợp đồng xác định thời hạn hết hạn mà NLĐ vẫn tiếp tục làm việc thì sau bao lâu sẽ trở thành hợp đồng không xác định thời hạn nếu không ký mới?",
+        "options": ["10 ngày", "30 ngày", "45 ngày", "60 ngày"],
+        "correct": 1,
+        "explanation": "Căn cứ Điểm b Khoản 2 Điều 20, trong thời hạn 30 ngày kể từ ngày hết hạn mà không ký hợp đồng mới thì hợp đồng trở thành không xác định thời hạn[cite: 2]."
+      },
+      {
+        "q": "Thời gian thử việc đối với công việc cần trình độ chuyên môn kỹ thuật từ cao đẳng trở lên tối đa là bao nhiêu ngày?",
+        "options": ["30 ngày", "60 ngày", "180 ngày", "15 ngày"],
+        "correct": 1,
+        "explanation": "Căn cứ Khoản 2 Điều 25, thời gian thử việc không quá 60 ngày đối với công việc cần trình độ từ cao đẳng trở lên[cite: 2]."
       }
     ]
   },
   {
     "id": 4,
-    "title": "Chương IV: Giáo dục nghề nghiệp và phát triển kỹ năng nghề",
+    "title": "Chương IV: Giáo dục nghề nghiệp",
     "description": "Đào tạo, bồi dưỡng, nâng cao trình độ kỹ năng nghề.",
     "cards": [
-      { "q": "Thời hạn tập nghề tối đa là bao nhiêu tháng?", "a": "Không quá 03 tháng." }
+      { "q": "Thời hạn tập nghề để làm việc cho NSDLĐ tối đa là bao lâu?", "a": "Không quá 03 tháng." }
     ],
     "quiz": [
       {
         "q": "Khi tuyển người vào học nghề, tập nghề để làm việc cho mình, NSDLĐ có được thu học phí không?",
         "options": ["Được thu theo thỏa thuận", "Không được thu học phí", "Được thu một nửa", "Tùy công ty quyết định"],
         "correct": 1,
-        "explanation": "Căn cứ Khoản 3 Điều 61, NSDLĐ tuyển người học nghề, tập nghề để làm việc cho mình thì không được thu học phí."
+        "explanation": "Căn cứ Khoản 3 Điều 61, NSDLĐ tuyển người học nghề, tập nghề thì không được thu học phí[cite: 2]."
       }
     ]
   },
@@ -78,14 +86,14 @@
     "title": "Chương V: Đối thoại, thương lượng tập thể",
     "description": "Quy chế dân chủ ở cơ sở, thương lượng tập thể, thỏa ước lao động tập thể.",
     "cards": [
-      { "q": "Đối thoại định kỳ tại nơi làm việc ít nhất mấy lần trong một năm?", "a": "Ít nhất 01 năm một lần." }
+      { "q": "Đối thoại định kỳ tại nơi làm việc diễn ra ít nhất mấy lần trong năm?", "a": "Ít nhất 01 năm một lần." }
     ],
     "quiz": [
       {
         "q": "Thỏa ước lao động tập thể doanh nghiệp chỉ được ký kết khi có trên bao nhiêu phần trăm người lao động biểu quyết tán thành?",
         "options": ["30%", "50%", "70%", "100%"],
         "correct": 1,
-        "explanation": "Căn cứ Khoản 1 Điều 76, thỏa ước lao động tập thể doanh nghiệp cần trên 50% người lao động biểu quyết tán thành."
+        "explanation": "Căn cứ Khoản 1 Điều 76, thỏa ước lao động tập thể doanh nghiệp phải có trên 50% người lao động của doanh nghiệp biểu quyết tán thành[cite: 2]."
       }
     ]
   },
@@ -94,30 +102,32 @@
     "title": "Chương VI: Tiền lương",
     "description": "Mức lương tối thiểu, trả lương, hình thức trả lương, khấu trừ tiền lương.",
     "cards": [
-      { "q": "Làm việc vào ban đêm được trả thêm ít nhất bao nhiêu phần trăm?", "a": "Ít nhất bằng 30% tiền lương của ngày làm việc bình thường." }
+      { "q": "Làm việc vào ban đêm được trả thêm ít nhất bao nhiêu phần trăm tiền lương?", "a": "Ít nhất bằng 30% tiền lương của ngày làm việc bình thường." },
+      { "q": "Mức khấu trừ tiền lương hằng tháng để bồi thường thiệt hại tối đa là bao nhiêu?", "a": "Không quá 30% tiền lương thực trả hằng tháng sau khi trích nộp BHXH, BHYT, BHTN, thuế TNCN." }
     ],
     "quiz": [
       {
         "q": "Làm thêm giờ vào ngày nghỉ hằng tuần (Chủ nhật) được trả lương ít nhất bằng bao nhiêu phần trăm?",
         "options": ["150%", "200%", "300%", "100%"],
         "correct": 1,
-        "explanation": "Căn cứ Điểm b Khoản 1 Điều 98, làm thêm ngày nghỉ hằng tuần được trả ít nhất bằng 200%."
+        "explanation": "Căn cứ Điểm b Khoản 1 Điều 98, làm thêm giờ vào ngày nghỉ hằng tuần được trả ít nhất bằng 200%[cite: 2]."
       }
     ]
   },
   {
     "id": 7,
-    "title": "Chương VII: Thời giờ làm việc, thời giờ nghỉ ngơi",
+    "title": "Chương VII: Thời giờ làm việc, nghỉ ngơi",
     "description": "Làm thêm giờ, nghỉ hằng tuần, nghỉ hằng năm, nghỉ lễ tết.",
     "cards": [
-      { "q": "Giờ làm việc ban đêm được tính từ mấy giờ đến mấy giờ?", "a": "Từ 22 giờ đến 06 giờ sáng hôm sau." }
+      { "q": "Giờ làm việc ban đêm được tính từ mấy giờ đến mấy giờ?", "a": "Từ 22 giờ đến 06 giờ sáng hôm sau." },
+      { "q": "Tổng số giờ làm thêm trong 1 năm của NLĐ thông thường tối đa là bao nhiêu?", "a": "Không quá 200 giờ (trừ trường hợp đặc biệt không quá 300 giờ)." }
     ],
     "quiz": [
       {
         "q": "Số ngày nghỉ lễ Quốc khánh (2/9 dương lịch) hằng năm được nghỉ hưởng nguyên lương là bao nhiêu ngày?",
         "options": ["01 ngày", "02 ngày", "03 ngày", "04 ngày"],
         "correct": 1,
-        "explanation": "Căn cứ Điểm đ Khoản 1 Điều 112, nghỉ lễ Quốc khánh được nghỉ 02 ngày."
+        "explanation": "Căn cứ Điểm đ Khoản 1 Điều 112, nghỉ lễ Quốc khánh được nghỉ 02 ngày[cite: 2]."
       }
     ]
   },
@@ -126,14 +136,14 @@
     "title": "Chương VIII: Kỷ luật lao động, trách nhiệm vật chất",
     "description": "Nội quy lao động, hình thức xử lý kỷ luật, bồi thường thiệt hại.",
     "cards": [
-      { "q": "Thời hiệu xử lý kỷ luật lao động thông thường là bao lâu?", "a": "Là 06 tháng kể từ ngày xảy ra hành vi vi phạm (12 tháng nếu liên quan tài chính, tài sản)." }
+      { "q": "Thời hiệu xử lý kỷ luật lao động thông thường là bao lâu?", "a": "Là 06 tháng kể từ ngày xảy ra hành vi vi phạm (12 tháng nếu liên quan tài chính, tài sản, bí mật kinh doanh)." }
     ],
     "quiz": [
       {
         "q": "Hình thức xử lý kỷ luật lao động nặng nhất được quy định tại Điều 124 là gì?",
         "options": ["Khiển trách", "Kéo dài thời hạn nâng lương", "Cách chức", "Sa thải"],
         "correct": 3,
-        "explanation": "Căn cứ Điều 124, sa thải là hình thức kỷ luật cao nhất."
+        "explanation": "Căn cứ Điều 124, sa thải là hình thức kỷ luật cao nhất[cite: 2]."
       }
     ]
   },
@@ -142,14 +152,14 @@
     "title": "Chương IX: An toàn, vệ sinh lao động",
     "description": "Bảo đảm an toàn vệ sinh lao động tại nơi làm việc, xử lý sự cố.",
     "cards": [
-      { "q": "Người lao động có quyền từ chối làm việc khi nào?", "a": "Khi có nguy cơ rõ ràng đe dọa trực tiếp đến tính mạng, sức khỏe." }
+      { "q": "Người lao động có quyền từ chối làm việc khi nào?", "a": "Khi có nguy cơ rõ ràng đe dọa trực tiếp đến tính mạng, sức khỏe trong quá trình làm việc." }
     ],
     "quiz": [
       {
-        "q": "Trách nhiệm đảm bảo an toàn, vệ sinh lao động tại nơi làm việc thuộc về ai?",
-        "options": ["Chỉ người lao động", "Người sử dụng lao động", "Cơ quan công an", "Bộ Lao động"],
+        "q": "Trách nhiệm bảo đảm an toàn, vệ sinh lao động tại nơi làm việc thuộc về ai?",
+        "options": ["Chỉ người lao động tự trang bị", "Người sử dụng lao động có trách nhiệm thực hiện đầy đủ các giải pháp", "Cơ quan công an địa phương", "Tổ chức công đoàn"],
         "correct": 1,
-        "explanation": "Căn cứ Điều 134, NSDLĐ có trách nhiệm thực hiện đầy đủ các giải pháp bảo đảm an toàn, vệ sinh lao động."
+        "explanation": "Căn cứ Điều 134, NSDLĐ chịu trách nhiệm thực hiện đầy đủ các giải pháp đảm bảo an toàn, vệ sinh lao động[cite: 2]."
       }
     ]
   },
@@ -165,23 +175,23 @@
         "q": "Lao động nữ nuôi con dưới 12 tháng tuổi được nghỉ mỗi ngày ít nhất bao nhiêu phút trong thời gian làm việc?",
         "options": ["30 phút", "45 phút", "60 phút", "120 phút"],
         "correct": 2,
-        "explanation": "Căn cứ Khoản 4 Điều 137, lao động nữ nuôi con dưới 12 tháng tuổi được nghỉ mỗi ngày 60 phút."
+        "explanation": "Căn cứ Khoản 4 Điều 137, lao động nữ nuôi con dưới 12 tháng tuổi được nghỉ mỗi ngày 60 phút[cite: 2]."
       }
     ]
   },
   {
     "id": 11,
-    "title": "Chương XI: Lao động chưa thành niên và một số lao động khác",
+    "title": "Chương XI: Lao động chưa thành niên",
     "description": "Quy định riêng cho lao động chưa thành niên, cao tuổi, giúp việc gia đình.",
     "cards": [
       { "q": "Thời giờ làm việc của người chưa đủ 15 tuổi tối đa là mấy giờ trong một ngày?", "a": "Không quá 04 giờ trong 01 ngày và 20 giờ trong 01 tuần." }
     ],
     "quiz": [
       {
-        "q": "Người lao động cao tuổi có quyền gì về thời giờ làm việc?",
-        "options": ["Phải làm đủ 8 tiếng", "Được thỏa thuận rút ngắn thời giờ làm việc hoặc làm việc không trọn thời gian", "Không được làm việc ban ngày", "Bắt buộc nghỉ hưu sớm"],
+        "q": "Người lao động cao tuổi có quyền gì về thời giờ làm việc theo Điều 148?",
+        "options": ["Phải làm đủ 8 tiếng như người bình thường", "Được thỏa thuận rút ngắn thời giờ làm việc hoặc làm việc không trọn thời gian", "Không được làm việc vào ban ngày", "Bắt buộc nghỉ hưu sớm"],
         "correct": 1,
-        "explanation": "Căn cứ Khoản 2 Điều 148, NLĐ cao tuổi có quyền thỏa thuận rút ngắn thời giờ làm việc hoặc làm việc không trọn thời gian."
+        "explanation": "Căn cứ Khoản 2 Điều 148, NLĐ cao tuổi có quyền thỏa thuận rút ngắn thời giờ làm việc hoặc làm việc không trọn thời gian[cite: 2]."
       }
     ]
   },
@@ -190,14 +200,14 @@
     "title": "Chương XII: Giải quyết tranh chấp lao động",
     "description": "Tranh chấp lao động cá nhân, tập thể, đình công.",
     "cards": [
-      { "q": "Đình công là gì?", "a": "Là sự ngừng việc tạm thời, tự nguyện và có tổ chức của người lao động." }
+      { "q": "Đình công là gì theo BLLĐ 2019?", "a": "Là sự ngừng việc tạm thời, tự nguyện và có tổ chức của người lao động nhằm đạt yêu cầu trong giải quyết tranh chấp." }
     ],
     "quiz": [
       {
-        "q": "Theo lộ trình tại Khoản 2 Điều 169, tuổi nghỉ hưu của lao động nữ trong điều kiện bình thường đạt đủ 60 tuổi vào năm nào?",
+        "q": "Theo lộ trình tại Khoản 2 Điều 169, tuổi nghỉ hưu của lao động nam trong điều kiện lao động bình thường sẽ đạt đến đủ 62 tuổi vào năm nào?",
         "options": ["Năm 2026", "Năm 2028", "Năm 2030", "Năm 2035"],
-        "correct": 3,
-        "explanation": "Căn cứ Khoản 2 Điều 169, tuổi nghỉ hưu của lao động nữ đạt đủ 60 tuổi vào năm 2035."
+        "correct": 1,
+        "explanation": "Căn cứ Khoản 2 Điều 169, tuổi nghỉ hưu của nam đạt 62 tuổi vào năm 2028[cite: 2]."
       }
     ]
   }
