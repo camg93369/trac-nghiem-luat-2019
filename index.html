@@ -198,8 +198,9 @@
         let userXP = parseInt(localStorage.getItem('labor_law_xp')) || 0;
         let currentChapterId = null, currentStudyMode = 'flashcard';
         let currentCardIndex = 0, currentQuizIndex = 0, quizScore = 0, selectedAnswersMap = {};
+        let activeQuizList = []; // Danh sách câu hỏi hiện tại đã được xáo trộn ngẫu nhiên
         let isArcadeMode = false, isMockExam = false, isTribulationMode = false, arcadeTimer = null, timeLeft = 15;
-        let streakCount = 0; // Đếm số câu đúng liên tiếp (Combo Streak)
+        let streakCount = 0;
 
         const ranks = [
             { name: "Phàm Nhân", min: 0 },
@@ -302,37 +303,127 @@
             });
         }
 
+        // HÀM XÁO TRỘN NGẪU NHÂN CÂU HỎI VÀ ĐÁP ÁN ĐỂ MỖI LẦN VÀO THI LÀ MỘT ĐỀ KHÁC NHAU
+        function prepareShuffledQuiz(rawQuizArray) {
+            return rawQuizArray.map(item => {
+                let cloned = JSON.parse(JSON.stringify(item));
+                let optionsWithIndex = cloned.options.map((opt, idx) => ({ opt, originalIdx: idx }));
+                // Xáo trộn vị trí các đáp án A, B, C, D
+                optionsWithIndex.sort(() => Math.random() - 0.5);
+                
+                cloned.options = optionsWithIndex.map(o => o.opt);
+                cloned.correct = optionsWithIndex.findIndex(o => o.originalIdx === item.correct);
+                return cloned;
+            }).sort(() => Math.random() - 0.5);
+        }
+
         function triggerTribulation() {
             let allQuiz = [];
             laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
             if(allQuiz.length < 5) { alert("Cần tích lũy thêm câu hỏi trắc nghiệm để mở lôi kiếp!"); return; }
-            allQuiz.sort(() => Math.random() - 0.5);
 
             isArcadeMode = false; isMockExam = false; isTribulationMode = true; currentChapterId = 'tribulation';
-            window.tribulationData = { title: "⚡ Thiên Kiếp Lôi Phạt (Đột Phá Cảnh Giới)", quiz: allQuiz.slice(0, 5) };
+            activeQuizList = prepareShuffledQuiz(allQuiz).slice(0, 5);
             currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {}; streakCount = 0;
-            setupStudyMode(window.tribulationData.title);
+            
+            setupStudyMode("⚡ Thiên Kiếp Lôi Phạt (Đột Phá Cảnh Giới)");
             document.getElementById('timer-box').classList.remove('hidden');
-            renderTribulationQuiz();
+            renderActiveQuiz();
         }
 
-        function renderTribulationQuiz() {
-            if(arcadeTimer) clearInterval(arcadeTimer);
-            timeLeft = 10;
-            document.getElementById('time-left').innerText = timeLeft;
-            arcadeTimer = setInterval(() => {
-                timeLeft--; document.getElementById('time-left').innerText = timeLeft;
-                if(timeLeft <= 0) { 
-                    clearInterval(arcadeTimer); 
-                    streakCount = 0; updateStreakDisplay();
-                    triggerThunderFail();
-                    handleTribulationTimeOut(); 
-                }
-            }, 1000);
+        function startMockExam() {
+            let allQuiz = [];
+            laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
+            if(allQuiz.length === 0) { alert("Chưa có câu hỏi trắc nghiệm nào!"); return; }
 
-            const q = window.tribulationData.quiz[currentQuizIndex];
-            document.getElementById('quiz-progress').innerText = `Lôi Kiếp Trận ${currentQuizIndex + 1}/5`;
-            document.getElementById('quiz-score').innerText = `Điểm Kiếp: ${quizScore}`;
+            isArcadeMode = false; isMockExam = true; isTribulationMode = false; currentChapterId = 'mock';
+            activeQuizList = prepareShuffledQuiz(allQuiz).slice(0, 20);
+            currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {}; streakCount = 0;
+            
+            setupStudyMode("🌩️ Thiên Kiếp Bảng (Đề Tổng Hợp)");
+            renderActiveQuiz();
+        }
+
+        function startArcadeGame() {
+            let allQuiz = [];
+            laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
+            if(allQuiz.length === 0) { alert("Chưa có câu hỏi trắc nghiệm nào!"); return; }
+
+            isArcadeMode = true; isMockExam = false; isTribulationMode = false; currentChapterId = 'arcade';
+            activeQuizList = prepareShuffledQuiz(allQuiz).slice(0, 15);
+            currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {}; streakCount = 0;
+            
+            setupStudyMode("⚡ Phá Trận Tháp (15s/câu)");
+            document.getElementById('timer-box').classList.remove('hidden');
+            renderActiveQuiz();
+        }
+
+        function startChapter(chapterId, mode) {
+            isArcadeMode = false; isMockExam = false; isTribulationMode = false; currentChapterId = chapterId;
+            currentCardIndex = 0; currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {}; streakCount = 0;
+            
+            const chapter = laborLawData.find(c => c.id === chapterId);
+            setupStudyMode(chapter.title);
+            document.getElementById('study-mode-buttons').classList.remove('hidden');
+            
+            if (mode === 'quiz') {
+                if(!chapter.quiz || chapter.quiz.length === 0) { alert("Chương này chưa có câu hỏi trắc nghiệm!"); return; }
+                activeQuizList = prepareShuffledQuiz(chapter.quiz);
+            }
+            setStudyMode(mode);
+        }
+
+        function setupStudyMode(title) {
+            document.getElementById('study-title').innerText = title;
+            document.getElementById('study-mode-buttons').classList.add('hidden');
+            document.getElementById('timer-box').classList.add('hidden');
+            switchTab('study');
+            document.getElementById('flashcard-container').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+        }
+
+        function setStudyMode(mode) {
+            currentStudyMode = mode;
+            document.getElementById('flashcard-container').classList.toggle('hidden', mode !== 'flashcard');
+            document.getElementById('quiz-container').classList.toggle('hidden', mode !== 'quiz');
+            document.getElementById('btn-mode-fc').className = `px-3 py-1.5 rounded-xl text-sm font-semibold ${mode === 'flashcard' ? 'bg-red-600 text-white' : 'bg-slate-700'}`;
+            document.getElementById('btn-mode-qz').className = `px-3 py-1.5 rounded-xl text-sm font-semibold ${mode === 'quiz' ? 'bg-red-600 text-white' : 'bg-slate-700'}`;
+            
+            if(mode === 'flashcard') {
+                renderFlashcard();
+            } else {
+                if(currentChapterId !== 'mock' && currentChapterId !== 'arcade' && currentChapterId !== 'tribulation') {
+                    const chapter = laborLawData.find(c => c.id === currentChapterId);
+                    activeQuizList = prepareShuffledQuiz(chapter.quiz);
+                }
+                renderActiveQuiz();
+            }
+        }
+
+        // HÀM RENDER TRẮC NGHIỆM CHUNG CHO TẤT CẢ CÁC CHẾ ĐỘ
+        function renderActiveQuiz() {
+            if(arcadeTimer) clearInterval(arcadeTimer);
+            if(isArcadeMode || isTribulationMode) {
+                timeLeft = isTribulationMode ? 10 : 15;
+                document.getElementById('time-left').innerText = timeLeft;
+                arcadeTimer = setInterval(() => {
+                    timeLeft--; document.getElementById('time-left').innerText = timeLeft;
+                    if(timeLeft <= 0) { 
+                        clearInterval(arcadeTimer); 
+                        streakCount = 0; updateStreakDisplay();
+                        if(isTribulationMode) triggerThunderFail();
+                        handleTimeOut(); 
+                    }
+                }, 1000);
+            }
+
+            if(!activeQuizList || activeQuizList.length === 0) return;
+            const q = activeQuizList[currentQuizIndex];
+            
+            let progressLabel = `Câu ${currentQuizIndex + 1}/${activeQuizList.length}`;
+            if(isTribulationMode) progressLabel = `Lôi Kiếp Trận ${currentQuizIndex + 1}/5`;
+            document.getElementById('quiz-progress').innerText = progressLabel;
+            document.getElementById('quiz-score').innerText = `Điểm: ${quizScore}`;
             document.getElementById('quiz-question').innerText = q.q;
             
             const optionsEl = document.getElementById('quiz-options');
@@ -345,7 +436,7 @@
                     if (idx === q.correct) btnClass = "w-full text-left p-3 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
                     else if (idx === ans) btnClass = "w-full text-left p-3 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
                 }
-                optionsEl.innerHTML += `<button onclick="selectTribulationAnswer(${idx})" ${ans !== undefined ? 'disabled' : ''} class="${btnClass}"><span>${String.fromCharCode(65 + idx)}. ${opt}</span></button>`;
+                optionsEl.innerHTML += `<button onclick="selectActiveAnswer(${idx})" ${ans !== undefined ? 'disabled' : ''} class="${btnClass}"><span>${String.fromCharCode(65 + idx)}. ${opt}</span></button>`;
             });
 
             const exp = document.getElementById('quiz-explanation');
@@ -354,9 +445,11 @@
                 document.getElementById('quiz-explanation-text').innerText = q.explanation || "Không có giải thích chi tiết.";
                 document.getElementById('btn-next-quiz').classList.remove('hidden');
                 
-                if (currentQuizIndex >= window.tribulationData.quiz.length - 1) {
+                if (isTribulationMode && currentQuizIndex >= activeQuizList.length - 1) {
                     document.getElementById('btn-next-quiz').innerText = "Xem Kết Quả Lôi Kiếp";
                     document.getElementById('btn-next-quiz').setAttribute('onclick', 'finishTribulation()');
+                } else if (currentQuizIndex >= activeQuizList.length - 1) {
+                    document.getElementById('btn-next-quiz').classList.add('hidden');
                 } else {
                     document.getElementById('btn-next-quiz').innerText = "Câu tiếp";
                     document.getElementById('btn-next-quiz').setAttribute('onclick', 'nextQuiz()');
@@ -367,33 +460,39 @@
             }
         }
 
-        function handleTribulationTimeOut() {
+        function handleTimeOut() {
             selectedAnswersMap[currentQuizIndex] = -1;
             const wrapper = document.getElementById('game-card-wrapper');
             wrapper.classList.add('animate-shake');
             setTimeout(() => wrapper.classList.remove('animate-shake'), 300);
-            renderTribulationQuiz();
+            renderActiveQuiz();
         }
 
-        function selectTribulationAnswer(idx) {
-            clearInterval(arcadeTimer);
-            const q = window.tribulationData.quiz[currentQuizIndex];
+        function selectActiveAnswer(idx) {
+            if(arcadeTimer) clearInterval(arcadeTimer);
+            const q = activeQuizList[currentQuizIndex];
             selectedAnswersMap[currentQuizIndex] = idx;
+            
             if (idx === q.correct) {
                 streakCount++;
-                quizScore += 20;
-                userXP += (30 * streakCount); // Combo tăng XP bạo phát
+                quizScore += isTribulationMode ? 20 : 10;
+                userXP += isTribulationMode ? (30 * streakCount) : (5 * streakCount);
                 updateXPDisplay();
                 updateStreakDisplay();
-                triggerLightning();
-                setTimeout(nextQuiz, 1000); // Tự động chuyển câu sau 1 giây khi đúng
+                if(isTribulationMode) triggerLightning();
+                
+                // Tự động chuyển câu sau 1 giây nếu chưa phải câu cuối
+                if (currentQuizIndex < activeQuizList.length - 1) {
+                    setTimeout(nextQuiz, 1000);
+                }
             } else {
                 streakCount = 0; updateStreakDisplay();
-                triggerThunderFail();
-                document.getElementById('game-card-wrapper').classList.add('animate-shake');
-                setTimeout(() => document.getElementById('game-card-wrapper').classList.remove('animate-shake'), 300);
+                if(isTribulationMode) triggerThunderFail();
+                const wrapper = document.getElementById('game-card-wrapper');
+                wrapper.classList.add('animate-shake');
+                setTimeout(() => wrapper.classList.remove('animate-shake'), 300);
             }
-            renderTribulationQuiz();
+            renderActiveQuiz();
         }
 
         function finishTribulation() {
@@ -405,6 +504,34 @@
             }
             switchTab('dashboard');
         }
+
+        function nextQuiz() { 
+            if (currentQuizIndex < activeQuizList.length - 1) { 
+                currentQuizIndex++; 
+                renderActiveQuiz(); 
+            } 
+        }
+
+        function prevQuiz() { 
+            if (currentQuizIndex > 0) { 
+                currentQuizIndex--; 
+                renderActiveQuiz(); 
+            } 
+        }
+
+        function renderFlashcard() {
+            const ch = laborLawData.find(c => c.id === currentChapterId);
+            if(!ch || !ch.cards || !ch.cards[currentCardIndex]) return;
+            const card = ch.cards[currentCardIndex];
+            document.getElementById('fc-index').innerText = `Thẻ ${currentCardIndex + 1}/${ch.cards.length}`;
+            document.getElementById('fc-front').innerText = card.q;
+            document.getElementById('fc-back').innerText = card.a;
+            document.getElementById('card-inner').classList.remove('rotate-y-180');
+        }
+
+        function flipCard() { document.getElementById('card-inner').classList.toggle('rotate-y-180'); }
+        function nextCard() { const ch = laborLawData.find(c => c.id === currentChapterId); currentCardIndex = (currentCardIndex + 1) % ch.cards.length; renderFlashcard(); }
+        function prevCard() { const ch = laborLawData.find(c => c.id === currentChapterId); currentCardIndex = (currentCardIndex - 1 + ch.cards.length) % ch.cards.length; renderFlashcard(); }
 
         async function generateChapterByAI(chapterId) {
             const apiKey = localStorage.getItem('gemini_api_key');
@@ -444,225 +571,6 @@
                     alert(`Đã khai nhãn thành công bộ câu hỏi mới cho Chương ${chapterId}!`);
                 }
             } catch(err) { alert("Lỗi: " + err.message); }
-        }
-
-        function startMockExam() {
-            let allQuiz = [];
-            laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
-            allQuiz.sort(() => Math.random() - 0.5);
-            isArcadeMode = false; isMockExam = true; isTribulationMode = false; currentChapterId = 'mock';
-            window.mockData = { title: "🌩️ Thiên Kiếp Bảng (Đề Tổng Hợp)", quiz: allQuiz.slice(0, 20) };
-            currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {}; streakCount = 0;
-            setupStudyMode(window.mockData.title);
-            renderMockQuiz();
-        }
-
-        function renderMockQuiz() {
-            const q = window.mockData.quiz[currentQuizIndex];
-            document.getElementById('quiz-progress').innerText = `Câu ${currentQuizIndex + 1}/${window.mockData.quiz.length}`;
-            document.getElementById('quiz-score').innerText = `Điểm: ${quizScore}`;
-            document.getElementById('quiz-question').innerText = q.q;
-            
-            const optionsEl = document.getElementById('quiz-options');
-            optionsEl.innerHTML = '';
-            const ans = selectedAnswersMap[currentQuizIndex];
-
-            q.options.forEach((opt, idx) => {
-                let btnClass = "w-full text-left p-3 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
-                if (ans !== undefined) {
-                    if (idx === q.correct) btnClass = "w-full text-left p-3 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
-                    else if (idx === ans) btnClass = "w-full text-left p-3 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
-                }
-                optionsEl.innerHTML += `<button onclick="selectMockAnswer(${idx})" ${ans !== undefined ? 'disabled' : ''} class="${btnClass}"><span>${String.fromCharCode(65 + idx)}. ${opt}</span></button>`;
-            });
-
-            const exp = document.getElementById('quiz-explanation');
-            if (ans !== undefined) {
-                exp.classList.remove('hidden');
-                document.getElementById('quiz-explanation-text').innerText = q.explanation || "Không có giải thích chi tiết.";
-                document.getElementById('btn-next-quiz').classList.toggle('hidden', currentQuizIndex >= window.mockData.quiz.length - 1);
-                document.getElementById('btn-next-quiz').innerText = "Câu tiếp";
-                document.getElementById('btn-next-quiz').setAttribute('onclick', 'nextQuiz()');
-            } else { exp.classList.add('hidden'); document.getElementById('btn-next-quiz').classList.add('hidden'); }
-        }
-
-        function selectMockAnswer(idx) {
-            const q = window.mockData.quiz[currentQuizIndex];
-            selectedAnswersMap[currentQuizIndex] = idx;
-            if (idx === q.correct) {
-                streakCount++;
-                quizScore += 10;
-                userXP += (10 * streakCount);
-                updateXPDisplay();
-                updateStreakDisplay();
-                setTimeout(nextQuiz, 1000); // Tự động chuyển câu sau 1 giây khi đúng
-            } else {
-                streakCount = 0; updateStreakDisplay();
-                document.getElementById('game-card-wrapper').classList.add('animate-shake');
-                setTimeout(() => document.getElementById('game-card-wrapper').classList.remove('animate-shake'), 300);
-            }
-            renderMockQuiz();
-        }
-
-        function startArcadeGame() {
-            let allQuiz = [];
-            laborLawData.forEach(ch => { if(ch.quiz) allQuiz.push(...ch.quiz); });
-            allQuiz.sort(() => Math.random() - 0.5);
-            isArcadeMode = true; isMockExam = false; isTribulationMode = false; currentChapterId = 'arcade';
-            window.arcadeData = { title: "⚡ Phá Trận Tháp (15s/câu)", quiz: allQuiz.slice(0, 15) };
-            currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {}; streakCount = 0;
-            setupStudyMode(window.arcadeData.title);
-            document.getElementById('timer-box').classList.remove('hidden');
-            renderArcadeQuiz();
-        }
-
-        function renderArcadeQuiz() {
-            if(arcadeTimer) clearInterval(arcadeTimer);
-            timeLeft = 15; document.getElementById('time-left').innerText = timeLeft;
-            arcadeTimer = setInterval(() => {
-                timeLeft--; document.getElementById('time-left').innerText = timeLeft;
-                if(timeLeft <= 0) { 
-                    clearInterval(arcadeTimer); 
-                    streakCount = 0; updateStreakDisplay();
-                    handleTimeOut(); 
-                }
-            }, 1000);
-            renderMockQuiz();
-        }
-
-        function handleTimeOut() {
-            selectedAnswersMap[currentQuizIndex] = -1;
-            const wrapper = document.getElementById('game-card-wrapper');
-            wrapper.classList.add('animate-shake');
-            setTimeout(() => wrapper.classList.remove('animate-shake'), 300);
-            renderArcadeQuiz();
-        }
-
-        function selectArcadeAnswer(idx) {
-            clearInterval(arcadeTimer);
-            const q = window.arcadeData.quiz[currentQuizIndex];
-            selectedAnswersMap[currentQuizIndex] = idx;
-            if (idx === q.correct) {
-                streakCount++;
-                quizScore += 10;
-                userXP += (10 * streakCount);
-                updateXPDisplay();
-                updateStreakDisplay();
-                setTimeout(nextQuiz, 1000); // Tự động chuyển câu sau 1 giây khi đúng
-            } 
-            else { 
-                streakCount = 0; updateStreakDisplay();
-                document.getElementById('game-card-wrapper').classList.add('animate-shake'); 
-                setTimeout(() => document.getElementById('game-card-wrapper').classList.remove('animate-shake'), 300); 
-            }
-            renderArcadeQuiz();
-        }
-
-        function startChapter(chapterId, mode) {
-            isArcadeMode = false; isMockExam = false; isTribulationMode = false; currentChapterId = chapterId;
-            currentCardIndex = 0; currentQuizIndex = 0; quizScore = 0; selectedAnswersMap = {}; streakCount = 0;
-            setupStudyMode(laborLawData.find(c => c.id === chapterId).title);
-            document.getElementById('study-mode-buttons').classList.remove('hidden');
-            setStudyMode(mode);
-        }
-
-        function setupStudyMode(title) {
-            document.getElementById('study-title').innerText = title;
-            document.getElementById('study-mode-buttons').classList.add('hidden');
-            document.getElementById('timer-box').classList.add('hidden');
-            switchTab('study');
-            document.getElementById('flashcard-container').classList.add('hidden');
-            document.getElementById('quiz-container').classList.remove('hidden');
-        }
-
-        function setStudyMode(mode) {
-            currentStudyMode = mode;
-            document.getElementById('flashcard-container').classList.toggle('hidden', mode !== 'flashcard');
-            document.getElementById('quiz-container').classList.toggle('hidden', mode !== 'quiz');
-            document.getElementById('btn-mode-fc').className = `px-3 py-1.5 rounded-xl text-sm font-semibold ${mode === 'flashcard' ? 'bg-red-600 text-white' : 'bg-slate-700'}`;
-            document.getElementById('btn-mode-qz').className = `px-3 py-1.5 rounded-xl text-sm font-semibold ${mode === 'quiz' ? 'bg-red-600 text-white' : 'bg-slate-700'}`;
-            mode === 'flashcard' ? renderFlashcard() : renderQuiz();
-        }
-
-        function renderFlashcard() {
-            const ch = laborLawData.find(c => c.id === currentChapterId);
-            if(!ch || !ch.cards || !ch.cards[currentCardIndex]) return;
-            const card = ch.cards[currentCardIndex];
-            document.getElementById('fc-index').innerText = `Thẻ ${currentCardIndex + 1}/${ch.cards.length}`;
-            document.getElementById('fc-front').innerText = card.q;
-            document.getElementById('fc-back').innerText = card.a;
-            document.getElementById('card-inner').classList.remove('rotate-y-180');
-        }
-
-        function flipCard() { document.getElementById('card-inner').classList.toggle('rotate-y-180'); }
-        function nextCard() { const ch = laborLawData.find(c => c.id === currentChapterId); currentCardIndex = (currentCardIndex + 1) % ch.cards.length; renderFlashcard(); }
-        function prevCard() { const ch = laborLawData.find(c => c.id === currentChapterId); currentCardIndex = (currentCardIndex - 1 + ch.cards.length) % ch.cards.length; renderFlashcard(); }
-
-        function renderQuiz() {
-            if(isArcadeMode) { renderArcadeQuiz(); return; }
-            if(isMockExam) { renderMockQuiz(); return; }
-            if(isTribulationMode) { renderTribulationQuiz(); return; }
-            const chapter = laborLawData.find(c => c.id === currentChapterId);
-            if(!chapter || !chapter.quiz || !chapter.quiz[currentQuizIndex]) return;
-            const q = chapter.quiz[currentQuizIndex];
-            document.getElementById('quiz-progress').innerText = `Câu ${currentQuizIndex + 1}/${chapter.quiz.length}`;
-            document.getElementById('quiz-score').innerText = `Điểm: ${quizScore}`;
-            document.getElementById('quiz-question').innerText = q.q;
-            
-            const optionsEl = document.getElementById('quiz-options');
-            optionsEl.innerHTML = '';
-            const ans = selectedAnswersMap[currentQuizIndex];
-
-            q.options.forEach((opt, idx) => {
-                let btnClass = "w-full text-left p-3 rounded-xl border border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-sm transition";
-                if (ans !== undefined) {
-                    if (idx === q.correct) btnClass = "w-full text-left p-3 rounded-xl border border-green-500 bg-green-950/60 text-green-300 text-sm";
-                    else if (idx === ans) btnClass = "w-full text-left p-3 rounded-xl border border-red-500 bg-red-950/60 text-red-300 text-sm";
-                }
-                optionsEl.innerHTML += `<button onclick="selectAnswer(${idx})" ${ans !== undefined ? 'disabled' : ''} class="${btnClass}"><span>${String.fromCharCode(65 + idx)}. ${opt}</span></button>`;
-            });
-
-            const exp = document.getElementById('quiz-explanation');
-            if (ans !== undefined) {
-                exp.classList.remove('hidden');
-                document.getElementById('quiz-explanation-text').innerText = q.explanation || "Không có giải thích chi tiết.";
-                document.getElementById('btn-next-quiz').classList.toggle('hidden', currentQuizIndex >= chapter.quiz.length - 1);
-                document.getElementById('btn-next-quiz').innerText = "Câu tiếp";
-                document.getElementById('btn-next-quiz').setAttribute('onclick', 'nextQuiz()');
-            } else { exp.classList.add('hidden'); document.getElementById('btn-next-quiz').classList.add('hidden'); }
-        }
-
-        function selectAnswer(idx) {
-            const q = laborLawData.find(c => c.id === currentChapterId).quiz[currentQuizIndex];
-            selectedAnswersMap[currentQuizIndex] = idx;
-            if (idx === q.correct) {
-                streakCount++;
-                quizScore += 10;
-                userXP += (5 * streakCount);
-                updateXPDisplay();
-                updateStreakDisplay();
-                setTimeout(nextQuiz, 1000); 
-            } else {
-                streakCount = 0; updateStreakDisplay();
-                document.getElementById('game-card-wrapper').classList.add('animate-shake');
-                setTimeout(() => document.getElementById('game-card-wrapper').classList.remove('animate-shake'), 300);
-            }
-            renderQuiz();
-        }
-
-        function nextQuiz() { 
-            if(isArcadeMode) { if (currentQuizIndex < window.arcadeData.quiz.length - 1) { currentQuizIndex++; renderArcadeQuiz(); } return; }
-            if(isMockExam) { if (currentQuizIndex < window.mockData.quiz.length - 1) { currentQuizIndex++; renderMockQuiz(); } return; }
-            if(isTribulationMode) { if (currentQuizIndex < window.tribulationData.quiz.length - 1) { currentQuizIndex++; renderTribulationQuiz(); } return; }
-            const ch = laborLawData.find(c => c.id === currentChapterId); 
-            if (currentQuizIndex < ch.quiz.length - 1) { currentQuizIndex++; renderQuiz(); } 
-        }
-
-        function prevQuiz() { 
-            if(isArcadeMode) { if (currentQuizIndex > 0) { currentQuizIndex--; renderArcadeQuiz(); } return; }
-            if(isMockExam) { if (currentQuizIndex > 0) { currentQuizIndex--; renderMockQuiz(); } return; }
-            if(isTribulationMode) { if (currentQuizIndex > 0) { currentQuizIndex--; renderTribulationQuiz(); } return; }
-            if (currentQuizIndex > 0) { currentQuizIndex--; renderQuiz(); } 
         }
 
         function openApiKeyModal() { document.getElementById('api-modal').classList.remove('hidden'); document.getElementById('api-key-input').value = localStorage.getItem('gemini_api_key') || ''; }
