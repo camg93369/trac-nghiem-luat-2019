@@ -206,7 +206,7 @@
     <div id="api-modal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
         <div class="bg-slate-800 p-6 rounded-2xl max-w-md w-full space-y-4 shadow-2xl border border-slate-700">
             <h3 class="font-bold text-lg text-slate-100"><i class="fa-solid fa-key text-red-500"></i> Pháp Bảo Xác Thực (AQ.)</h3>
-            <p class="text-xs text-slate-400">Dán khóa Authentication Key (bắt đầu bằng AQ...) vào đây để AI đọc file txt.</p>
+            <p class="text-xs text-slate-400">Dán khóa Authentication Key (bắt đầu bằng AQ...) vào đây để AI đọc file txt văn bản gốc.</p>
             <input type="password" id="api-key-input" placeholder="Dán khóa AQ... vào đây..." class="w-full p-3 rounded-xl border border-slate-600 bg-slate-900 text-sm focus:outline-none focus:border-red-500 text-white">
             <div class="flex justify-end gap-2 pt-2">
                 <button onclick="closeApiKeyModal()" class="px-4 py-2 bg-slate-700 rounded-xl text-sm font-medium">Hủy</button>
@@ -214,6 +214,10 @@
             </div>
         </div>
     </div>
+
+    <!-- Hidden file inputs for uploading txt files -->
+    <input type="file" id="upload-txt-input" accept=".txt" class="hidden" onchange="handleTxtFileUpload(event)">
+    <input type="file" id="upload-quiz-input" accept=".txt,.json" class="hidden" onchange="handleQuizFileUpload(event)">
 
     <script>
         function showDaoQuanAlert(message) {
@@ -226,23 +230,23 @@
 
         // Đầy đủ 17 Chương Luật Lao Động 2019
         let laborLawData = [
-            { id: 1, title: "Chương I: Những quy định chung", description: "Phạm vi điều chỉnh, đối tượng áp dụng.", cards: [{ q: "Bộ luật LĐ 2019 áp dụng cho ai?", a: "NLĐ, học nghề, tập nghề, NSDLĐ, LĐ nước ngoài." }], quiz: [{ q: "BLLĐ 2019 có hiệu lực từ?", options: ["01/01/2020", "01/01/2021"], correct: 1, explanation: "Căn cứ Điều 221." }] },
-            { id: 2, title: "Chương II: Việc làm, tuyển dụng", description: "Thị trường lao động và quản lý lao động.", cards: [{ q: "Việc làm là gì?", a: "Hoạt động tạo thu nhập không bị cấm." }], quiz: [{ q: "Khai trình LĐ trong bao lâu?", options: ["15 ngày", "30 ngày"], correct: 1, explanation: "Khoản 2 Điều 12." }] },
-            { id: 3, title: "Chương III: Hợp đồng lao động", description: "Giao kết, thực hiện, chấm dứt HĐLĐ.", cards: [{ q: "HĐ xác định thời hạn tối đa?", a: "36 tháng." }], quiz: [{ q: "Thử việc quản lý tối đa?", options: ["60 ngày", "180 ngày"], correct: 1, explanation: "Khoản 1 Điều 25." }] },
-            { id: 4, title: "Chương IV: Giáo dục nghề nghiệp", description: "Đào tạo, bồi dưỡng, nâng cao trình độ kỹ năng nghề.", cards: [{ q: "Tập nghề tối đa?", a: "3 tháng." }], quiz: [{ q: "Có được thu học phí không?", options: ["Được", "Không"], correct: 1, explanation: "Khoản 3 Điều 61." }] },
-            { id: 5, title: "Chương V: Đối thoại, thương lượng tập thể", description: "Thỏa ước lao động tập thể.", cards: [{ q: "Đối thoại định kỳ?", a: "1 năm/lần." }], quiz: [{ q: "Tỷ lệ tán thành thỏa ước?", options: ["30%", "50%"], correct: 1, explanation: "Khoản 1 Điều 76." }] },
-            { id: 6, title: "Chương VI: Tiền lương", description: "Thang bảng lương, mức lương tối thiểu, trả lương.", cards: [{ q: "Làm ban đêm trả thêm?", a: "Ít nhất 30%." }], quiz: [{ q: "Làm thêm ngày nghỉ hằng tuần?", options: ["150%", "200%"], correct: 1, explanation: "Điểm b Khoản 1 Điều 98." }] },
-            { id: 7, title: "Chương VII: Thời giờ làm việc, nghỉ ngơi", description: "Giờ làm việc, làm thêm giờ, nghỉ lễ tết, hàng năm.", cards: [{ q: "Giờ ban đêm tính từ?", a: "22h đến 06h." }], quiz: [{ q: "Nghỉ lễ Quốc khánh mấy ngày?", options: ["1 ngày", "2 ngày"], correct: 1, explanation: "Điểm đ Khoản 1 Điều 112." }] },
-            { id: 8, title: "Chương VIII: Kỷ luật lao động, trách nhiệm vật chất", description: "Nội quy, hình thức xử lý kỷ luật, bồi thường.", cards: [{ q: "Thời hiệu xử lý kỷ luật?", a: "6 tháng." }], quiz: [{ q: "Hình thức nặng nhất?", options: ["Cách chức", "Sa thải"], correct: 1, explanation: "Điều 124." }] },
-            { id: 9, title: "Chương IX: An toàn, vệ sinh lao động", description: "Bảo đảm điều kiện an toàn, tai nạn lao động.", cards: [{ q: "Quyền từ chối làm việc?", a: "Khi đe dọa tính mạng." }], quiz: [{ q: "Trách nhiệm thuộc về ai?", options: ["NLĐ", "NSDLĐ"], correct: 1, explanation: "Điều 134." }] },
-            { id: 10, title: "Chương X: Những quy định riêng cho lao động nữ", description: "Thai sản, bình đẳng giới.", cards: [{ q: "Nghỉ thai sản mấy tháng?", a: "6 tháng." }], quiz: [{ q: "Nghỉ nuôi con dưới 12 tháng?", options: ["30 phút", "60 phút"], correct: 1, explanation: "Khoản 4 Điều 137." }] },
-            { id: 11, title: "Chương XI: Lao động chưa thành niên & cao tuổi", description: "Quy định đặc thù lao động vị thành niên và cao tuổi.", cards: [{ q: "Giờ làm việc dưới 15 tuổi?", a: "Tối đa 4 giờ/ngày." }], quiz: [{ q: "Quyền lao động cao tuổi?", options: ["Làm đủ 8 tiếng", "Rút ngắn thời giờ"], correct: 1, explanation: "Khoản 2 Điều 148." }] },
-            { id: 12, title: "Chương XII: Lao động khác", description: "Lao động giúp việc gia đình và các đối tượng khác.", cards: [{ q: "Đình công là gì?", a: "Ngừng việc tự nguyện."}], quiz: [{ q: "Tuổi nghỉ hưu nam 2028?", options: ["60 tuổi", "62 tuổi"], correct: 1, explanation: "Khoản 2 Điều 169." }] },
-            { id: 13, title: "Chương XIII: Tổ chức đại diện người lao động", description: "Hệ thống tổ chức tại cơ sở.", cards: [{ q: "Tổ chức đại diện NLĐ tại cơ sở?", a: "Công đoàn cơ sở và tổ chức của NLĐ." }], quiz: [{ q: "Quyền thành lập tổ chức?", options: ["Người sử dụng lao động", "Người lao động"], correct: 1, explanation: "Điều 170." }] },
-            { id: 14, title: "Chương XIV: Giải quyết tranh chấp lao động", description: "Hòa giải, trong tài, đình công.", cards: [{ q: "Cơ quan giải quyết tranh chấp?", a: "Hòa giải viên, Hội đồng trọng tài, Tòa án." }], quiz: [{ q: "Thẩm quyền giải quyết đình công?", options: ["Tòa án nhân dân", "Ủy ban nhân dân"], correct: 0, explanation: "Điều 205." }] },
-            { id: 15, title: "Chương XV: Quản lý nhà nước về lao động", description: "Trách nhiệm của các cơ quan quản lý.", cards: [{ q: "Cơ quan quản lý nhà nước cao nhất?", a: "Chính phủ." }], quiz: [{ q: "Nội dung quản lý nhà nước?", options: ["Ban hành văn bản quy phạm pháp luật", "Chỉ xử phạt người lao động"], correct: 0, explanation: "Điều 207." }] },
-            { id: 16, title: "Chương XVI: Thanh tra lao động, xử lý vi phạm", description: "Xử phạt vi phạm pháp luật lao động.", cards: [{ q: "Thanh tra lao động thuộc?", a: "Cơ quan quản lý nhà nước về lao động." }], quiz: [{ q: "Hình thức xử lý vi phạm chính?", options: ["Phạt cảnh cáo, phạt tiền", "Tịch thu tài sản"], correct: 0, explanation: "Điều 213." }] },
-            { id: 17, title: "Chương XVII: Điều khoản thi hành", description: "Hiệu lực thi hành và quy định chuyển tiếp.", cards: [{ q: "BLLĐ 2019 thay thế luật nào?", a: "Bộ luật Lao động 2012." }], quiz: [{ q: "Ngày chính thức có hiệu lực?", options: ["01/01/2021", "01/01/2020"], correct: 0, explanation: "Điều 221." }] }
+            { id: 1, title: "Chương I: Những quy định chung", description: "Phạm vi điều chỉnh, đối tượng áp dụng.", cards: [{ q: "Bộ luật LĐ 2019 áp dụng cho ai?", a: "NLĐ, học nghề, tập nghề, NSDLĐ, LĐ nước ngoài." }], quiz: [{ q: "BLLĐ 2019 có hiệu lực từ?", options: ["01/01/2020", "01/01/2021"], correct: 1, explanation: "Căn cứ Điều 221." }], rawText: "" },
+            { id: 2, title: "Chương II: Việc làm, tuyển dụng", description: "Thị trường lao động và quản lý lao động.", cards: [{ q: "Việc làm là gì?", a: "Hoạt động tạo thu nhập không bị cấm." }], quiz: [{ q: "Khai trình LĐ trong bao lâu?", options: ["15 ngày", "30 ngày"], correct: 1, explanation: "Khoản 2 Điều 12." }], rawText: "" },
+            { id: 3, title: "Chương III: Hợp đồng lao động", description: "Giao kết, thực hiện, chấm dứt HĐLĐ.", cards: [{ q: "HĐ xác định thời hạn tối đa?", a: "36 tháng." }], quiz: [{ q: "Thử việc quản lý tối đa?", options: ["60 ngày", "180 ngày"], correct: 1, explanation: "Khoản 1 Điều 25." }], rawText: "" },
+            { id: 4, title: "Chương IV: Giáo dục nghề nghiệp", description: "Đào tạo, bồi dưỡng, nâng cao trình độ kỹ năng nghề.", cards: [{ q: "Tập nghề tối đa?", a: "3 tháng." }], quiz: [{ q: "Có được thu học phí không?", options: ["Được", "Không"], correct: 1, explanation: "Khoản 3 Điều 61." }], rawText: "" },
+            { id: 5, title: "Chương V: Đối thoại, thương lượng tập thể", description: "Thỏa ước lao động tập thể.", cards: [{ q: "Đối thoại định kỳ?", a: "1 năm/lần." }], quiz: [{ q: "Tỷ lệ tán thành thỏa ước?", options: ["30%", "50%"], correct: 1, explanation: "Khoản 1 Điều 76." }], rawText: "" },
+            { id: 6, title: "Chương VI: Tiền lương", description: "Thang bảng lương, mức lương tối thiểu, trả lương.", cards: [{ q: "Làm ban đêm trả thêm?", a: "Ít nhất 30%." }], quiz: [{ q: "Làm thêm ngày nghỉ hằng tuần?", options: ["150%", "200%"], correct: 1, explanation: "Điểm b Khoản 1 Điều 98." }], rawText: "" },
+            { id: 7, title: "Chương VII: Thời giờ làm việc, nghỉ ngơi", description: "Giờ làm việc, làm thêm giờ, nghỉ lễ tết, hàng năm.", cards: [{ q: "Giờ ban đêm tính từ?", a: "22h đến 06h." }], quiz: [{ q: "Nghỉ lễ Quốc khánh mấy ngày?", options: ["1 ngày", "2 ngày"], correct: 1, explanation: "Điểm đ Khoản 1 Điều 112." }], rawText: "" },
+            { id: 8, title: "Chương VIII: Kỷ luật lao động, trách nhiệm vật chất", description: "Nội quy, hình thức xử lý kỷ luật, bồi thường.", cards: [{ q: "Thời hiệu xử lý kỷ luật?", a: "6 tháng." }], quiz: [{ q: "Hình thức nặng nhất?", options: ["Cách chức", "Sa thải"], correct: 1, explanation: "Điều 124." }], rawText: "" },
+            { id: 9, title: "Chương IX: An toàn, vệ sinh lao động", description: "Bảo đảm điều kiện an toàn, tai nạn lao động.", cards: [{ q: "Quyền từ chối làm việc?", a: "Khi đe dọa tính mạng." }], quiz: [{ q: "Trách nhiệm thuộc về ai?", options: ["NLĐ", "NSDLĐ"], correct: 1, explanation: "Điều 134." }], rawText: "" },
+            { id: 10, title: "Chương X: Những quy định riêng cho lao động nữ", description: "Thai sản, bình đẳng giới.", cards: [{ q: "Nghỉ thai sản mấy tháng?", a: "6 tháng." }], quiz: [{ q: "Nghỉ nuôi con dưới 12 tháng?", options: ["30 phút", "60 phút"], correct: 1, explanation: "Khoản 4 Điều 137." }], rawText: "" },
+            { id: 11, title: "Chương XI: Lao động chưa thành niên & cao tuổi", description: "Quy định đặc thù lao động vị thành niên và cao tuổi.", cards: [{ q: "Giờ làm việc dưới 15 tuổi?", a: "Tối đa 4 giờ/ngày." }], quiz: [{ q: "Quyền lao động cao tuổi?", options: ["Làm đủ 8 tiếng", "Rút ngắn thời giờ"], correct: 1, explanation: "Khoản 2 Điều 148." }], rawText: "" },
+            { id: 12, title: "Chương XII: Lao động khác", description: "Lao động giúp việc gia đình và các đối tượng khác.", cards: [{ q: "Đình công là gì?", a: "Ngừng việc tự nguyện."}], quiz: [{ q: "Tuổi nghỉ hưu nam 2028?", options: ["60 tuổi", "62 tuổi"], correct: 1, explanation: "Khoản 2 Điều 169." }], rawText: "" },
+            { id: 13, title: "Chương XIII: Tổ chức đại diện người lao động", description: "Hệ thống tổ chức tại cơ sở.", cards: [{ q: "Tổ chức đại diện NLĐ tại cơ sở?", a: "Công đoàn cơ sở và tổ chức của NLĐ." }], quiz: [{ q: "Quyền thành lập tổ chức?", options: ["Người sử dụng lao động", "Người lao động"], correct: 1, explanation: "Điều 170." }], rawText: "" },
+            { id: 14, title: "Chương XIV: Giải quyết tranh chấp lao động", description: "Hòa giải, trong tài, đình công.", cards: [{ q: "Cơ quan giải quyết tranh chấp?", a: "Hòa giải viên, Hội đồng trọng tài, Tòa án." }], quiz: [{ q: "Thẩm quyền giải quyết đình công?", options: ["Tòa án nhân dân", "Ủy ban nhân dân"], correct: 0, explanation: "Điều 205." }], rawText: "" },
+            { id: 15, title: "Chương XV: Quản lý nhà nước về lao động", description: "Trách nhiệm của các cơ quan quản lý.", cards: [{ q: "Cơ quan quản lý nhà nước cao nhất?", a: "Chính phủ." }], quiz: [{ q: "Nội dung quản lý nhà nước?", options: ["Ban hành văn bản quy phạm pháp luật", "Chỉ xử phạt người lao động"], correct: 0, explanation: "Điều 207." }], rawText: "" },
+            { id: 16, title: "Chương XVI: Thanh tra lao động, xử lý vi phạm", description: "Xử phạt vi phạm pháp luật lao động.", cards: [{ q: "Thanh tra lao động thuộc?", a: "Cơ quan quản lý nhà nước về lao động." }], quiz: [{ q: "Hình thức xử lý vi phạm chính?", options: ["Phạt cảnh cáo, phạt tiền", "Tịch thu tài sản"], correct: 0, explanation: "Điều 213." }], rawText: "" },
+            { id: 17, title: "Chương XVII: Điều khoản thi hành", description: "Hiệu lực thi hành và quy định chuyển tiếp.", cards: [{ q: "BLLĐ 2019 thay thế luật nào?", a: "Bộ luật Lao động 2012." }], quiz: [{ q: "Ngày chính thức có hiệu lực?", options: ["01/01/2021", "01/01/2020"], correct: 0, explanation: "Điều 221." }], rawText: "" }
         ];
 
         let userXP = parseInt(localStorage.getItem('labor_law_xp')) || 0;
@@ -252,6 +256,7 @@
         let activeQuizList = [];
         let isArcadeMode = false, isMockExam = false, isTribulationMode = false, arcadeTimer = null, timeLeft = 15;
         let streakCount = 0;
+        let targetActionChapterId = null; // Dùng để xác định chương đang thao tác tải file txt/trắc nghiệm
 
         const ranks = [
             { name: "Phàm Nhân", min: 0 },
@@ -457,18 +462,24 @@
                             <span class="text-xs font-semibold px-2 py-1 bg-red-950 text-red-400 rounded-lg border border-red-900">Chương ${ch.id}</span>
                             <h4 class="font-bold text-sm sm:text-base mt-2 text-slate-100">${ch.title}</h4>
                             <p class="text-[11px] sm:text-xs text-slate-400 mt-1 line-clamp-2">${ch.description || ''}</p>
+                            ${ch.rawText ? '<span class="inline-block mt-2 text-[10px] bg-cyan-950 text-cyan-300 px-2 py-0.5 rounded border border-cyan-800">📄 Đã nạp văn bản gốc</span>' : ''}
                         </div>
                         <div class="space-y-2 mt-4 pt-3 border-t border-slate-700/60">
                             <div class="flex gap-2">
                                 <button onclick="startChapter(${ch.id}, 'flashcard')" class="flex-1 py-1.5 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Thẻ Nhớ (${cardCount})</button>
                                 <button onclick="startChapter(${ch.id}, 'quiz')" class="flex-1 py-1.5 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Khảo Nghiệm (${quizCount})</button>
                             </div>
-                            <div class="flex gap-2">
-                                <button onclick="generateChapterByAI(${ch.id})" class="flex-1 py-1.5 bg-purple-950/40 text-purple-300 hover:bg-purple-900/60 border border-purple-800/50 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5">
-                                    <i class="fa-solid fa-wand-magic-sparkles"></i> Khai nhãn AI
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="triggerUploadTxt(${ch.id})" class="py-1.5 bg-slate-700/80 text-slate-200 hover:bg-slate-600 border border-slate-600 rounded-xl text-[11px] font-semibold transition flex items-center justify-center gap-1" title="Tải văn bản gốc txt">
+                                    <i class="fa-solid fa-file-arrow-up text-blue-400"></i> Nhập txt
                                 </button>
-                                <button onclick="downloadChapterTxt(${ch.id})" class="flex-1 py-1.5 bg-slate-700/80 text-slate-200 hover:bg-slate-600 border border-slate-600 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5">
-                                    <i class="fa-solid fa-download text-amber-400"></i> Tải tệp chuong${ch.id}.txt
+                                <button onclick="triggerUploadQuiz(${ch.id})" class="py-1.5 bg-slate-700/80 text-slate-200 hover:bg-slate-600 border border-slate-600 rounded-xl text-[11px] font-semibold transition flex items-center justify-center gap-1" title="Tải file trắc nghiệm lên">
+                                    <i class="fa-solid fa-file-import text-emerald-400"></i> Tải trắc nghiệm
+                                </button>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="generateChapterByAI(${ch.id})" class="w-full py-1.5 bg-purple-950/40 text-purple-300 hover:bg-purple-900/60 border border-purple-800/50 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i> Khai nhãn AI (Tạo Flashcard/Quiz từ văn bản)
                                 </button>
                             </div>
                         </div>
@@ -704,38 +715,113 @@
         function nextCard() { const ch = laborLawData.find(c => c.id === currentChapterId); currentCardIndex = (currentCardIndex + 1) % ch.cards.length; renderFlashcard(); }
         function prevCard() { const ch = laborLawData.find(c => c.id === currentChapterId); currentCardIndex = (currentCardIndex - 1 + ch.cards.length) % ch.cards.length; renderFlashcard(); }
 
-        // Tải xuống file tệp txt riêng cho từng chương
-        function downloadChapterTxt(chapterId) {
-            const ch = laborLawData.find(c => c.id === chapterId);
-            if (!ch) return;
-            
-            let fileContent = `Noi dung ${ch.title}\nMo ta: ${ch.description}\n\n`;
-            if (ch.cards && ch.cards.length > 0) {
-                fileContent += `--- FLASHCARDS ---\n`;
-                ch.cards.forEach((c, idx) => {
-                    fileContent += `${idx + 1}. Q: ${c.q} | A: ${c.a}\n`;
-                });
-            }
-            if (ch.quiz && ch.quiz.length > 0) {
-                fileContent += `\n--- QUIZ ---\n`;
-                ch.quiz.forEach((q, idx) => {
-                    fileContent += `${idx + 1}. Cau hoi: ${q.q}\n`;
-                    q.options.forEach((opt, oIdx) => {
-                        fileContent += `   - ${String.fromCharCode(65 + oIdx)}. ${opt}\n`;
-                    });
-                    fileContent += `   Dap an dung: ${q.correct}, Giai thich: ${q.explanation}\n`;
-                });
-            }
+        // --- TÍNH NĂNG TẢI FILE VĂN BẢN GỐC & TẢI FILE TRẮC NGHIỆM LÊN ---
+        function triggerUploadTxt(chapterId) {
+            targetActionChapterId = chapterId;
+            document.getElementById('upload-txt-input').click();
+        }
 
-            const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `chuong${chapterId}.txt`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+        function triggerUploadQuiz(chapterId) {
+            targetActionChapterId = chapterId;
+            document.getElementById('upload-quiz-input').click();
+        }
+
+        function handleTxtFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const textContent = e.target.result;
+                const ch = laborLawData.find(c => c.id === targetActionChapterId);
+                if (ch) {
+                    ch.rawText = textContent;
+                    localStorage.setItem('labor_law_custom_data', JSON.stringify(laborLawData));
+                    renderDashboard();
+                    showDaoQuanAlert(`📄 Đã nạp thành công văn bản gốc cho ${ch.title}! Bây giờ bạn có thể bấm Khai nhãn AI để API Key tự động đọc file và sinh thêm flashcard/quiz.`);
+                }
+                event.target.value = '';
+            };
+            reader.readAsText(file, 'UTF-8');
+        }
+
+        function handleQuizFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                const ch = laborLawData.find(c => c.id === targetActionChapterId);
+                if (!ch) return;
+
+                try {
+                    let parsedData = null;
+                    if (file.name.endsWith('.json')) {
+                        parsedData = JSON.parse(content);
+                    } else {
+                        // Phân tích file txt thủ công theo định dạng câu hỏi đơn giản
+                        // Ví dụ mỗi câu có dạng: Q: ... \n A. ... B. ... C. ... D. ... \n Đáp án: A \n Giải thích: ...
+                        parsedData = parseQuizTxt(content);
+                    }
+
+                    if (parsedData) {
+                        if (parsedData.cards && parsedData.cards.length > 0) {
+                            ch.cards.push(...parsedData.cards);
+                        }
+                        if (parsedData.quiz && parsedData.quiz.length > 0) {
+                            ch.quiz.push(...parsedData.quiz);
+                        } else if (Array.isArray(parsedData) && parsedData.length > 0) {
+                            ch.quiz.push(...parsedData);
+                        }
+                        localStorage.setItem('labor_law_custom_data', JSON.stringify(laborLawData));
+                        renderDashboard();
+                        showDaoQuanAlert(`🎉 Đã tải và bổ sung trắc nghiệm thành công vào ${ch.title}!`);
+                    } else {
+                        throw new Error("Không định dạng được cấu trúc câu hỏi từ tệp.");
+                    }
+                } catch(err) {
+                    showDaoQuanAlert("Lỗi đọc tệp trắc nghiệm: " + err.message);
+                }
+                event.target.value = '';
+            };
+            reader.readAsText(file, 'UTF-8');
+        }
+
+        function parseQuizTxt(text) {
+            // Hàm hỗ trợ parse nhanh file text chứa câu hỏi trắc nghiệm
+            let quizList = [];
+            let blocks = text.split(/\n\s*\n/);
+            blocks.forEach(block => {
+                let lines = block.split('\n').map(l => l.trim()).filter(l => l);
+                if (lines.length >= 3) {
+                    let qText = lines[0].replace(/^(Câu\s*\d+[\.:]?\s*)/i, '');
+                    let options = [];
+                    let correctIdx = 0;
+                    let explanation = "Được nhập tự động từ tệp.";
+                    
+                    for (let i = 1; i < lines.length; i++) {
+                        let l = lines[i];
+                        if (/^[A-Da-d][\.\)]/.test(l)) {
+                            options.push(l.replace(/^[A-Da-d][\.\)]\s*/, ''));
+                        } else if (/^(Đáp án|ĐA|Correct)[\.:]?\s*([A-Da-d0-3])/i.test(l)) {
+                            let match = l.match(/([A-Da-d0-3])/);
+                            if (match) {
+                                let val = match[1].toUpperCase();
+                                if (['A','B','C','D'].includes(val)) {
+                                    correctIdx = val.charCodeAt(0) - 65;
+                                } else {
+                                    correctIdx = parseInt(val) || 0;
+                                }
+                            }
+                        } else if (/^(Giải thích|GT|Explanation)[\.:]?/i.test(l)) {
+                            explanation = l.replace(/^(Giải thích|GT|Explanation)[\.:]?\s*/i, '');
+                        }
+                    }
+                    if (options.length >= 2) {
+                        quizList.push({ q: qText, options: options, correct: correctIdx, explanation: explanation });
+                    }
+                }
+            });
+            return { quiz: quizList, cards: [] };
         }
 
         async function generateChapterByAI(chapterId) {
@@ -743,21 +829,18 @@
             if(!apiKey || !apiKey.startsWith('AQ.')) { showDaoQuanAlert("Vui lòng nhập khóa xác thực (AQ...) ở góc trên qua nút Pháo Bảo!"); openApiKeyModal(); return; }
 
             const ch = laborLawData.find(c => c.id === chapterId);
-            showDaoQuanAlert(`AI đang tiến hành khai nhãn câu hỏi mới cho ${ch.title}...`);
+            showDaoQuanAlert(`AI đang đọc văn bản gốc và khai nhãn thêm nhiều câu hỏi Flashcard & Quiz cho ${ch.title}...`);
 
             try {
-                // Thử fetch tệp chuong{id}.txt nếu có sẵn, nếu không sẽ dùng nội dung mặc định của chương để prompt
-                let chapterText = `${ch.title}: ${ch.description}`;
-                try {
-                    const fileRes = await fetch(`chuong${chapterId}.txt`);
-                    if(fileRes.ok) {
-                        chapterText = await fileRes.text();
-                    }
-                } catch(e) {}
+                // Sử dụng rawText nếu người dùng đã tải tệp txt lên, nếu chưa có thì dùng mô tả mặc định
+                let sourceContent = ch.rawText ? ch.rawText : `${ch.title}: ${ch.description}`;
 
-                const promptText = `Dựa hoàn toàn vào nội dung pháp lý sau đây của ${ch.title} (Bộ luật Lao động 2019), hãy tạo ra 5 câu hỏi Flashcard và 5 câu Quiz trắc nghiệm mới bám sát điều luật:
-                ${chapterText}
-                Trả về JSON thuần túy theo cấu trúc chuẩn: {"cards": [{"q": "...", "a": "..."}], "quiz": [{"q": "...", "options": ["A", "B", "C", "D"], "correct": 0, "explanation": "..."}]}`;
+                const promptText = `Dựa vào văn bản gốc sau đây của ${ch.title} (Bộ luật Lao động 2019), hãy tự động đọc và phân tích kỹ lưỡng, sau đó sản sinh thêm nhiều câu hỏi Flashcard và câu hỏi Quiz trắc nghiệm phong phú, bám sát nội dung:
+                ---
+                ${sourceContent}
+                ---
+                Trả về kết quả ở định dạng JSON thuần túy (không kèm markdown rườm rà) theo cấu trúc chuẩn: 
+                {"cards": [{"q": "...", "a": "..."}], "quiz": [{"q": "...", "options": ["A", "B", "C", "D"], "correct": 0, "explanation": "..."}]}`;
 
                 const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`, {
                     method: 'POST',
@@ -778,12 +861,12 @@
                     if(newContent.quiz) ch.quiz.push(...newContent.quiz);
                     localStorage.setItem('labor_law_custom_data', JSON.stringify(laborLawData));
                     renderDashboard();
-                    showDaoQuanAlert(`🌟 Đã khai nhãn thành công bộ câu hỏi mới cho Chương ${chapterId}!`);
+                    showDaoQuanAlert(`🌟 AI đã đọc văn bản và khai nhãn thành công các câu hỏi mới cho Chương ${chapterId}!`);
                 }
-            } catch(err) { showDaoQuanAlert("Lỗi khai nhãn: " + err.message); }
+            } catch(err) { showDaoQuanAlert("Lỗi khai nhãn từ AI: " + err.message); }
         }
 
-        function openApiKeyModal() { document.getElementById('api-modal').classList.remove('hidden'); document.getElementById('api-key-input').value = localStorage.getItem('gemini_api_key'] || ''; }
+        function openApiKeyModal() { document.getElementById('api-modal').classList.remove('hidden'); document.getElementById('api-key-input').value = localStorage.getItem('gemini_api_key') || ''; }
         function closeApiKeyModal() { document.getElementById('api-modal').classList.add('hidden'); }
         function saveApiKey() {
             const key = document.getElementById('api-key-input').value.trim();
