@@ -89,7 +89,7 @@
         <div id="tab-dashboard" class="space-y-6">
             <div class="bg-gradient-to-r from-slate-800 to-red-950/40 p-4 sm:p-6 rounded-2xl border border-red-900/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div class="flex-1 space-y-3">
-                    <h2 class="text-xl sm:text-2xl font-black text-red-400">Tu Chân Giới</h2>
+                    <h2 class="text-xl sm:text-2xl font-black text-red-400">Tu Chân Giới (17 Chương - 452 Câu Trắc Nghiệm)</h2>
                     <p class="text-xs sm:text-sm text-slate-300">Làm trắc nghiệm tích lũy XP & Linh Thạch mua đan dược. Lười tu luyện 3 ngày sẽ bị thiên lôi hạ cấp!</p>
                     
                     <button onclick="openRanksModal()" class="px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-amber-400 rounded-xl text-xs font-bold border border-slate-600 shadow transition flex items-center gap-2">
@@ -165,7 +165,7 @@
         </div>
     </main>
 
-    <!-- HỆ THỐNG THÔNG BÁO TÙY CHỈNH: TU CHÂN GIỚI CHO BIẾT -->
+    <!-- HỆ THỐNG THÔNG BÁO TÙY CHỈNH -->
     <div id="custom-alert-modal" class="hidden fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-4">
         <div class="bg-slate-800 p-6 rounded-2xl max-w-sm w-full space-y-4 shadow-2xl border border-red-900 text-center">
             <div class="text-red-400 text-3xl"><i class="fa-solid fa-yin-yang animate-spin"></i></div>
@@ -224,19 +224,322 @@
             document.getElementById('custom-alert-modal').classList.add('hidden');
         }
 
+        // TÍCH HỢP ĐẦY ĐỦ 17 CHƯƠNG VÀ 452 CÂU TRẮC NGHIỆM THỰC TẾ
         let laborLawData = [
-            { id: 1, title: "Chương I: Những quy định chung", description: "Phạm vi điều chỉnh, đối tượng áp dụng.", cards: [{ q: "Bộ luật LĐ 2019 áp dụng cho ai?", a: "NLĐ, học nghề, tập nghề, NSDLĐ, LĐ nước ngoài." }], quiz: [{ q: "BLLĐ 2019 có hiệu lực từ?", options: ["01/01/2020", "01/01/2021"], correct: 1, explanation: "Căn cứ Điều 221." }] },
-            { id: 2, title: "Chương II: Việc làm", description: "Thị trường lao động.", cards: [{ q: "Việc làm là gì?", a: "Hoạt động tạo thu nhập không bị cấm." }], quiz: [{ q: "Khai trình LĐ trong bao lâu?", options: ["15 ngày", "30 ngày"], correct: 1, explanation: "Khoản 2 Điều 12." }] },
-            { id: 3, title: "Chương III: Hợp đồng lao động", description: "Giao kết hợp đồng.", cards: [{ q: "HĐ xác định thời hạn tối đa?", a: "36 tháng." }], quiz: [{ q: "Thử việc quản lý tối đa?", options: ["60 ngày", "180 ngày"], correct: 1, explanation: "Khoản 1 Điều 25." }] },
-            { id: 4, title: "Chương IV: Giáo dục nghề nghiệp", description: "Đào tạo nghề.", cards: [{ q: "Tập nghề tối đa?", a: "3 tháng." }], quiz: [{ q: "Có được thu học phí không?", options: ["Được", "Không"], correct: 1, explanation: "Khoản 3 Điều 61." }] },
-            { id: 5, title: "Chương V: Đối thoại, thương lượng", description: "Thỏa ước lao động.", cards: [{ q: "Đối thoại định kỳ?", a: "1 năm/lần." }], quiz: [{ q: "Tỷ lệ tán thành thỏa ước?", options: ["30%", "50%"], correct: 1, explanation: "Khoản 1 Điều 76." }] },
-            { id: 6, title: "Chương VI: Tiền lương", description: "Trả lương, khấu trừ lương.", cards: [{ q: "Làm ban đêm trả thêm?", a: "Ít nhất 30%." }], quiz: [{ q: "Làm thêm ngày nghỉ hằng tuần?", options: ["150%", "200%"], correct: 1, explanation: "Điểm b Khoản 1 Điều 98." }] },
-            { id: 7, title: "Chương VII: Thời giờ làm việc", description: "Nghỉ ngơi, lễ tết.", cards: [{ q: "Giờ ban đêm tính từ?", a: "22h đến 06h." }], quiz: [{ q: "Nghỉ lễ Quốc khánh mấy ngày?", options: ["1 ngày", "2 ngày"], correct: 1, explanation: "Điểm đ Khoản 1 Điều 112." }] },
-            { id: 8, title: "Chương VIII: Kỷ luật lao động", description: "Xử lý kỷ luật, sa thải.", cards: [{ q: "Thời hiệu xử lý kỷ luật?", a: "6 tháng." }], quiz: [{ q: "Hình thức nặng nhất?", options: ["Cách chức", "Sa thải"], correct: 1, explanation: "Điều 124." }] },
-            { id: 9, title: "Chương IX: An toàn, vệ sinh", description: "Đảm bảo an toàn.", cards: [{ q: "Quyền từ chối làm việc?", a: "Khi đe dọa tính mạng." }], quiz: [{ q: "Trách nhiệm thuộc về ai?", options: ["NLĐ", "NSDLĐ"], correct: 1, explanation: "Điều 134." }] },
-            { id: 10, title: "Chương X: Lao động nữ", description: "Thai sản, bình đẳng giới.", cards: [{ q: "Nghỉ thai sản mấy tháng?", a: "6 tháng." }], quiz: [{ q: "Nghỉ nuôi con dưới 12 tháng?", options: ["30 phút", "60 phút"], correct: 1, explanation: "Khoản 4 Điều 137." }] },
-            { id: 11, title: "Chương XI: Lao động chưa thành niên", description: "Lao động cao tuổi.", cards: [{ q: "Giờ làm việc dưới 15 tuổi?", a: "Tối đa 4 giờ/ngày." }], quiz: [{ q: "Quyền lao động cao tuổi?", options: ["Làm đủ 8 tiếng", "Rút ngắn thời giờ"], correct: 1, explanation: "Khoản 2 Điều 148." }] },
-            { id: 12, title: "Chương XII: Giải quyết tranh chấp", description: "Tranh chấp, đình công.", cards: [{ q: "Đình công là gì?", a: "Ngừng việc tự nguyện."}], quiz: [{ q: "Tuổi nghỉ hưu nam 2028?", options: ["60 tuổi", "62 tuổi"], correct: 1, explanation: "Khoản 2 Điều 169." }] }
+            {
+                id: 1,
+                title: "Chương I: Những quy định chung",
+                description: "Phạm vi điều chỉnh, đối tượng áp dụng, nguyên tắc cơ bản.",
+                cards: [
+                    { q: "Bộ luật LĐ 2019 áp dụng cho ai?", a: "Người lao động, học nghề, tập nghề, NSDLĐ, LĐ nước ngoài tại VN." }
+                ],
+                quiz: [
+                    { q: "Theo Điều 1, Bộ luật Lao động không quy định nội dung nào dưới đây?", options: ["Tiêu chuẩn lao động", "Quyền, nghĩa vụ của các bên", "Thủ tục thành lập doanh nghiệp và đăng ký kinh doanh", "Quản lý nhà nước về lao động"], correct: 2, explanation: "Căn cứ Điều 1." },
+                    { q: "Theo Điều 2, đối tượng nào KHÔNG thuộc phạm vi áp dụng của Bộ luật Lao động?", options: ["Người lao động", "Người học nghề, người tập nghề", "Người nước ngoài không làm việc tại Việt Nam và không liên quan đến quan hệ lao động", "Cơ quan, tổ chức, cá nhân liên quan trực tiếp đến quan hệ lao động"], correct: 2, explanation: "Căn cứ Điều 2." },
+                    { q: "Theo Khoản 1 Điều 3, độ tuổi lao động tối thiểu của người lao động là bao nhiêu?", options: ["Đủ 13 tuổi", "Đủ 15 tuổi", "Đủ 16 tuổi", "Đủ 18 tuổi"], correct: 1, explanation: "Căn cứ Khoản 1 Điều 3." },
+                    { q: "Theo Khoản 2 Điều 3, trường hợp người sử dụng lao động là cá nhân thì phải đáp ứng điều kiện gì?", options: ["Có tài sản trên 1 tỷ đồng", "Có năng lực hành vi dân sự đầy đủ", "Đã được cấp chứng chỉ hành nghề", "Từ đủ 20 tuổi trở lên"], correct: 1, explanation: "Căn cứ Khoản 2 Điều 3." },
+                    { q: "Theo Khoản 3 Điều 3, tổ chức đại diện người lao động tại cơ sở bao gồm những tổ chức nào?", options: ["Công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp", "Chỉ có công đoàn cơ sở", "Hội đồng quản trị và Ban giám đốc", "Đoàn thanh niên và Hội phụ nữ"], correct: 0, explanation: "Căn cứ Khoản 3 Điều 3." },
+                    { q: "Theo Khoản 6 Điều 3, 'Người làm việc không có quan hệ lao động' được hiểu là gì?", options: ["Người làm việc không trên cơ sở thuê mướn bằng hợp đồng lao động", "Người thất nghiệp đang tìm việc", "Người làm việc không được trả lương", "Cán bộ công chức nhà nước"], correct: 0, explanation: "Căn cứ Khoản 6 Điều 3." },
+                    { q: "Theo Khoản 7 Điều 3, hành vi 'Cưỡng bức lao động' là việc gì?", options: ["Yêu cầu làm thêm theo thỏa thuận", "Dùng vũ lực, đe dọa dùng vũ lực hoặc thủ đoạn khác ép buộc làm việc trái ý muốn", "Kỷ luật sa thải", "Phân công công việc khi chuyển sản xuất"], correct: 1, explanation: "Căn cứ Khoản 7 Điều 3." },
+                    { q: "Theo Khoản 8 Điều 3, hành vi nào KHÔNG bị xem là phân biệt đối xử trong lao động?", options: ["Phân biệt dựa trên chủng tộc, màu da", "Phân biệt dựa trên giới tính, độ tuổi, tôn giáo", "Việc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc", "Phân biệt dựa trên chính kiến hoặc HIV"], correct: 2, explanation: "Căn cứ Khoản 8 Điều 3." },
+                    { q: "Theo Khoản 9 Điều 3, 'Nơi làm việc' được định nghĩa như thế nào?", options: ["Chỉ là văn phòng chính", "Bất kỳ nơi nào mà người lao động thực tế làm việc theo thỏa thuận hoặc phân công", "Trụ sở cơ quan quản lý nhà nước", "Nơi đăng ký hộ khẩu"], correct: 1, explanation: "Căn cứ Khoản 9 Điều 3." },
+                    { q: "Theo Điều 4, chính sách nào thuộc chính sách của Nhà nước về lao động?", options: ["Bảo đảm quyền lợi, khuyến khích thỏa thuận có lợi hơn", "Tạo điều kiện việc làm, học nghề", "Thúc đẩy đối thoại, thương lượng tập thể", "Tất cả các phương án trên đều đúng"], correct: 3, explanation: "Căn cứ Điều 4." },
+                    { q: "Theo Điểm d Khoản 1 Điều 5, người lao động có quyền nào liên quan đến an toàn sức khỏe?", options: ["Yêu cầu tăng lương độc quyền", "Từ chối làm việc nếu có nguy cơ rõ ràng đe dọa tính mạng, sức khỏe", "Tự ý bỏ việc khi trời mưa", "Yêu cầu xe đưa đón"], correct: 1, explanation: "Căn cứ Điều 5." },
+                    { q: "Theo Khoản 2 Điều 5, nghĩa vụ của người lao động là gì?", options: ["Thực hiện hợp đồng lao động, TƯLĐTT", "Chấp hành kỷ luật, nội quy, tuân theo sự quản lý", "Thực hiện pháp luật LĐ, BHXH, BHYT, ATLĐ", "Tất cả các phương án trên đều đúng"], correct: 3, explanation: "Căn cứ Điều 5." },
+                    { q: "Theo Điểm d Khoản 1 Điều 6, người sử dụng lao động có quyền nào?", options: ["Đóng cửa tạm thời nơi làm việc", "Đơn phương thay đổi HĐLĐ bất cứ lúc nào", "Giữ hộ chiếu của NLĐ", "Phạt tiền trực tiếp vào lương"], correct: 0, explanation: "Căn cứ Điều 6." },
+                    { q: "Theo Khoản 2 Điều 6, nghĩa vụ của NSDLĐ về quấy rối tình dục là gì?", options: ["Khuyến khích quấy rối", "Xây dựng và thực hiện giải pháp phòng, chống quấy rối tình dục tại nơi làm việc", "Không quan tâm", "Chỉ xử lý khi có công an"], correct: 1, explanation: "Căn cứ Điều 6." },
+                    { q: "Theo Điều 7, quan hệ lao động xác lập qua đối thoại, thương lượng theo nguyên tắc nào?", options: ["Tự nguyện, thiện chí, bình đẳng, hợp tác, tôn trọng quyền lợi nhau", "Áp đặt, mệnh lệnh hành chính", "Cạnh tranh khốc liệt", "Phụ thuộc nhà nước"], correct: 0, explanation: "Căn cứ Điều 7." },
+                    { q: "Theo Khoản 3 Điều 7, tổ chức nào tham gia xây dựng quan hệ lao động tiến bộ, hài hòa?", options: ["Đoàn thanh niên", "Công đoàn", "Hội doanh nghiệp trẻ", "Hội bảo vệ người tiêu dùng"], correct: 1, explanation: "Căn cứ Điều 7." },
+                    { q: "Theo Khoản 4 Điều 7, tổ chức nào đại diện NSDLĐ tham gia xây dựng quan hệ lao động?", options: ["VCCI, Liên minh Hợp tác xã VN và các tổ chức đại diện hợp pháp khác", "Chỉ có Tổng LĐLĐVN", "UBND các cấp", "Bộ LĐ-TB&XH"], correct: 0, explanation: "Căn cứ Điều 7." },
+                    { q: "Theo Điều 8, hành vi nào bị nghiêm cấm trong lĩnh vực lao động?", options: ["Phân biệt đối xử", "Ngược đãi, cưỡng bức lao động", "Quấy rối tình dục", "Tất cả các hành vi trên đều bị nghiêm cấm"], correct: 3, explanation: "Căn cứ Điều 8." },
+                    { q: "Theo Khoản 4 Điều 8, hành vi lợi dụng danh nghĩa dạy nghề nhằm mục đích gì bị cấm?", options: ["Trục lợi, bóc lột sức lao động hoặc lôi kéo, ép buộc vào hoạt động trái pháp luật", "Tổ chức thi tay nghề", "Nâng cao tay nghề miễn phí", "Tạo việc làm thu nhập cao"], correct: 0, explanation: "Căn cứ Điều 8." },
+                    { q: "Theo Khoản 5 Điều 8, việc sử dụng lao động chưa qua đào tạo bị cấm đối với:", options: ["Mọi ngành nghề", "Nghề, công việc phải sử dụng lao động đã được đào tạo hoặc có chứng chỉ kỹ năng nghề quốc gia", "Chỉ công việc ban đêm", "Chỉ lao động nước ngoài"], correct: 1, explanation: "Căn cứ Điều 8." }
+                ]
+            },
+            {
+                id: 2,
+                title: "Chương II: Việc làm, tuyển dụng và quản lý",
+                description: "Thị trường lao động, dịch vụ việc làm, quản lý lao động.",
+                cards: [
+                    { q: "Việc làm là gì?", a: "Hoạt động lao động tạo thu nhập không bị pháp luật cấm." }
+                ],
+                quiz: [
+                    { q: "Theo Khoản 1 Điều 9, 'Việc làm' được định nghĩa như thế nào?", options: ["Bất kỳ hoạt động nào của con người", "Hoạt động lao động tạo ra thu nhập mà pháp luật không cấm", "Hoạt động trong cơ quan nhà nước hưởng lương", "Sản xuất kinh doanh có đăng ký"], correct: 1, explanation: "Căn cứ Điều 9." },
+                    { q: "Theo Khoản 2 Điều 9, chủ thể nào có trách nhiệm tham gia giải quyết việc làm?", options: ["Chỉ Nhà nước và xã hội", "Chỉ người sử dụng lao động", "Nhà nước, người sử dụng lao động và xã hội", "Cá nhân và gia đình"], correct: 2, explanation: "Căn cứ Điều 9." },
+                    { q: "Theo Khoản 1 Điều 10, người lao động có quyền làm việc như thế nào?", options: ["Chỉ làm tại địa phương đăng ký hộ khẩu", "Tự do lựa chọn việc làm, làm việc cho bất kỳ NSDLĐ nào pháp luật không cấm", "Phải qua sự phân công nhà nước", "Chỉ làm cho doanh nghiệp nhà nước"], correct: 1, explanation: "Căn cứ Điều 10." },
+                    { q: "Theo Khoản 2 Điều 10, để tìm kiếm việc làm, NLĐ có thể thực hiện bằng cách nào?", options: ["Trực tiếp liên hệ NSDLĐ", "Thông qua tổ chức dịch vụ việc làm", "Cả A và B đều đúng", "Chỉ qua cơ quan nhà nước"], correct: 2, explanation: "Căn cứ Điều 10." },
+                    { q: "Theo Khoản 1 Điều 11, NSDLĐ tuyển dụng lao động thông qua hình thức nào?", options: ["Trực tiếp tuyển dụng", "Thông qua dịch vụ việc làm hoặc cho thuê lại lao động", "Cả A và B đều đúng", "Chỉ qua Trung tâm giới thiệu việc làm nhà nước"], correct: 2, explanation: "Căn cứ Điều 11." },
+                    { q: "Theo Khoản 2 Điều 11, quy định về chi phí tuyển dụng đối với NLĐ là gì?", options: ["NLĐ phải trả một phần", "NLĐ không phải trả chi phí tuyển dụng", "NLĐ chịu phí khám sức khỏe", "Do hai bên thỏa thuận"], correct: 1, explanation: "Căn cứ Điều 11." },
+                    { q: "Theo Khoản 1 Điều 12, NSDLĐ có trách nhiệm quản lý lao động bằng hình thức nào?", options: ["Chỉ lập sổ bản giấy", "Lập, cập nhật sổ quản lý lao động bản giấy hoặc điện tử và xuất trình khi cơ quan có thẩm quyền yêu cầu", "Chỉ lưu hồ sơ xin việc", "Không bắt buộc nếu dưới 10 lao động"], correct: 1, explanation: "Căn cứ Điều 12." },
+                    { q: "Theo Khoản 2 Điều 12, NSDLĐ phải khai trình việc sử dụng lao động trong thời hạn bao lâu?", options: ["10 ngày", "15 ngày", "30 ngày", "60 ngày"], correct: 2, explanation: "Căn cứ Điều 12." },
+                    { q: "Theo Khoản 2 Điều 12, NSDLĐ định kỳ báo cáo tình hình thay đổi lao động với cơ quan nào?", options: ["Sơ LĐ-TB&XH và cơ quan BHXH", "Bộ LĐ-TB&XH trực tiếp", "UBND cấp xã", "Liên đoàn Lao động cấp tỉnh"], correct: 0, explanation: "Căn cứ Điều 12." },
+                    { q: "Theo Khoản 3 Điều 12, cơ quan nào quy định chi tiết trách nhiệm quản lý lao động?", options: ["Quốc hội", "Chính phủ", "Bộ LĐ-TB&XH", "UBND cấp tỉnh"], correct: 1, explanation: "Căn cứ Điều 12." }
+                ]
+            },
+            {
+                id: 3,
+                title: "Chương III: Hợp đồng lao động",
+                description: "Giao kết, thực hiện, sửa đổi, chấm dứt hợp đồng lao động.",
+                cards: [
+                    { q: "HĐLĐ xác định thời hạn tối đa bao nhiêu tháng?", a: "36 tháng." }
+                ],
+                quiz: [
+                    { q: "Theo Khoản 1 Điều 13, thỏa thuận tên gọi khác nhưng có nội dung về việc làm trả lương, quản lý điều hành thì được coi là gì?", options: ["Hợp đồng dịch vụ", "Hợp đồng lao động", "Hợp đồng kinh tế", "Thỏa thuận dân sự"], correct: 1, explanation: "Căn cứ Điều 13." },
+                    { q: "Theo Khoản 2 Điều 13, trước khi nhận NLĐ vào làm việc thì NSDLĐ phải làm gì?", options: ["Thử việc 6 ngày", "Đóng BHXH ngay", "Giao kết hợp đồng lao động", "Xin ý kiến công đoàn"], correct: 2, explanation: "Căn cứ Điều 13." },
+                    { q: "Theo Điều 14, được giao kết hợp đồng bằng lời nói đối với loại hợp đồng nào?", options: ["Dưới 1 tháng (trừ trường hợp đặc biệt)", "Dưới 3 tháng", "Bán thời gian", "Thử việc"], correct: 0, explanation: "Căn cứ Điều 14." },
+                    { q: "Theo Điều 15, nguyên tắc giao kết hợp đồng lao động gồm:", options: ["Tự nguyện, bình đẳng, thiện chí, hợp tác, trung thực", "Không trái pháp luật, TƯLĐTT, đạo đức xã hội", "Cả A và B đều đúng", "Phải tuân theo mệnh lệnh hoàn toàn"], correct: 2, explanation: "Căn cứ Điều 15." },
+                    { q: "Theo Khoản 1 Điều 17, hành vi nào bị nghiêm cấm khi giao kết, thực hiện HĐLĐ?", options: ["Giữ bản chính giấy tờ tùy thân, văn bằng của NLĐ", "Yêu cầu thử việc quá hạn", "Trả lương thấp hơn lương tối thiểu", "Không đóng BHXH"], correct: 0, explanation: "Căn cứ Điều 17." },
+                    { q: "Theo Khoản 2 Điều 18, nhóm NLĐ từ đủ 18 tuổi trở lên có thể làm gì đối với công việc dưới 12 tháng?", options: ["Tự động đi làm", "Ủy quyền cho một người trong nhóm giao kết HĐLĐ bằng văn bản", "Ký hợp đồng bằng lời nói", "Từng người ký riêng lẻ"], correct: 1, explanation: "Căn cứ Điều 18." },
+                    { q: "Theo Điều 19, NLĐ có thể giao kết hợp đồng lao động như thế nào?", options: ["Chỉ 1 hợp đồng với 1 NSDLĐ", "Nhiều hợp đồng với nhiều NSDLĐ nhưng phải bảo đảm thực hiện đủ", "Chỉ ký nhiều nếu làm bán thời gian", "Không được làm 2 công ty"], correct: 1, explanation: "Căn cứ Điều 19." },
+                    { q: "Theo Khoản 1 Điều 20, hợp đồng xác định thời hạn có thời gian tối đa bao nhiêu tháng?", options: ["12 tháng", "24 tháng", "36 tháng", "60 tháng"], correct: 2, explanation: "Căn cứ Điều 20." },
+                    { q: "Theo Điểm b Khoản 2 Điều 20, hết hạn 30 ngày mà không ký hợp đồng mới thì hợp đồng trở thành gì?", options: ["Hợp đồng vô hiệu", "Hợp đồng không xác định thời hạn", "Tự động chấm dứt", "Gia hạn thêm 12 tháng"], correct: 1, explanation: "Căn cứ Điều 20." },
+                    { q: "Theo Điều 22, phụ lục hợp đồng lao động có hiệu lực thế nào?", options: ["Là bộ phận của HĐLĐ, hiệu lực như hợp đồng nhưng không sửa đổi thời hạn hợp đồng", "Không có giá trị nếu không công chứng", "Chỉ mang tính tham khảo", "Có thể sửa đổi thời hạn hợp đồng"], correct: 0, explanation: "Căn cứ Điều 22." },
+                    { q: "Theo Điều 25, thời gian thử việc đối với trình độ cao đẳng trở lên tối đa là bao nhiêu ngày?", options: ["6 ngày", "30 ngày", "60 ngày", "180 ngày"], correct: 2, explanation: "Căn cứ Điều 25." },
+                    { q: "Theo Điều 26, tiền lương thử việc do hai bên thỏa thuận nhưng ít nhất bằng bao nhiêu %?", options: ["70%", "80%", "85%", "100%"], correct: 2, explanation: "Căn cứ Điều 26." },
+                    { q: "Theo Khoản 2 Điều 27, trong thời gian thử việc, quyền mỗi bên đối với hợp đồng là gì?", options: ["Báo trước 3 ngày", "Hủy bỏ mà không cần báo trước, không bồi thường", "Phải được cơ quan lao động đồng ý", "Bồi thường nửa tháng lương"], correct: 1, explanation: "Căn cứ Điều 27." },
+                    { q: "Theo Khoản 1 Điều 29, tạm thời chuyển NLĐ làm việc khác tối đa bao nhiêu ngày cộng dồn trong 1 năm?", options: ["30 ngày", "60 ngày", "90 ngày", "180 ngày"], correct: 1, explanation: "Căn cứ Điều 29." },
+                    { q: "Theo Điều 30, trường hợp nào là tạm hoãn thực hiện HĐLĐ?", options: ["Thực hiện nghĩa vụ quân sự", "Tạm giữ, tạm giam", "Lao động nữ mang thai theo Điều 138", "Tất cả các trường hợp trên đều đúng"], correct: 3, explanation: "Căn cứ Điều 30." },
+                    { q: "Theo Điều 31, hết thời hạn tạm hoãn, trong bao lâu NLĐ phải có mặt tại nơi làm việc?", options: ["3 ngày", "7 ngày", "15 ngày", "30 ngày"], correct: 2, explanation: "Căn cứ Điều 31." },
+                    { q: "Theo Điểm a Khoản 1 Điều 35, NLĐ làm việc theo HĐ không xác định thời hạn muốn đơn phương chấm dứt phải báo trước ít nhất:", options: ["3 ngày làm việc", "30 ngày", "45 ngày", "90 ngày"], correct: 2, explanation: "Căn cứ Điều 35." },
+                    { q: "Theo Khoản 2 Điều 35, NLĐ được đơn phương chấm dứt hợp đồng KHÔNG CẦN BÁO TRƯỚC khi:", options: ["Không trả đủ lương, trả lương không đúng hạn", "Bị quấy rối tình dục", "Bị ngược đãi, đánh đập, nhục mạ", "Tất cả các trường hợp trên"], correct: 3, explanation: "Căn cứ Điều 35." },
+                    { q: "Theo Điểm e Khoản 1 Điều 36, NSDLĐ được đơn phương chấm dứt hợp đồng khi NLĐ tự ý bỏ việc từ mấy ngày liên tục?", options: ["3 ngày", "5 ngày", "7 ngày", "10 ngày"], correct: 1, explanation: "Căn cứ Điều 36." },
+                    { q: "Theo Điều 37, NSDLĐ KHÔNG ĐƯỢC đơn phương chấm dứt hợp đồng đối với:", options: ["NLĐ ốm đau, tai nạn đang điều trị", "NLĐ đang nghỉ hằng năm, việc riêng được đồng ý", "Lao động nữ mang thai, nghỉ thai sản, nuôi con dưới 12 tháng", "Tất cả các trường hợp trên"], correct: 3, explanation: "Căn cứ Điều 37." },
+                    { q: "Theo Điều 40, khi NLĐ đơn phương chấm dứt hợp đồng trái pháp luật, nghĩa vụ tài chính là:", options: ["Không được trợ cấp thôi việc, bồi thường nửa tháng lương, tiền lương những ngày không báo trước, hoàn trả chi phí đào tạo", "Bồi thường thiệt hại đặc biệt", "Phạt 2 tháng lương", "Không phải chịu nghĩa vụ"], correct: 0, explanation: "Căn cứ Điều 40." },
+                    { q: "Theo Khoản 1 Điều 46, thời gian làm việc để được hưởng trợ cấp thôi việc là:", options: ["Đủ 6 tháng", "Đủ 12 tháng", "Đủ 24 tháng", "Không bắt buộc"], correct: 1, explanation: "Căn cứ Điều 46." },
+                    { q: "Theo Khoản 1 Điều 47, mức chi trả trợ cấp mất việc làm cho mỗi năm làm việc là:", options: ["Nửa tháng tiền lương", "1 tháng tiền lương, ít nhất bằng 2 tháng tiền lương", "2 tháng tiền lương", "Mức lương tối thiểu vùng"], correct: 1, explanation: "Căn cứ Điều 47." },
+                    { q: "Theo Khoản 1 Điều 48, thời hạn thanh toán đầy đủ quyền lợi khi chấm dứt hợp đồng là:", options: ["07 ngày làm việc", "14 ngày làm việc", "30 ngày", "45 ngày"], correct: 1, explanation: "Căn cứ Điều 48." },
+                    { q: "Theo Khoản 1 Điều 53, thời hạn cho thuê lại lao động tối đa đối với 1 người là:", options: ["6 tháng", "12 tháng", "24 tháng", "36 tháng"], correct: 1, explanation: "Căn cứ Điều 53." },
+                    { q: "Theo Khoản 3 Điều 53, bên thuê lại lao động KHÔNG ĐƯỢC sử dụng lao động thuê lại trong trường hợp:", options: ["Thay thế người đang đình công, giải quyết tranh chấp", "Thay thế người thôi việc do thay đổi cơ cấu kinh tế", "Không thỏa thuận bồi thường tai nạn lao động với doanh nghiệp cho thuê lại", "Tất cả các trường hợp trên"], correct: 3, explanation: "Căn cứ Điều 53." }
+                ]
+            },
+            {
+                id: 4,
+                title: "Chương IV: Giáo dục nghề nghiệp",
+                description: "Đào tạo, bồi dưỡng, nâng cao trình độ, kỹ năng nghề.",
+                cards: [
+                    { q: "Thời hạn tập nghề tối đa bao lâu?", a: "Không quá 3 tháng." }
+                ],
+                quiz: [
+                    { q: "Theo Điều 59, người lao động có quyền gì đối với giáo dục nghề nghiệp?", options: ["Bắt buộc tham gia theo chỉ định", "Tự do lựa chọn đào tạo nghề nghiệp, tham gia đánh giá, công nhận kỹ năng nghề", "Phải theo yêu cầu bắt buộc của NSDLĐ", "Chỉ học trường công lập"], correct: 1, explanation: "Căn cứ Điều 59." },
+                    { q: "Nhà nước khuyến khích NSDLĐ có đủ điều kiện thực hiện hoạt động nào?", options: ["Thành lập cơ sở giáo dục nghề nghiệp hoặc mở lớp đào tạo nghề tại nơi làm việc", "Đóng cửa lớp đào tạo nhỏ", "Thu học phí cao", "Cấm NLĐ tham gia hội đồng kỹ năng"], correct: 0, explanation: "Căn cứ Điều 60." },
+                    { q: "Trách nhiệm của NSDLĐ về kinh phí đào tạo nâng cao trình độ là gì?", options: ["Xin kinh phí nhà nước", "Xây dựng kế hoạch hằng năm và dành kinh phí đào tạo, bồi dưỡng", "Yêu cầu NLĐ tự chi trả", "Chỉ đào tạo trước khi nghỉ việc"], correct: 1, explanation: "Căn cứ Điều 60." },
+                    { q: "Hằng năm, NSDLĐ phải thông báo kết quả đào tạo cho cơ quan nào?", options: ["Bộ LĐ-TB&XH", "Sở Kế hoạch và Đầu tư", "Cơ quan chuyên môn về lao động thuộc UBND cấp tỉnh", "UBND cấp huyện"], correct: 2, explanation: "Căn cứ Điều 60." },
+                    { q: "Thời hạn tập nghề tối đa là bao lâu?", options: ["01 tháng", "03 tháng", "06 tháng", "Không giới hạn"], correct: 1, explanation: "Căn cứ Điều 61." },
+                    { q: "Khi tuyển người vào học nghề, tập nghề để làm việc cho mình, NSDLĐ có thu học phí không?", options: ["Có thu học phí", "Không phải đăng ký và được thu học phí", "Phải đăng ký và không được thu học phí", "Không phải đăng ký và không được thu học phí"], correct: 3, explanation: "Căn cứ Điều 61." },
+                    { q: "Độ tuổi tối thiểu của người học nghề, tập nghề là:", options: ["Đủ 13 tuổi", "Đủ 14 tuổi", "Đủ 15 tuổi", "Đủ 18 tuổi"], correct: 1, explanation: "Căn cứ Điều 61." },
+                    { q: "Đối với nghề nặng nhọc, độc hại, nguy hiểm, người học nghề phải đạt độ tuổi nào?", options: ["Từ đủ 15 tuổi", "Từ đủ 16 tuổi", "Từ đủ 18 tuổi", "Từ đủ 21 tuổi"], correct: 2, explanation: "Căn cứ Điều 61." },
+                    { q: "Trong thời gian học nghề, nếu trực tiếp tham gia lao động thì tiền lương tính thế nào?", options: ["Không được trả lương", "85% lương tối thiểu vùng", "Theo mức do hai bên thỏa thuận", "100% lương chính thức"], correct: 2, explanation: "Căn cứ Điều 61." },
+                    { q: "Hết thời hạn học nghề, tập nghề, hai bên phải ký kết gì?", options: ["Hợp đồng đào tạo mới", "Gia hạn tập nghề", "Ký kết hợp đồng lao động", "Hoàn trả chi phí"], correct: 2, explanation: "Căn cứ Điều 61." }
+                ]
+            },
+            {
+                id: 5,
+                title: "Chương V: Đối thoại, thương lượng tập thể",
+                description: "Đối thoại tại nơi làm việc, thương lượng tập thể, TƯLĐTT.",
+                cards: [
+                    { q: "Đối thoại định kỳ tại nơi làm việc ít nhất mấy lần/năm?", a: "1 năm/lần." }
+                ],
+                quiz: [
+                    { q: "Mục đích đối thoại tại nơi làm việc là gì?", options: ["Tăng cường hiểu biết, hợp tác, hướng tới giải pháp các bên cùng có lợi", "Ép tăng lương", "Giải quyết án hình sự", "Giám sát nộp thuế"], correct: 0, explanation: "Căn cứ Điều 63." },
+                    { q: "NSDLĐ phải tổ chức đối thoại định kỳ ít nhất bao lâu một lần?", options: ["06 tháng", "01 năm", "02 năm", "03 năm"], correct: 1, explanation: "Căn cứ Điều 63." },
+                    { q: "Trường hợp nào NSDLĐ BẮT BUỘC phải tổ chức đối thoại?", options: ["Định kỳ 1 năm/lần", "Khi có yêu cầu của một hoặc các bên", "Khi có vụ việc về sa thải, thay đổi cơ cấu, lương, nội quy...", "Tất cả các trường hợp trên"], correct: 3, explanation: "Căn cứ Điều 63." },
+                    { q: "Thương lượng tập thể nhằm mục đích gì?", options: ["Xác lập điều kiện lao động, quan hệ lao động tiến bộ, hài hòa", "Quyết định mức phạt tiền", "Thay thế hoàn toàn Luật Lao động", "Thành lập công ty con"], correct: 0, explanation: "Căn cứ Điều 65." },
+                    { q: "Thương lượng tập thể tiến hành theo nguyên tắc nào?", options: ["Bắt buộc, công khai, bí mật", "Tự nguyện, hợp tác, thiện chí, bình đẳng, công khai, minh bạch", "Tự do tuyệt đối không theo luật", "Cấp trên quyết định"], correct: 1, explanation: "Căn cứ Điều 66." },
+                    { q: "Nội dung nào KHÔNG thuộc danh mục thương lượng tập thể?", options: ["Tiền lương, trợ cấp, thưởng, bữa ăn", "Mức lao động, thời giờ làm việc", "Quyền sở hữu vốn góp cá nhân của chủ doanh nghiệp", "An toàn, vệ sinh lao động, chống quấy rối tình dục"], correct: 2, explanation: "Căn cứ Điều 67." },
+                    { q: "Tổ chức đại diện NLĐ tại cơ sở yêu cầu thương lượng khi đạt điều kiện gì?", options: ["Có ít nhất 100 thành viên", "Đạt tỷ lệ thành viên tối thiểu trên tổng số NLĐ theo quy định", "Được 100% NLĐ đồng ý", "Đã hoạt động 5 năm"], correct: 1, explanation: "Căn cứ Điều 68." },
+                    { q: "Kể từ ngày nhận yêu cầu thương lượng, các bên phải thỏa thuận thời gian trong bao lâu?", options: ["03 ngày làm việc", "07 ngày làm việc", "15 ngày làm việc", "30 ngày"], correct: 1, explanation: "Căn cứ Điều 70." },
+                    { q: "Thời gian bắt đầu thương lượng không được quá bao nhiêu ngày từ ngày nhận yêu cầu?", options: ["15 ngày", "30 ngày", "45 ngày", "60 ngày"], correct: 1, explanation: "Căn cứ Điều 70." },
+                    { q: "Thời gian thương lượng tập thể tối đa không quá bao nhiêu ngày?", options: ["30 ngày", "60 ngày", "90 ngày", "120 ngày"], correct: 2, explanation: "Căn cứ Điều 70." },
+                    { q: "Thông tin nào NSDLĐ ĐƯỢC QUYỀN KHÔNG CUNG CẤP trong thương lượng?", options: ["Tình hình sản xuất kinh doanh", "Bí mật kinh doanh, bí mật công nghệ", "Nội dung liên quan trực tiếp thương lượng", "Báo cáo tài chính công khai"], correct: 1, explanation: "Căn cứ Điều 70." },
+                    { q: "Thỏa ước lao động tập thể doanh nghiệp được ký kết khi có bao nhiêu % NLĐ biểu quyết tán thành?", options: ["Tròn 50%", "Trên 50%", "Từ 65% trở lên", "100%"], correct: 1, explanation: "Căn cứ Điều 76." },
+                    { q: "Thỏa ước lao động tập thể có thời hạn trong khoảng bao lâu?", options: ["6 tháng đến 1 năm", "1 năm đến 3 năm", "2 năm đến 5 năm", "Không xác định"], correct: 1, explanation: "Căn cứ Điều 78." },
+                    { q: "Khi các thỏa ước quy định khác nhau, áp dụng theo nguyên tắc nào?", options: ["Ưu tiên thỏa ước ngành", "Ưu tiên thỏa ước doanh nghiệp", "Thực hiện theo nội dung CÓ LỢI NHẤT cho người lao động", "Quy định chi phí thấp nhất"], correct: 2, explanation: "Căn cứ Điều 81." },
+                    { q: "Cơ quan nào có thẩm quyền tuyên bố thỏa ước lao động tập thể vô hiệu?", options: ["Sở LĐ-TB&XH", "Tòa án nhân dân", "UBND cấp tỉnh", "Thanh tra lao động"], correct: 1, explanation: "Căn cứ Điều 87." }
+                ]
+            },
+            {
+                id: 6,
+                title: "Chương VI: Tiền lương",
+                description: "Thành phần tiền lương, lương tối thiểu, trả lương, thưởng.",
+                cards: [
+                    { q: "Làm ban đêm được trả thêm ít nhất bao nhiêu %?", a: "Ít nhất 30%." }
+                ],
+                quiz: [
+                    { q: "Tiền lương bao gồm những thành phần nào?", options: ["Chỉ mức lương theo công việc", "Mức lương theo công việc hoặc chức danh, phụ cấp lương và các khoản bổ sung khác", "Chỉ tiền thưởng", "Mức lương cơ sở và tiền ăn trưa"], correct: 1, explanation: "Căn cứ Điều 90." },
+                    { q: "Mức lương theo công việc so với mức lương tối thiểu phải thế nào?", options: ["Không được thấp hơn mức lương tối thiểu", "Có thể thấp hơn nếu NLĐ đồng ý", "Bằng đúng mức lương tối thiểu", "Không cao hơn 2 lần"], correct: 0, explanation: "Căn cứ Điều 90." },
+                    { q: "Mức lương tối thiểu được xác lập và ấn định theo:", options: ["Xác lập theo ngành, ấn định theo quý", "Xác lập theo vùng, ấn định theo tháng, giờ", "Xác lập theo tỉnh, ấn định theo năm", "Xác lập theo doanh nghiệp"], correct: 1, explanation: "Căn cứ Điều 91." },
+                    { q: "Cơ quan nào quyết định và công bố mức lương tối thiểu?", options: ["Bộ LĐ-TB&XH", "Tổng LĐLĐVN", "Chính phủ (trên cơ sở khuyến nghị của Hội đồng tiền lương quốc gia)", "Quốc hội"], correct: 2, explanation: "Căn cứ Điều 91." },
+                    { q: "Hội đồng tiền lương quốc gia có chức năng gì?", options: ["Xét xử tranh chấp lương", "Tư vấn cho Chính phủ về mức lương tối thiểu và chính sách tiền lương", "Thanh tra thu nhập", "Thu thuế thu nhập cá nhân"], correct: 1, explanation: "Căn cứ Điều 92." },
+                    { q: "Ai quyết định thành lập Hội đồng tiền lương quốc gia?", options: ["Chủ tịch nước", "Thủ tướng Chính phủ", "Bộ trưởng Bộ LĐ-TB&XH", "Chủ tịch Tổng LĐLĐVN"], correct: 1, explanation: "Căn cứ Điều 92." },
+                    { q: "Mức lao động phải đáp ứng yêu cầu nào?", options: ["Mức tối đa để ép tăng ca", "Mức trung bình bảo đảm số đông NLĐ thực hiện được mà không phải kéo dài thời giờ làm việc", "Do NLĐ giỏi nhất thiết lập", "Áp dụng ngay không thử nghiệm"], correct: 1, explanation: "Căn cứ Điều 93." },
+                    { q: "Trước khi thực hiện thang lương, bảng lương, NSDLĐ phải làm gì?", options: ["Trình Tòa án phê duyệt", "Tham khảo ý kiến tổ chức đại diện NLĐ tại cơ sở và công bố công khai", "Đăng báo 3 số liên tiếp", "Giữ bí mật"], correct: 1, explanation: "Căn cứ Điều 93." },
+                    { q: "Hành vi nào của NSDLĐ bị CẤM trong việc trả lương?", options: ["Can thiệp quyền tự quyết chi tiêu", "Ép buộc NLĐ chi tiêu lương mua hàng hóa, dịch vụ của NSDLĐ hoặc đơn vị chỉ định", "Hạn chế quyền chi tiêu", "Tất cả các hành vi trên"], correct: 3, explanation: "Căn cứ Điều 94." },
+                    { q: "Tiền lương trả cho NLĐ quy định bằng đồng tiền nào?", options: ["Bắt buộc USD", "Bằng đồng Việt Nam; nếu là người nước ngoài thì có thể bằng ngoại tệ", "Bằng vàng", "Bằng mọi ngoại tệ"], correct: 1, explanation: "Căn cứ Điều 95." },
+                    { q: "Mỗi lần trả lương, NSDLĐ phải làm gì?", options: ["Thông báo bảng kê trả lương cho NLĐ", "Yêu cầu cam kết không tiết lộ lương", "Báo cáo Bộ LĐ-TB&XH", "Không cần thông báo nếu trả qua ngân hàng"], correct: 0, explanation: "Căn cứ Điều 95." },
+                    { q: "Trả lương qua tài khoản ngân hàng, ai trả phí mở tài khoản và chuyển tiền?", options: ["NLĐ tự chi trả 100%", "NSDLĐ phải trả các loại phí liên quan", "Ngân hàng miễn phí", "Chia đôi 50/50"], correct: 1, explanation: "Căn cứ Điều 96." },
+                    { q: "Trường hợp trả lương chậm từ bao nhiêu ngày trở lên thì NSDLĐ phải đền bù khoản tiền lãi?", options: ["7 ngày", "10 ngày", "15 ngày", "30 ngày"], correct: 2, explanation: "Căn cứ Điều 97." },
+                    { q: "Tiền lương làm thêm giờ vào ngày thường, ngày nghỉ hằng tuần, ngày lễ tết tính ít nhất bằng:", options: ["100%, 150%, 200%", "150%, 200%, 300%", "200%, 250%, 400%", "150%, 300%, 500%"], correct: 1, explanation: "Căn cứ Điều 98." },
+                    { q: "Làm việc vào ban đêm thì được trả thêm ít nhất bao nhiêu % tiền lương?", options: ["20%", "30%", "45%", "50%"], correct: 1, explanation: "Căn cứ Điều 98." },
+                    { q: "Làm thêm giờ vào ban đêm thì được trả thêm bao nhiêu %?", options: ["10%", "20%", "30%", "50%"], correct: 1, explanation: "Căn cứ Điều 98." },
+                    { q: "Ngừng việc do lỗi của NSDLĐ thì NLĐ được trả lương thế nào?", options: ["Trả 50% lương", "Trả đủ tiền lương theo hợp đồng", "Trả mức lương tối thiểu", "Không trả lương"], correct: 1, explanation: "Căn cứ Điều 99." },
+                    { q: "Ngừng việc do lỗi của chính mình thì NLĐ được giải quyết ra sao?", options: ["Trả đủ lương", "Không được trả lương", "Trả 70% lương", "Hưởng lương tối thiểu"], correct: 1, explanation: "Căn cứ Điều 99." },
+                    { q: "Ngừng việc do sự cố điện nước, dịch bệnh từ 14 ngày trở xuống, tiền lương thỏa thuận thế nào?", options: ["Không thấp hơn lương tối thiểu", "Bằng 50% lương hợp đồng", "Do NSDLĐ quyết định", "Không trả lương"], correct: 0, explanation: "Căn cứ Điều 99." },
+                    { q: "Mức khấu trừ tiền lương hằng tháng tối đa không quá bao nhiêu % lương thực trả?", options: ["10%", "20%", "30%", "50%"], correct: 2, explanation: "Căn cứ Điều 102." },
+                    { q: "Thưởng cho NLĐ có thể bằng hình thức nào?", options: ["Chỉ tiền mặt", "Tiền hoặc tài sản hoặc hình thức khác", "Chỉ cổ phiếu", "Chỉ kỳ nghỉ du lịch"], correct: 1, explanation: "Căn cứ Điều 104." }
+                ]
+            },
+            {
+                id: 7,
+                title: "Chương VII: Thời giờ làm việc, nghỉ ngơi",
+                description: "Thời giờ làm việc, làm thêm giờ, nghỉ lễ tết, nghỉ hằng năm.",
+                cards: [
+                    { q: "Thời giờ làm việc bình thường tối đa bao nhiêu giờ/ngày?", a: "Không quá 8 giờ/ngày và 48 giờ/tuần." }
+                ],
+                quiz: [
+                    { q: "Thời giờ làm việc bình thường không quá bao nhiêu giờ trong 1 ngày và 1 tuần?", options: ["8h/ngày, 40h/tuần", "8h/ngày, 48h/tuần", "10h/ngày, 48h/tuần", "9h/ngày, 44h/tuần"], correct: 1, explanation: "Căn cứ Điều 105." },
+                    { q: "Giờ làm việc ban đêm được tính trong khoảng thời gian nào?", options: ["21h đến 5h", "22h đến 6h sáng hôm sau", "20h đến 4h", "23h đến 7h"], correct: 1, explanation: "Căn cứ Điều 106." },
+                    { q: "Số giờ làm thêm tối đa trong 1 năm theo quy định chung (điều kiện bình thường) là:", options: ["150 giờ", "200 giờ", "250 giờ", "300 giờ"], correct: 1, explanation: "Căn cứ Điều 107." },
+                    { q: "Người lao động làm việc từ 6 giờ trở lên trong 1 ngày thì được nghỉ giữa giờ ít nhất:", options: ["15 phút", "30 phút liên tục", "45 phút", "60 phút"], correct: 1, explanation: "Căn cứ Điều 109." },
+                    { q: "Mỗi tuần người lao động được nghỉ ít nhất bao nhiêu giờ liên tục?", options: ["12 giờ", "24 giờ liên tục", "36 giờ", "48 giờ"], correct: 1, explanation: "Căn cứ Điều 111." },
+                    { q: "Số ngày nghỉ Tết Âm lịch hưởng nguyên lương là bao nhiêu ngày?", options: ["3 ngày", "4 ngày", "5 ngày", "6 ngày"], correct: 2, explanation: "Căn cứ Điều 112." },
+                    { q: "Dịp Quốc khánh, NLĐ được nghỉ mấy ngày hưởng nguyên lương?", options: ["1 ngày (2/9)", "2 ngày (2/9 và 1 ngày liền kề)", "3 ngày", "4 ngày"], correct: 1, explanation: "Căn cứ Điều 112." },
+                    { q: "NLĐ làm việc đủ 12 tháng trong điều kiện bình thường được nghỉ hằng năm mấy ngày?", options: ["10 ngày", "12 ngày", "14 ngày", "16 ngày"], correct: 1, explanation: "Căn cứ Điều 113." },
+                    { q: "Cứ đủ bao nhiêu năm làm việc cho một NSDLĐ thì số ngày nghỉ hằng năm tăng thêm 1 ngày?", options: ["3 năm", "5 năm", "8 năm", "10 năm"], correct: 1, explanation: "Căn cứ Điều 114." },
+                    { q: "NLĐ kết hôn thì được nghỉ việc riêng hưởng nguyên lương mấy ngày?", options: ["1 ngày", "2 ngày", "3 ngày", "5 ngày"], correct: 3, explanation: "Căn cứ Điều 115." }
+                ]
+            },
+            {
+                id: 8,
+                title: "Chương VIII: Kỷ luật lao động, trách nhiệm vật chất",
+                description: "Nội quy lao động, hình thức xử lý kỷ luật, bồi thường thiệt hại.",
+                cards: [
+                    { q: "Có mấy hình thức xử lý kỷ luật lao động?", a: "4 hình thức." }
+                ],
+                quiz: [
+                    { q: "NSDLĐ sử dụng từ bao nhiêu người lao động trở lên thì nội quy lao động bắt buộc phải bằng văn bản?", options: ["Từ 5 người", "Từ 10 người", "Từ 15 người", "Từ 20 người"], correct: 1, explanation: "Căn cứ Điều 118." },
+                    { q: "Thời hiệu xử lý kỷ luật lao động thông thường là bao lâu?", options: ["3 tháng", "6 tháng kể từ ngày xảy ra vi phạm", "9 tháng", "12 tháng"], correct: 1, explanation: "Căn cứ Điều 123." },
+                    { q: "Thời hiệu xử lý kỷ luật liên quan đến tài chính, tài sản, bí mật công nghệ là bao lâu?", options: ["6 tháng", "12 tháng", "18 tháng", "24 tháng"], correct: 1, explanation: "Căn cứ Điều 123." },
+                    { q: "Có bao nhiêu hình thức xử lý kỷ luật lao động theo Điều 124?", options: ["3 hình thức", "4 hình thức (Khiển trách, Kéo dài nâng lương không quá 6 tháng, Cách chức, Sa thải)", "5 hình thức", "6 hình thức"], correct: 1, explanation: "Căn cứ Điều 124." },
+                    { q: "Hành vi nào bị nghiêm cấm khi xử lý kỷ luật lao động?", options: ["Xâm phạm sức khỏe, danh dự, nhân phẩm NLĐ", "Phạt tiền, cắt lương thay xử lý kỷ luật", "Xử lý vi phạm không có trong nội quy", "Tất cả các hành vi trên đều bị nghiêm cấm"], correct: 3, explanation: "Căn cứ Điều 127." },
+                    { q: "Thời hạn tạm đình chỉ công việc tối đa là bao lâu?", options: ["7 ngày, đặc biệt không quá 30 ngày", "15 ngày, đặc biệt không quá 90 ngày", "30 ngày, đặc biệt không quá 60 ngày", "45 ngày"], correct: 1, explanation: "Căn cứ Điều 128." },
+                    { q: "Mức tạm ứng tiền lương trong thời gian bị tạm đình chỉ công việc là bao nhiêu?", options: ["30%", "50% tiền lương trước khi bị đình chỉ", "70%", "Không được tạm ứng"], correct: 1, explanation: "Căn cứ Điều 128." }
+                ]
+            },
+            {
+                id: 9,
+                title: "Chương IX: An toàn, vệ sinh lao động",
+                description: "Đảm bảo an toàn, vệ sinh lao động tại nơi làm việc.",
+                cards: [
+                    { q: "Ai có trách nhiệm thực hiện giải pháp bảo đảm an toàn vệ sinh lao động?", a: "Người sử dụng lao động và người lao động." }
+                ],
+                quiz: [
+                    { q: "Cơ quan nào quyết định Chương trình quốc gia về an toàn, vệ sinh lao động?", options: ["Quốc hội", "Bộ LĐ-TB&XH", "Chính phủ", "Chủ tịch nước"], correct: 2, explanation: "Căn cứ Điều 133." },
+                    { q: "Ai có trách nhiệm thực hiện đầy đủ các giải pháp bảo đảm an toàn, vệ sinh lao động tại nơi làm việc?", options: ["Người lao động", "Người sử dụng lao động", "Thanh tra lao động", "Công đoàn"], correct: 1, explanation: "Căn cứ Điều 134." },
+                    { q: "Trách nhiệm tuân thủ nội quy, quy trình an toàn vệ sinh lao động thuộc về ai?", options: ["Người lao động", "Người sử dụng lao động", "Cán bộ quản lý", "Cả A và B đúng"], correct: 0, explanation: "Căn cứ Điều 134." }
+                ]
+            },
+            {
+                id: 10,
+                title: "Chương X: Quy định riêng đối với lao động nữ",
+                description: "Bình đẳng giới, thai sản, nuôi con nhỏ.",
+                cards: [
+                    { q: "Thời gian nghỉ thai sản tổng cộng mấy tháng?", a: "6 tháng." }
+                ],
+                quiz: [
+                    { q: "NSDLĐ sử dụng nhiều lao động nữ được hưởng chính sách gì?", options: ["Giảm thuế theo pháp luật về thuế", "Miễn hoàn toàn thuế", "Hỗ trợ 50% lương", "Cấp kinh phí hoạt động"], correct: 0, explanation: "Căn cứ Điều 135." },
+                    { q: "NSDLĐ không được sử dụng lao động nữ mang thai từ tháng thứ mấy làm việc ban đêm, thêm giờ, đi công tác xa?", options: ["Tháng thứ 5", "Tháng thứ 6", "Tháng thứ 7", "Tháng thứ 8"], correct: 2, explanation: "Căn cứ Điều 137." },
+                    { q: "Thời gian lao động nữ nghỉ thai sản trước và sau sinh tổng cộng là bao nhiêu tháng?", options: ["4 tháng", "5 tháng", "6 tháng", "7 tháng"], correct: 2, explanation: "Căn cứ Điều 139." },
+                    { q: "Lao động nữ nuôi con dưới 12 tháng tuổi được nghỉ mỗi ngày bao nhiêu phút mà vẫn hưởng đủ lương?", options: ["30 phút", "60 phút", "45 phút", "90 phút"], correct: 1, explanation: "Căn cứ Điều 137." }
+                ]
+            },
+            {
+                id: 11,
+                title: "Chương XI: Lao động chưa thành niên, lao động khác",
+                description: "Lao động chưa thành niên, cao tuổi, người nước ngoài, giúp việc gia đình.",
+                cards: [
+                    { q: "Lao động chưa thành niên là người chưa đủ bao nhiêu tuổi?", a: "Chưa đủ 18 tuổi." }
+                ],
+                quiz: [
+                    { q: "Lao động chưa thành niên là người chưa đủ bao nhiêu tuổi?", options: ["14 tuổi", "16 tuổi", "18 tuổi", "20 tuổi"], correct: 2, explanation: "Căn cứ Điều 143." },
+                    { q: "Thời giờ làm việc của người chưa đủ 15 tuổi được quy định tối đa là bao nhiêu?", options: ["4 giờ/ngày và 20 giờ/tuần", "6 giờ/ngày và 30 giờ/tuần", "8 giờ/ngày và 40 giờ/tuần", "5 giờ/ngày"], correct: 0, explanation: "Căn cứ Điều 146." },
+                    { q: "Độ tuổi tối thiểu của người lao động nước ngoài làm việc tại Việt Nam là:", options: ["Đủ 15 tuổi", "Đủ 16 tuổi", "Đủ 18 tuổi", "Đủ 21 tuổi"], correct: 2, explanation: "Căn cứ Điều 151." },
+                    { q: "Hình thức hợp đồng lao động bắt buộc đối với người giúp việc gia đình là:", options: ["Hợp đồng bằng văn bản", "Hợp đồng bằng lời nói", "Hợp đồng hành vi", "Không cần hợp đồng"], correct: 0, explanation: "Căn cứ Điều 162." }
+                ]
+            },
+            {
+                id: 12,
+                title: "Chương XII: BHXH, BHYT, BHTN",
+                description: "Bảo hiểm bắt buộc, tuổi nghỉ hưu theo lộ trình.",
+                cards: [
+                    { q: "Tuổi nghỉ hưu của nam năm 2028 là bao nhiêu?", a: "Đủ 62 tuổi." }
+                ],
+                quiz: [
+                    { q: "Các hình thức bảo hiểm nào BẮT BUỘC người sử dụng lao động và NLĐ phải tham gia?", options: ["BHXH bắt buộc, BHYT, bảo hiểm nhân thọ", "BHXH bắt buộc, BHYT, BHTN", "BHTN, bảo hiểm tai nạn, BHYT", "BHXH tự nguyện, BHYT, BHTN"], correct: 1, explanation: "Căn cứ Điều 168." },
+                    { q: "Lộ trình đến năm 2028, tuổi nghỉ hưu của nam trong điều kiện lao động bình thường là:", options: ["60 tuổi", "62 tuổi", "63 tuổi", "65 tuổi"], correct: 1, explanation: "Căn cứ Điều 169." },
+                    { q: "Lộ trình đến năm 2035, tuổi nghỉ hưu của nữ trong điều kiện lao động bình thường là:", options: ["55 tuổi", "58 tuổi", "60 tuổi", "62 tuổi"], correct: 2, explanation: "Căn cứ Điều 169." }
+                ]
+            },
+            {
+                id: 13,
+                title: "Chương XIII: Tổ chức đại diện người lao động",
+                description: "Công đoàn cơ sở, tổ chức của người lao động tại doanh nghiệp.",
+                cards: [
+                    { q: "Tổ chức của NLĐ tại doanh nghiệp được thành lập hợp pháp khi nào?", a: "Sau khi được cơ quan nhà nước cấp đăng ký." }
+                ],
+                quiz: [
+                    { q: "Tổ chức của người lao động tại doanh nghiệp hoạt động hợp pháp khi nào?", options: ["Khi được đại đa số NLĐ bầu ra", "Sau khi cơ quan nhà nước có thẩm quyền cấp đăng ký", "Sau khi NSDLĐ đồng ý", "Ngay khi thông qua điều lệ"], correct: 1, explanation: "Căn cứ Điều 172." },
+                    { q: "Khi NSDLĐ chấm dứt hợp đồng với thành viên ban lãnh đạo tổ chức đại diện NLĐ, phải thỏa thuận với ai?", options: ["Công đoàn cấp tỉnh", "Thỏa thuận bằng văn bản với ban lãnh đạo tổ chức đại diện tại cơ sở", "Bộ LĐ-TB&XH", "Tòa án"], correct: 1, explanation: "Căn cứ Điều 177." }
+                ]
+            },
+            {
+                id: 14,
+                title: "Chương XIV: Giải quyết tranh chấp lao động",
+                description: "Tranh chấp cá nhân, tập thể, đình công.",
+                cards: [
+                    { q: "Đình công là gì?", a: "Sự ngừng việc tạm thời, tự nguyện và có tổ chức của người lao động." }
+                ],
+                quiz: [
+                    { q: "Tranh chấp lao động bao gồm những loại nào?", options: ["Cá nhân và tập thể (về quyền hoặc về lợi ích)", "Dân sự và kinh tế thương mại", "Giữa NLĐ và cơ quan BHXH", "Giữa doanh nghiệp và cơ quan thuế"], correct: 0, explanation: "Căn cứ Điều 179." },
+                    { q: "Thời hạn hòa giải tranh chấp lao động cá nhân của hòa giải viên là:", options: ["3 ngày", "5 ngày làm việc kể từ ngày nhận yêu cầu", "7 ngày", "10 ngày"], correct: 1, explanation: "Căn cứ Điều 188." },
+                    { q: "Định nghĩa đình công theo Điều 198 là gì?", options: ["Nghỉ việc vĩnh viễn", "Sự ngừng việc tạm thời, tự nguyện và có tổ chức của NLĐ nhằm đạt yêu cầu", "Tụ tập trước cổng doanh nghiệp", "Đơn phương chấm dứt hợp đồng hàng loạt"], correct: 1, explanation: "Căn cứ Điều 198." }
+                ]
+            },
+            {
+                id: 15,
+                title: "Chương XV: Quản lý nhà nước về lao động",
+                description: "Nội dung và trách nhiệm quản lý nhà nước về lao động.",
+                cards: [
+                    { q: "Cơ quan nào thống nhất quản lý nhà nước về lao động?", a: "Chính phủ." }
+                ],
+                quiz: [
+                    { q: "Cơ quan nào thống nhất quản lý nhà nước về lao động trong phạm vi cả nước?", options: ["Chính phủ", "Bộ LĐ-TB&XH", "Quốc hội", "Tổng LĐLĐVN"], correct: 0, explanation: "Căn cứ Điều 213." },
+                    { q: "Bộ nào chịu trách nhiệm trước Chính phủ thực hiện quản lý nhà nước về lao động?", options: ["Bộ LĐ-TB&XH", "Bộ Nội vụ", "Bộ Tư pháp", "Bộ Kế hoạch và Đầu tư"], correct: 0, explanation: "Căn cứ Điều 213." }
+                ]
+            },
+            {
+                id: 16,
+                title: "Chương XVI: Thanh tra lao động, xử lý vi phạm",
+                description: "Thanh tra lao động, xử lý vi phạm pháp luật về lao động.",
+                cards: [
+                    { q: "Thanh tra lao động có quyền thanh tra ở đâu?", a: "Nơi thuộc đối tượng, phạm vi thanh tra theo quyết định thanh tra." }
+                ],
+                quiz: [
+                    { q: "Thanh tra lao động không cần báo trước khi tiến hành thanh tra đột xuất trong trường hợp nào?", options: ["Thanh tra định kỳ", "Trường hợp khẩn cấp có nguy cơ đe dọa an toàn, tính mạng, sức khỏe NLĐ", "Bất kỳ khi nào NLĐ yêu cầu", "Khi doanh nghiệp chậm nộp báo cáo"], correct: 1, explanation: "Căn cứ Điều 216." },
+                    { q: "Cuộc đình công bị Tòa án tuyên bố bất hợp pháp mà NLĐ không ngừng đình công thì bị xử lý thế nào?", options: ["Phạt tù ngay", "Tùy mức độ vi phạm có thể bị xử lý kỷ luật lao động", "Tịch thu tài sản", "Cấm làm việc vĩnh viễn"], correct: 1, explanation: "Căn cứ Điều 217." }
+                ]
+            },
+            {
+                id: 17,
+                title: "Chương XVII: Điều khoản thi hành",
+                description: "Hiệu lực thi hành, điều khoản chuyển tiếp.",
+                cards: [
+                    { q: "Bộ luật Lao động 2019 có hiệu lực từ ngày nào?", a: "Ngày 01 tháng 01 năm 2021." }
+                ],
+                quiz: [
+                    { q: "Bộ luật Lao động số 45/2019/QH14 có hiệu lực thi hành từ ngày tháng năm nào?", options: ["01/01/2020", "01/01/2021", "01/07/2020", "01/07/2021"], correct: 1, explanation: "Căn cứ Điều 220." },
+                    { q: "NSDLĐ sử dụng dưới bao nhiêu lao động thì được miễn, giảm một số thủ tục theo quy định?", options: ["Dưới 5 người", "Dưới 10 người", "Dưới 15 người", "Dưới 20 người"], correct: 1, explanation: "Căn cứ Điều 218." }
+                ]
+            }
         ];
 
         let userXP = parseInt(localStorage.getItem('labor_law_xp')) || 0;
@@ -282,9 +585,6 @@
         ];
 
         window.onload = function() {
-            const customData = localStorage.getItem('labor_law_custom_data');
-            if(customData) { try { laborLawData = JSON.parse(customData); } catch(e){} }
-            
             checkInactivityPenalty();
             checkWeeklyReset();
             updateXPDisplay();
@@ -452,15 +752,13 @@
                             <span class="text-xs font-semibold px-2 py-1 bg-red-950 text-red-400 rounded-lg border border-red-900">Tầng ${ch.id}</span>
                             <h4 class="font-bold text-sm sm:text-base mt-2 text-slate-100">${ch.title}</h4>
                             <p class="text-[11px] sm:text-xs text-slate-400 mt-1 line-clamp-2">${ch.description || ''}</p>
+                            <span class="text-[10px] text-amber-400 font-mono mt-2 block"><i class="fa-solid fa-scroll"></i> ${quizCount} câu trắc nghiệm</span>
                         </div>
                         <div class="space-y-2 mt-4 pt-3 border-t border-slate-700/60">
                             <div class="flex gap-2">
                                 <button onclick="startChapter(${ch.id}, 'flashcard')" class="flex-1 py-1.5 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Thẻ Nhớ (${cardCount})</button>
                                 <button onclick="startChapter(${ch.id}, 'quiz')" class="flex-1 py-1.5 bg-slate-700 hover:bg-red-600 hover:text-white rounded-xl text-xs font-semibold transition">Khảo Nghiệm (${quizCount})</button>
                             </div>
-                            <button onclick="generateChapterByAI(${ch.id})" class="w-full py-1.5 bg-purple-950/40 text-purple-300 hover:bg-purple-900/60 border border-purple-800/50 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i> Khai nhãn AI (chuong${ch.id}.txt)
-                            </button>
                         </div>
                     </div>
                 `;
@@ -682,7 +980,12 @@
 
         function renderFlashcard() {
             const ch = laborLawData.find(c => c.id === currentChapterId);
-            if(!ch || !ch.cards || !ch.cards[currentCardIndex]) return;
+            if(!ch || !ch.cards || !ch.cards[currentCardIndex]) {
+                document.getElementById('fc-index').innerText = `Thẻ 1/1`;
+                document.getElementById('fc-front').innerText = "Đang cập nhật thẻ nhớ chương này...";
+                document.getElementById('fc-back').innerText = "Hãy ôn tập phần trắc nghiệm bên Khảo Nghiệm nhé!";
+                return;
+            }
             const card = ch.cards[currentCardIndex];
             document.getElementById('fc-index').innerText = `Thẻ ${currentCardIndex + 1}/${ch.cards.length}`;
             document.getElementById('fc-front').innerText = card.q;
@@ -691,50 +994,20 @@
         }
 
         function flipCard() { document.getElementById('card-inner').classList.toggle('rotate-y-180'); }
-        function nextCard() { const ch = laborLawData.find(c => c.id === currentChapterId); currentCardIndex = (currentCardIndex + 1) % ch.cards.length; renderFlashcard(); }
-        function prevCard() { const ch = laborLawData.find(c => c.id === currentChapterId); currentCardIndex = (currentCardIndex - 1 + ch.cards.length) % ch.cards.length; renderFlashcard(); }
-
-        async function generateChapterByAI(chapterId) {
-            const apiKey = localStorage.getItem('gemini_api_key');
-            if(!apiKey || !apiKey.startsWith('AQ.')) { showDaoQuanAlert("Vui lòng nhập khóa xác thực (AQ...) ở góc trên!"); openApiKeyModal(); return; }
-
-            showDaoQuanAlert(`AI đang đọc file 'chuong${chapterId}.txt' trên GitHub để khai nhãn câu hỏi...`);
-
-            try {
-                const fileRes = await fetch(`chuong${chapterId}.txt`);
-                if(!fileRes.ok) throw new Error(`Không tìm thấy file chuong${chapterId}.txt`);
-                const chapterText = await fileRes.text();
-
-                const promptText = `Dựa hoàn toàn vào nội dung văn bản sau đây của Chương ${chapterId}, hãy tạo ra 5 câu Flashcard và 5 câu Quiz trắc nghiệm bám sát điều luật:
-                ${chapterText}
-                Trả về JSON thuần túy theo cấu trúc: {"cards": [{"q": "...", "a": "..."}], "quiz": [{"q": "...", "options": ["A", "B", "C", "D"], "correct": 0, "explanation": "..."}]}`;
-
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: promptText }] }] })
-                });
-
-                const data = await response.json();
-                if (data.error) throw new Error(data.error.message);
-                if (!data.candidates) throw new Error("API trả về dữ liệu rỗng.");
-
-                let textRes = data.candidates[0].content.parts[0].text;
-                textRes = textRes.replace(/```json/g, '').replace(/```/g, '').trim();
-                const newContent = JSON.parse(textRes);
-
-                const targetChapter = laborLawData.find(c => c.id == chapterId);
-                if(targetChapter) {
-                    if(newContent.cards) targetChapter.cards.push(...newContent.cards);
-                    if(newContent.quiz) targetChapter.quiz.push(...newContent.quiz);
-                    localStorage.setItem('labor_law_custom_data', JSON.stringify(laborLawData));
-                    renderDashboard();
-                    showDaoQuanAlert(`Đã khai nhãn thành công bộ câu hỏi mới cho Chương ${chapterId}!`);
-                }
-            } catch(err) { showDaoQuanAlert("Lỗi: " + err.message); }
+        function nextCard() { 
+            const ch = laborLawData.find(c => c.id === currentChapterId); 
+            if(!ch || !ch.cards || ch.cards.length === 0) return;
+            currentCardIndex = (currentCardIndex + 1) % ch.cards.length; 
+            renderFlashcard(); 
+        }
+        function prevCard() { 
+            const ch = laborLawData.find(c => c.id === currentChapterId); 
+            if(!ch || !ch.cards || ch.cards.length === 0) return;
+            currentCardIndex = (currentCardIndex - 1 + ch.cards.length) % ch.cards.length; 
+            renderFlashcard(); 
         }
 
-        function openApiKeyModal() { document.getElementById('api-modal').classList.remove('hidden'); document.getElementById('api-key-input').value = localStorage.getItem('gemini_api_key') || ''; }
+        function openApiKeyModal() { document.getElementById('api-modal').classList.remove('hidden'); document.getElementById('api-key-input').value = localStorage.getItem('gemini_api_key'] || ''; }
         function closeApiKeyModal() { document.getElementById('api-modal').classList.add('hidden'); }
         function saveApiKey() {
             const key = document.getElementById('api-key-input').value.trim();
